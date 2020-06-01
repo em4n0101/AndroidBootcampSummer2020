@@ -7,5 +7,5 @@ Assigments for the android bootcamp
 ![Emmanuel's Profile Image](images/photo.jpg)
 
 * **Name**: Emmanuel Cruz
-* **Discord Username**: Emmanuel
+* **Discord Username**: Emmanuel_Cruz
 * **Location**: Mexico
