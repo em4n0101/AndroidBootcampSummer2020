@@ -1,8 +1,11 @@
 package model.caffe
 
+import helper.formatTimeToReadableText
+import model.DaysOfTheWeek
 import model.animals.Cat
 import model.people.Employee
 import model.people.Person
+import java.util.*
 
 class Cafe {
 
@@ -15,51 +18,49 @@ class Cafe {
      * Make sure to add your receipts to each set, with your data.
      * */
     private val receiptsByDay = mutableMapOf(
-        "Monday" to mutableSetOf<Receipt>(),
-        "Tuesday" to mutableSetOf<Receipt>(),
-        "Wednesday" to mutableSetOf<Receipt>(),
-        "Thursday" to mutableSetOf<Receipt>(),
-        "Friday" to mutableSetOf<Receipt>(),
-        "Saturday" to mutableSetOf<Receipt>(),
-        "Sunday" to mutableSetOf<Receipt>()
+            DaysOfTheWeek.MONDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.TUESDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.WEDNESDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.THURSDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.FRIDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.SATURDAY to mutableSetOf<Receipt>(),
+            DaysOfTheWeek.SUNDAY to mutableSetOf<Receipt>()
     )
-
-    // maybe as employees check in, you can add them to the list of working employees!
-    private val employees = mutableSetOf<Employee>()
-    private val customers = mutableSetOf<Person>()
 
     // make sure to add sponsorships and tie them to people!
     private val sponsorships = mutableSetOf<Sponsorship>()
 
-    // TODO Add logic for checking in and checking out!
     fun checkInEmployee(employee: Employee) {
-
+        println("Employee ${employee.firstName} check in: ${Date().formatTimeToReadableText()}")
     }
 
     fun checkOutEmployee(employee: Employee) {
-
+        println("Employee ${employee.firstName} check out: ${Date().formatTimeToReadableText()}")
     }
 
-    fun showNumberOfReceiptsForDay(day: String) {
-        val receiptForDay = receiptsByDay[day] ?: return // wrong day inserted!
-
-        println("On $day you made ${receiptsByDay.size} transactions!")
+    fun showNumberOfReceiptsForDay() {
+        receiptsByDay.entries.forEach {
+            println("\nFor day: ${it.key} you made ${it.value.size} transactions\n" +
+                    "${it.value}")
+        }
     }
-/*
-    fun getReceipt(items: List<Product>, customerId: String): Receipt {
-        // TODO return a receipt! Also make sure to check if customer is also an employee
 
-        return Receipt()
+    /**
+     * Create a receipt, generate a random day and update de receipts by day
+     */
+    fun getReceipt(items: List<Product>, customer: Person): Receipt {
+        val receipt = Receipt(menuItems = items, customer = customer)
+        val randomDay = DaysOfTheWeek.values().random()
+        receiptsByDay.entries.forEach {
+            if (it.key == randomDay) {
+                it.value.add(receipt)
+            }
+        }
+        return receipt
     }
- */
+
     fun addSponsorship(catId: String, personId: String) {
         // TODO add the sponsorship
-    }
-
-    fun getWorkingEmployees(): Set<Employee> = employees
-
-    fun getAdoptedCats(): Set<Cat> {
-        return emptySet()
     }
 
     fun getSponsoredCats(): Set<Cat> {
@@ -70,11 +71,16 @@ class Cafe {
         return emptySet()
     }
 
-    fun getTopSellingItems(): Set<Product> {
-        return emptySet()
-    }
-
-    fun getAdopters(): List<Person> {
-        return (employees + customers).filter { it.cats.isNotEmpty() }
+    fun getTopSellingItems() {
+        val menuItemsGrouped = receiptsByDay.values.flatten()
+                .flatMap { it.menuItems }
+                .groupBy { it.name }
+                .toList()
+                .sortedBy { (key, value) -> -value.size }
+                .toMap()
+        menuItemsGrouped.forEach {
+            println("${it.key} has ${it.value.size} gross sales ")
+        }
+        println()
     }
 }

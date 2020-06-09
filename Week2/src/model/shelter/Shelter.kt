@@ -6,5 +6,5 @@ data class Shelter(
         val id: String = UUID.randomUUID().toString(),
         val name: String,
         val address: String,
-        val phoneNumber: Long
+        val phoneNumber: String
 )

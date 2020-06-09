@@ -7,6 +7,7 @@ data class Cat(
     val id: String = UUID.randomUUID().toString(),
     val name: String,
     val gender: String,
-    val shelterId: String,
-    val sponsorships: MutableSet<Sponsorship> = mutableSetOf()
+    val breed: String,
+    val shelterId: String? = null,
+    val sponsorships: MutableSet<Sponsorship>? = null
 )
