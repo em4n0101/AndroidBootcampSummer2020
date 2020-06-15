@@ -180,4 +180,39 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!--
+        Back of the card
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardViewBack"
+        android:layout_width="@dimen/empty_value"
+        android:layout_height="@dimen/empty_value"
+        android:layout_marginStart="@dimen/margin_main_view_default"
+        android:layout_marginTop="@dimen/margin_main_view_default"
+        android:layout_marginEnd="@dimen/margin_main_view_default"
+        android:layout_marginBottom="@dimen/margin_main_view_bottom_default"
+        android:background="@drawable/card_background_with_border"
+        android:alpha="0"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Switch
+        android:id="@+id/switch_flip_card"
+        style="@style/wrapperSize"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:checked="false"
+        android:fontFamily="@font/bitter_bold"
+        android:text="@string/cardFront"
+        android:textColor="@color/colorText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackTint="@color/colorText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

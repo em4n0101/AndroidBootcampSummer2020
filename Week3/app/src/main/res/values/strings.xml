@@ -5,6 +5,10 @@
     <string name="person_description">Person description</string>
     <string name="content_description_options">content description option</string>
 
+    <!-- For the switch element -->
+    <string name="cardFront">Front</string>
+    <string name="cardBack">Back</string>
+
     <!-- My personal info -->
     <string name="personName">Emmanuel Cruz</string>
     <string name="personDescription">I am an Android Developer, lover of technology, food and dogs. When I am not coding I like to play football, watch movies and series. I live in Puebla, México</string>
