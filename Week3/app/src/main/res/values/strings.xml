@@ -3,4 +3,5 @@
     <string name="content_description_image_header">content description image header</string>
     <string name="person_company">raywenderlich.com</string>
     <string name="person_description">Person description</string>
+    <string name="content_description_options">content description option</string>
 </resources>

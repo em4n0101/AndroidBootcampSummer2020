@@ -106,6 +106,7 @@
 
                 <TextView
                     android:id="@+id/description_text_view"
+                    style="@style/infoTextStyle"
                     android:layout_width="@dimen/empty_value"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_small"
@@ -113,6 +114,67 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/layout_email"
+                    style="@style/wrapperSize"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_location"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/description_text_view"
+                    app:layout_constraintVertical_chainStyle="packed">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_email" />
+
+                    <TextView
+                        android:id="@+id/person_email_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="person@gmail.com" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_location"
+                    style="@style/wrapperSize"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_small"
+                    android:paddingBottom="@dimen/padding_small"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_phone"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_email">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_place" />
+
+                    <TextView
+                        android:id="@+id/person_location_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="Puebla, Mexico" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_phone"
+                    style="@style/wrapperSize"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_location">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_phone" />
+
+                    <TextView
+                        android:id="@+id/person_phone_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="5555555555" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
