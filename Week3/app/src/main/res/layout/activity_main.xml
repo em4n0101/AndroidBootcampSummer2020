@@ -260,7 +260,7 @@
                 android:textColor="@color/colorText" />
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_generate_random_tutorial"
             style="@style/wrapperSize"
             android:layout_marginTop="@dimen/margin_big"
@@ -271,7 +271,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_flip_card"
         style="@style/wrapperSize"
         android:layout_marginBottom="@dimen/margin_small"

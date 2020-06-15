@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Switch
 import com.em4n0101.myapplication.data.Tutorial
 import com.em4n0101.myapplication.utilities.Utilities
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         backAnim = AnimatorInflater.loadAnimator(this, R.animator.back_animator) as AnimatorSet
 
         switch_flip_card.setOnClickListener {
-            val tempSwitch = it as? Switch
+            val tempSwitch = it as? SwitchMaterial
             if (tempSwitch != null) {
                 isFront = if (it.isChecked) {
                     frontAnim.setTarget(cardView)
