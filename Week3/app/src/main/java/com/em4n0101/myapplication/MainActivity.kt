@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                     frontAnim.start()
                     backAnim.start()
                     it.text = getString(R.string.cardBack)
+                    enableElementsWhenIsFront()
                     populateTutorialWith(currentTutorial)
                     false
                 } else {
@@ -89,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                     backAnim.start()
                     frontAnim.start()
                     it.text = getString(R.string.cardFront)
+                    enableElementsWhenIsFront()
                     true
                 }
             } else {
@@ -119,6 +121,13 @@ class MainActivity : AppCompatActivity() {
         layout_phone.setOnClickListener {
             goToPhoneAction()
         }
+    }
+
+    private fun enableElementsWhenIsFront() {
+        card_inner_tutorial.isEnabled = isFront
+        layout_phone.isEnabled = !isFront
+        layout_email.isEnabled = !isFront
+        layout_location.isEnabled = !isFront
     }
 
     private fun goToPhoneAction() {
