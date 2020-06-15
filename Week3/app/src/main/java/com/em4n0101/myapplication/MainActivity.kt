@@ -4,7 +4,9 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Switch
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.em4n0101.myapplication.data.Tutorial
 import com.em4n0101.myapplication.utilities.Utilities
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -138,5 +140,20 @@ class MainActivity : AppCompatActivity() {
             outState.putInt(MainActivity.keyForCurrentTutorialImageResource, currentTutorial!!.imageName)
             outState.putString(MainActivity.keyForCurrentTutorialUrl, currentTutorial!!.url)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_show_about_info) {
+            val title = getString(R.string.menu_title, BuildConfig.VERSION_NAME)
+            Toast.makeText(baseContext, title, Toast.LENGTH_LONG).show()
+        }
+        return true
     }
 }

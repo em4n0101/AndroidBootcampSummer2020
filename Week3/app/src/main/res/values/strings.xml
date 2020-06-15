@@ -46,4 +46,6 @@
     <string name="tutorial8Description">Conquer the basics of creating Android user interfaces, starting with layouts such as LinearLayout, then switch to using the newer ConstraintLayout.</string>
     <string name="tutorial8Url">https://www.raywenderlich.com/8080493-beginning-android-layouts</string>
     <string name="headerCompany">raywenderlich.com</string>
+    <string name="about">About</string>
+    <string name="menu_title">My Business Card, Version %1$s</string>
 </resources>
