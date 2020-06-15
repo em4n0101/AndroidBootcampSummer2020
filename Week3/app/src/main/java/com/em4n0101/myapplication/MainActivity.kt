@@ -5,6 +5,7 @@ import android.animation.AnimatorSet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Switch
+import com.em4n0101.myapplication.data.Tutorial
 import com.em4n0101.myapplication.utilities.Utilities
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var frontAnim: AnimatorSet
     private lateinit var backAnim: AnimatorSet
     private var isFront: Boolean = true
+    private var currentTutorial: Tutorial? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                     frontAnim.start()
                     backAnim.start()
                     it.text = getString(R.string.cardBack)
+                    populateTutorialWith(currentTutorial)
                     false
                 } else {
                     frontAnim.setTarget(cardViewBack)
@@ -54,6 +57,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        button_generate_random_tutorial.setOnClickListener {
+            populateTutorialWith(null)
+        }
+
     }
 
     /**
@@ -66,5 +73,20 @@ class MainActivity : AppCompatActivity() {
         person_email_text_view.text = person.email
         person_phone_text_view.text = person.phone
         person_location_text_view.text = person.location
+    }
+
+    /**
+     * Create a random Tutorial object and update the back of the card with the info
+     */
+    private fun populateTutorialWith(tutorialInfo: Tutorial?) {
+        if (tutorialInfo == null) {
+            this.currentTutorial = Utilities.getRandomTutorial(baseContext)
+        } else {
+            this.currentTutorial = tutorialInfo
+        }
+
+        tutorial_title_text_view.text = currentTutorial?.title
+        tutorial_description.text = currentTutorial?.description
+        currentTutorial?.imageName?.let { tutorial_image_view.setImageResource(it) }
     }
 }

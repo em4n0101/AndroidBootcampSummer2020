@@ -240,6 +240,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:textSize="@dimen/title_tutorial_text_size"
                     tools:text="Title tutorial" />
 
                 <ImageView
