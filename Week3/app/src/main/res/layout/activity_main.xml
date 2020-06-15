@@ -253,6 +253,7 @@
 
             <TextView
                 android:id="@+id/tutorial_description"
+                style="@style/infoTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/empty_value"
                 android:layout_weight="1"
