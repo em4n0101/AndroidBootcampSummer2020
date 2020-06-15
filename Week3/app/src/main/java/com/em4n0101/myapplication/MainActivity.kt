@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val keyForCurrentStateCard = "keyForCurrentStateCard"
+        const val keyForCurrentTutorialTitle = "keyForCurrentTutorialTitle"
+        const val keyForCurrentTutorialDescription = "keyForCurrentTutorialDescription"
+        const val keyForCurrentTutorialImageResource = "keyForCurrentTutorialImageResource"
+        const val keyForCurrentTutorialUrl = "keyForCurrentTutorialUrl"
     }
 
     /**
@@ -41,6 +45,15 @@ class MainActivity : AppCompatActivity() {
                 switch_flip_card.text = getString(R.string.cardBack)
                 cardView.alpha = 0.0F
                 cardViewBack.alpha = 1.0F
+
+                // Get the tutorial data
+                val tutorialTitle = savedInstanceState.getString(MainActivity.keyForCurrentTutorialTitle, "")
+                val tutorialDescription = savedInstanceState.getString(MainActivity.keyForCurrentTutorialDescription, "")
+                val tutorialImage = savedInstanceState.getInt(MainActivity.keyForCurrentTutorialImageResource, R.drawable.logo)
+                val tutorialUrl = savedInstanceState.getString(MainActivity.keyForCurrentTutorialUrl, "")
+
+                val tutorialSaved = Tutorial(tutorialTitle, tutorialDescription, tutorialImage, tutorialUrl)
+                populateTutorialWith(tutorialSaved)
             }
         }
 
@@ -117,5 +130,13 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(MainActivity.keyForCurrentStateCard, isFront)
+
+        // Save also the current tutorial
+        if (!isFront && currentTutorial != null) {
+            outState.putString(MainActivity.keyForCurrentTutorialTitle, currentTutorial!!.title)
+            outState.putString(MainActivity.keyForCurrentTutorialDescription, currentTutorial!!.description)
+            outState.putInt(MainActivity.keyForCurrentTutorialImageResource, currentTutorial!!.imageName)
+            outState.putString(MainActivity.keyForCurrentTutorialUrl, currentTutorial!!.url)
+        }
     }
 }
