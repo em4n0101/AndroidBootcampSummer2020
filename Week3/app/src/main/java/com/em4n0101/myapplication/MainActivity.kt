@@ -12,6 +12,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val keyForCurrentStateCard = "keyForCurrentStateCard"
+    }
+
     /**
      * Properties
      */
@@ -23,6 +27,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /**
+         *  When the orientation changes recover the previous state of the card (front/back)
+         */
+        if (savedInstanceState != null) {
+            isFront = savedInstanceState.getBoolean(MainActivity.keyForCurrentStateCard, true)
+            if (isFront) {
+                switch_flip_card.text = getString(R.string.cardFront)
+                cardView.alpha = 1.0F
+                cardViewBack.alpha = 0.0F
+            } else {
+                switch_flip_card.text = getString(R.string.cardBack)
+                cardView.alpha = 0.0F
+                cardViewBack.alpha = 1.0F
+            }
+        }
 
         populatePersonUI()
 
@@ -89,5 +109,13 @@ class MainActivity : AppCompatActivity() {
         tutorial_title_text_view.text = currentTutorial?.title
         tutorial_description.text = currentTutorial?.description
         currentTutorial?.imageName?.let { tutorial_image_view.setImageResource(it) }
+    }
+
+    /**
+     * Save the current side of the card
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(MainActivity.keyForCurrentStateCard, isFront)
     }
 }
