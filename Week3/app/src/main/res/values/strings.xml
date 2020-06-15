@@ -4,4 +4,11 @@
     <string name="person_company">raywenderlich.com</string>
     <string name="person_description">Person description</string>
     <string name="content_description_options">content description option</string>
+
+    <!-- My personal info -->
+    <string name="personName">Emmanuel Cruz</string>
+    <string name="personDescription">I am an Android Developer, lover of technology, food and dogs. When I am not coding I like to play football, watch movies and series. I live in Puebla, México</string>
+    <string name="personEmail">em4n0101@gmail.com</string>
+    <string name="personPhone">522225229049</string>
+    <string name="personLocation">Puebla, Mexico</string>
 </resources>

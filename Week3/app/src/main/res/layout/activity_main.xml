@@ -45,7 +45,7 @@
                 style="@style/titleTextStyle"
                 android:gravity="center"
                 android:padding="@dimen/padding_normal"
-                tools:text="@string/person_company" />
+                android:text="@string/person_company" />
         </LinearLayout>
 
         <!--
