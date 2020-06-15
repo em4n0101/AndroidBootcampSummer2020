@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:background="@color/colorAccent"
+            android:background="@drawable/inner_card_background_with_border"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
