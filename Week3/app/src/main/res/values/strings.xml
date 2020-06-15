@@ -48,4 +48,5 @@
     <string name="headerCompany">raywenderlich.com</string>
     <string name="about">About</string>
     <string name="menu_title">My Business Card, Version %1$s</string>
+    <string name="press_to_go">Press to go!</string>
 </resources>

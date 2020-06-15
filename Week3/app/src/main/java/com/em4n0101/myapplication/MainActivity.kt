@@ -2,6 +2,8 @@ package com.em4n0101.myapplication
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -95,6 +97,14 @@ class MainActivity : AppCompatActivity() {
 
         button_generate_random_tutorial.setOnClickListener {
             populateTutorialWith(null)
+        }
+
+        card_inner_tutorial.setOnClickListener {
+            if (currentTutorial != null) {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(currentTutorial!!.url)
+                startActivity(i)
+            }
         }
 
     }

@@ -259,6 +259,15 @@
                 android:layout_weight="1"
                 tools:text="Description tutorial"
                 android:textColor="@color/colorText" />
+            <TextView
+                style="@style/infoTextStyle"
+                android:textSize="@dimen/font_size_info"
+                android:padding="@dimen/padding_small"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/press_to_go"
+                android:textColor="@color/colorText" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
