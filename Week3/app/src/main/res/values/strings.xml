@@ -9,6 +9,10 @@
     <string name="cardFront">Front</string>
     <string name="cardBack">Back</string>
 
+    <string name="title_tutorials">Check out our latest video courses on mobile development</string>
+    <string name="content_description_image_tutorial">content description image tutorial</string>
+    <string name="button_get_another_tutorial">Show me another!</string>
+
     <!-- My personal info -->
     <string name="personName">Emmanuel Cruz</string>
     <string name="personDescription">I am an Android Developer, lover of technology, food and dogs. When I am not coding I like to play football, watch movies and series. I live in Puebla, México</string>
