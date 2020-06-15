@@ -25,4 +25,9 @@
     <dimen name="image_height_tutorial_land">75dp</dimen>
 
     <dimen name="font_size_info">12sp</dimen>
+    <dimen name="font_size_general_text">14sp</dimen>
+    <dimen name="icon_option_size">20sp</dimen>
+    <dimen name="corner_radius_inner_background_card">20dp</dimen>
+    <dimen name="corner_radius_inner_background_button">10dp</dimen>
+    <dimen name="padding_background_card">1dp</dimen>
 </resources>

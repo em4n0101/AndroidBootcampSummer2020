@@ -33,17 +33,17 @@
     </style>
 
     <style name="infoTextStyle" parent="wrapperSize">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/font_size_general_text</item>
         <item name="fontFamily">@font/bitter</item>
         <item name="android:textColor">@color/colorText</item>
     </style>
 
     <style name="iconInfoPerson" >
-        <item name="android:layout_height">20dp</item>
-        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">@dimen/icon_option_size</item>
+        <item name="android:layout_width">@dimen/icon_option_size</item>
     </style>
 
     <style name="infoTextOptionsStyle" parent="infoTextStyle">
-        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingStart">@dimen/padding_small</item>
     </style>
 </resources>

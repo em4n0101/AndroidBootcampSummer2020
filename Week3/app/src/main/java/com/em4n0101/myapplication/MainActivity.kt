@@ -15,6 +15,9 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
+/**
+ * @author Emmanuel Cruz (em4n0101@gmail.com)
+ */
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 cardView.alpha = 0.0F
                 cardViewBack.alpha = 1.0F
 
-                // Get the tutorial data
+                // If the card was on the back side we also get the tutorial data
                 val tutorialTitle = savedInstanceState.getString(MainActivity.keyForCurrentTutorialTitle, "")
                 val tutorialDescription = savedInstanceState.getString(MainActivity.keyForCurrentTutorialDescription, "")
                 val tutorialImage = savedInstanceState.getInt(MainActivity.keyForCurrentTutorialImageResource, R.drawable.logo)
@@ -64,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         populatePersonUI()
 
+        // Animation setup
         val scale = applicationContext.resources.displayMetrics.density
         val cameraDistanceScaleMultiply = 8000
         cardView.cameraDistance = cameraDistanceScaleMultiply * scale
@@ -72,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         frontAnim = AnimatorInflater.loadAnimator(this, R.animator.front_animator) as AnimatorSet
         backAnim = AnimatorInflater.loadAnimator(this, R.animator.back_animator) as AnimatorSet
 
+        // Changes the side of the card
         switch_flip_card.setOnClickListener {
             val tempSwitch = it as? SwitchMaterial
             if (tempSwitch != null) {
@@ -98,10 +103,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Generate a new tutorial when the card is on the back side
         button_generate_random_tutorial.setOnClickListener {
             populateTutorialWith(null)
         }
 
+        // Go to the url of the tutorial when the card is on the back side
         card_inner_tutorial.setOnClickListener {
             if (currentTutorial != null) {
                 val i = Intent(Intent.ACTION_VIEW)
