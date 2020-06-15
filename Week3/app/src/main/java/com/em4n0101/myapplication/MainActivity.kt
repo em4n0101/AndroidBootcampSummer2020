@@ -4,15 +4,16 @@ import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.em4n0101.myapplication.data.Tutorial
 import com.em4n0101.myapplication.utilities.Utilities
 import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -107,6 +108,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        layout_email.setOnClickListener {
+            goToEmailAction()
+        }
+
+        layout_location.setOnClickListener {
+            goToMapAction()
+        }
+
+        layout_phone.setOnClickListener {
+            goToPhoneAction()
+        }
+    }
+
+    private fun goToPhoneAction() {
+        val phone = Utilities.getUserData(baseContext).phone
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone"))
+            startActivity(intent)
+    }
+
+    private fun goToMapAction() {
+        val uri =
+            java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", Utilities.getUserData(baseContext).latitude, Utilities.getUserData(baseContext).longitude)
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+        startActivity(mapIntent)
+    }
+
+    private fun goToEmailAction() {
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:")
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(Utilities.getUserData(baseContext).email))
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailSubject))
+        startActivity(intent)
     }
 
     /**

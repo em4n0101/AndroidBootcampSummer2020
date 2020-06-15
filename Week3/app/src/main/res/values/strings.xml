@@ -49,4 +49,6 @@
     <string name="about">About</string>
     <string name="menu_title">My Business Card, Version %1$s</string>
     <string name="press_to_go">Press to go!</string>
+    <string name="emailSubject">\"Hello Emmanuel Cruz\"</string>
+    <string name="emailBody">\"I like your card!\"</string>
 </resources>
