@@ -39,11 +39,12 @@
                 android:id="@+id/imageView"
                 style="@style/imageHeaderSize"
                 android:contentDescription="@string/content_description_image_header"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/logo" />
 
             <TextView
-                style="@style/wrapperSize"
+                style="@style/titleTextStyle"
                 android:gravity="center"
+                android:padding="@dimen/padding_normal"
                 tools:text="@string/person_company" />
         </LinearLayout>
 

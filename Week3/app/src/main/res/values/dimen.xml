@@ -5,6 +5,8 @@
     <dimen name="margin_main_view_bottom_default">64dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
 
     <dimen name="header_image_size">125dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
 </resources>

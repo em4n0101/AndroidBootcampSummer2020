@@ -5,4 +5,5 @@
     <color name="colorAccent">#3B4048</color>
 
     <color name="colorBackgroundApp">#116132</color>
+    <color name="colorText">#ffffff</color>
 </resources>
