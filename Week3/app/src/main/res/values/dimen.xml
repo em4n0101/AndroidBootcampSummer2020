@@ -9,4 +9,6 @@
 
     <dimen name="header_image_size">125dp</dimen>
     <dimen name="title_text_size">20sp</dimen>
+    <dimen name="height_name_view">100dp</dimen>
+    <dimen name="height_name_subview">50dp</dimen>
 </resources>
