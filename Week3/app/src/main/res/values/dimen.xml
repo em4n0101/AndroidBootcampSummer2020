@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="empty_value">0dp</dimen>
+    <dimen name="margin_main_view_default">24dp</dimen>
+    <dimen name="margin_main_view_bottom_default">64dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+
+    <dimen name="header_image_size">125dp</dimen>
+</resources>

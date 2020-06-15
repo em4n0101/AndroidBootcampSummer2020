@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Business Card</string>
+    <string name="content_description_image_header">content description image header</string>
+    <string name="person_company">My company</string>
+    <string name="person_description">Person description</string>
 </resources>

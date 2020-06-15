@@ -2,24 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/matchParentSize"
     android:background="@color/colorBackgroundApp"
     tools:context=".MainActivity">
-
 
     <!--
         Front of the card
     -->
     <LinearLayout
         android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/empty_value"
+        android:layout_height="@dimen/empty_value"
         android:alpha="1"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="@dimen/margin_main_view_default"
+        android:layout_marginTop="@dimen/margin_main_view_default"
+        android:layout_marginEnd="@dimen/margin_main_view_default"
+        android:layout_marginBottom="@dimen/margin_main_view_bottom_default"
         android:orientation="vertical"
         android:background="@drawable/card_background_with_border"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,23 +30,21 @@
         -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/empty_value"
             android:layout_weight="2"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_height="125dp"
-                android:layout_width="125dp"
-                android:contentDescription="content"
+                style="@style/imageHeaderSize"
+                android:contentDescription="@string/content_description_image_header"
                 android:src="@drawable/ic_launcher_background" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrapperSize"
                 android:gravity="center"
-                android:text="My company" />
+                tools:text="@string/person_company" />
         </LinearLayout>
 
         <!--
@@ -56,30 +52,28 @@
         -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/empty_value"
             android:layout_weight="3"
             android:background="@drawable/inner_card_background_with_border"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                style="@style/matchParentSize"
                 android:gravity="center">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/wrapperSize"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.3" />
 
                 <TextView
                     android:id="@+id/description_text_view"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/empty_value"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    tools:text="Personal description"
+                    android:padding="@dimen/padding_small"
+                    tools:text="@string/person_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
