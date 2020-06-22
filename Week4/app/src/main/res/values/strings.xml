@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyMovies</string>
+    <string name="movie_image">movie image content description</string>
 </resources>
