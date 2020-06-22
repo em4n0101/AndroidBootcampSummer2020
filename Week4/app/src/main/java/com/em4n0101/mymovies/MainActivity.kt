@@ -2,7 +2,7 @@ package com.em4n0101.mymovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val movieList = Utilities.createMovies(this)
 
         // setup recycler
-        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.layoutManager = GridLayoutManager(this, 2)
         recycler_view.adapter = MoviesAdapter(movieList)
     }
 }
