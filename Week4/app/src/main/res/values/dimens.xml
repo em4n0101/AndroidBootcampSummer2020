@@ -2,4 +2,6 @@
 <resources>
     <dimen name="holder_movie_image_height">300dp</dimen>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="card_elevation">20dp</dimen>
 </resources>
