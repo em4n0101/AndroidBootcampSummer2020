@@ -30,9 +30,10 @@
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/primaryDarkColor"
+            android:fontFamily="@font/montserrat_bold"
             android:padding="@dimen/padding_small"
-            android:text="My movie"
+            tools:text="My movie"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
