@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">My Business Card</string>
+    <string name="content_description_image_header">content description image header</string>
+    <string name="person_company">raywenderlich.com</string>
+    <string name="person_description">Person description</string>
+    <string name="content_description_options">content description option</string>
+
+    <!-- For the switch element -->
+    <string name="cardFront">Front</string>
+    <string name="cardBack">Back</string>
+
+    <string name="title_tutorials">Check out our latest video courses on mobile development</string>
+    <string name="content_description_image_tutorial">content description image tutorial</string>
+    <string name="button_get_another_tutorial">Show me another!</string>
+
+    <!-- My personal info -->
+    <string name="personName">Emmanuel Cruz</string>
+    <string name="personDescription">I am an Android Developer, lover of technology, food and dogs. When I am not coding I like to play football, watch movies and series. I live in Puebla, México</string>
+    <string name="personEmail">em4n0101@gmail.com</string>
+    <string name="personPhone">522225229049</string>
+    <string name="personLocation">Puebla, Mexico</string>
+
+    <!-- Tutorials info -->
+    <string name="tutorial1Title">Android Studio Tips and Tricks</string>
+    <string name="tutorial1Description">Master the hidden gems of Android Studio to improve the speed of your development with these Android Development tips and tricks.</string>
+    <string name="tutorial1Url">https://www.raywenderlich.com/10054540-android-studio-tips-and-tricks</string>
+    <string name="tutorial2Title">Jetpack Security</string>
+    <string name="tutorial2Description">Learn how to use the AndroidX Jetpack Security library for managing security keys and encrypting file and preferences data.</string>
+    <string name="tutorial2Url">https://www.raywenderlich.com/10135609-jetpack-security</string>
+    <string name="tutorial3Title">Beginning Android Debugging</string>
+    <string name="tutorial3Description">Find out how to debug your Android apps using the many tools available on Android Studio. Learn how to create log statements, add breakpoints to your code, use the Android Studio profiling tools and much more.</string>
+    <string name="tutorial3Url">https://www.raywenderlich.com/9261991-beginning-android-debugging</string>
+    <string name="tutorial4Title">Kotlin Coroutines: Fundamentals</string>
+    <string name="tutorial4Description">Learn the fundamentals about threads and coroutines, along with the basics of the Kotlin Coroutines framework.</string>
+    <string name="tutorial4Url">https://www.raywenderlich.com/8458165-kotlin-coroutines-fundamentals</string>
+    <string name="tutorial5Title">Programming in Kotlin: Functions and Custom Types</string>
+    <string name="tutorial5Description">Take a deeper look at the Kotlin programming language! Explore the intricacies of functions, lambdas, classes, objects, interfaces, and more.</string>
+    <string name="tutorial5Url">https://www.raywenderlich.com/8458472-programming-in-kotlin-functions-custom-types</string>
+    <string name="tutorial6Title">Programming in Kotlin: Fundamentals</string>
+    <string name="tutorial6Description">Learn the fundamental building blocks of Kotlin, through hands-on exercises and challenges! Explore the world of data types, comparison and logical operators, loops, control flow, functions, classes as custom types, and more.</string>
+    <string name="tutorial6Url">https://www.raywenderlich.com/7910496-programming-in-kotlin-fundamentals</string>
+    <string name="tutorial7Title">Publish to the Google Play Store</string>
+    <string name="tutorial7Description">Learn how to build a release-ready APK and upload it to the Google Play Store. Along the way, learn how to use the developer console and the guidelines to follow before publishing an app.</string>
+    <string name="tutorial7Url">https://www.raywenderlich.com/9149199-publish-to-the-google-play-store</string>
+    <string name="tutorial8Title">Beginning Android Layouts</string>
+    <string name="tutorial8Description">Conquer the basics of creating Android user interfaces, starting with layouts such as LinearLayout, then switch to using the newer ConstraintLayout.</string>
+    <string name="tutorial8Url">https://www.raywenderlich.com/8080493-beginning-android-layouts</string>
+    <string name="headerCompany">raywenderlich.com</string>
+    <string name="about">About</string>
+    <string name="menu_title">My Business Card, Version %1$s</string>
+    <string name="press_to_go">Press to go!</string>
+    <string name="emailSubject">\"Hello Emmanuel Cruz\"</string>
+    <string name="emailBody">\"I like your card!\"</string>
+</resources>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParentSize"
+    android:background="@color/colorBackgroundApp"
+    tools:context=".MainActivity">
+
+    <!--
+        Front of the card
+    -->
+    <LinearLayout
+        android:id="@+id/cardView"
+        android:layout_width="@dimen/empty_value"
+        android:layout_height="@dimen/empty_value"
+        android:alpha="1"
+        android:layout_marginStart="@dimen/margin_main_view_default"
+        android:layout_marginTop="@dimen/margin_main_view_default"
+        android:layout_marginEnd="@dimen/margin_main_view_default"
+        android:layout_marginBottom="@dimen/margin_main_view_bottom_default"
+        android:orientation="vertical"
+        android:background="@drawable/card_background_with_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--
+        Header views
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/empty_value"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                style="@style/imageHeaderSize"
+                android:contentDescription="@string/content_description_image_header"
+                android:src="@drawable/logo" />
+
+            <TextView
+                style="@style/titleTextStyle"
+                android:gravity="center"
+                android:padding="@dimen/padding_normal"
+                android:text="@string/person_company" />
+        </LinearLayout>
+
+        <!--
+        Personal info views
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/empty_value"
+            android:layout_weight="3"
+            android:background="@drawable/inner_card_background_with_border"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_name_view">
+
+                <View
+                    android:id="@+id/subview_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_name_subview"
+                    android:background="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_name_subview"
+                    android:background="@color/colorAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subview_name" />
+
+                <TextView
+                    android:id="@+id/person_name_text_view"
+                    tools:text="Person name"
+                    style="@style/titleTextStyle"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/person_name_text_view_background_with_border"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                style="@style/matchParentSize"
+                android:gravity="center">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    style="@style/wrapperSize"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <TextView
+                    android:id="@+id/description_text_view"
+                    style="@style/infoTextStyle"
+                    android:layout_width="@dimen/empty_value"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    tools:text="@string/person_description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/layout_email"
+                    style="@style/wrapperSize"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_location"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/description_text_view"
+                    app:layout_constraintVertical_chainStyle="packed">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_email" />
+
+                    <TextView
+                        android:id="@+id/person_email_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="person@gmail.com" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_location"
+                    style="@style/wrapperSize"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_normal"
+                    android:paddingBottom="@dimen/padding_normal"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_phone"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_email">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_place" />
+
+                    <TextView
+                        android:id="@+id/person_location_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="Puebla, Mexico" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_phone"
+                    style="@style/wrapperSize"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_location">
+
+                    <ImageView
+                        style="@style/iconInfoPerson"
+                        android:contentDescription="@string/content_description_options"
+                        android:src="@drawable/icon_phone" />
+
+                    <TextView
+                        android:id="@+id/person_phone_text_view"
+                        style="@style/infoTextOptionsStyle"
+                        tools:text="5555555555" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--
+        Back of the card
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardViewBack"
+        android:layout_width="@dimen/empty_value"
+        android:layout_height="@dimen/empty_value"
+        android:layout_marginStart="@dimen/margin_main_view_default"
+        android:layout_marginTop="@dimen/margin_main_view_default"
+        android:layout_marginEnd="@dimen/margin_main_view_default"
+        android:layout_marginBottom="@dimen/margin_main_view_bottom_default"
+        android:background="@drawable/card_background_with_border"
+        android:alpha="0"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/infoTextStyle"
+            android:layout_above="@+id/card_inner_tutorial"
+            android:layout_marginBottom="@dimen/margin_big"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingEnd="@dimen/padding_normal"
+            android:gravity="center"
+            android:text="@string/title_tutorials"
+            app:layout_constraintBottom_toTopOf="@+id/card_inner_tutorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!--
+        Layout for the tutorial info
+        -->
+        <LinearLayout
+            android:id="@+id/card_inner_tutorial"
+            android:layout_width="@dimen/empty_value"
+            android:layout_height="@dimen/height_layout_tutorial"
+            android:layout_margin="@dimen/margin_normal"
+            android:padding="@dimen/margin_small"
+            android:background="@drawable/inner_card_background_with_border"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/empty_value"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tutorial_title_text_view"
+                    style="@style/titleTextStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/title_tutorial_text_size"
+                    tools:text="Title tutorial" />
+
+                <ImageView
+                    android:id="@+id/tutorial_image_view"
+                    android:layout_width="@dimen/image_tutorial"
+                    android:layout_height="@dimen/image_tutorial"
+                    android:contentDescription="@string/content_description_image_tutorial"
+                    android:src="@drawable/logo" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tutorial_description"
+                style="@style/infoTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/empty_value"
+                android:layout_weight="1"
+                tools:text="Description tutorial"
+                android:textColor="@color/colorText" />
+            <TextView
+                style="@style/infoTextStyle"
+                android:textSize="@dimen/font_size_info"
+                android:padding="@dimen/padding_small"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/press_to_go"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_generate_random_tutorial"
+            style="@style/wrapperSize"
+            android:layout_marginTop="@dimen/margin_big"
+            android:text="@string/button_get_another_tutorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_inner_tutorial" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_flip_card"
+        style="@style/wrapperSize"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:checked="false"
+        android:fontFamily="@font/bitter_bold"
+        android:text="@string/cardFront"
+        android:textColor="@color/colorText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackTint="@color/colorText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

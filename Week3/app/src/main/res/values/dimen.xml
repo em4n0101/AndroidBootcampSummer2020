@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="empty_value">0dp</dimen>
+    <dimen name="margin_main_view_default">24dp</dimen>
+    <dimen name="margin_main_view_bottom_default">64dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_big">32dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+
+    <dimen name="header_image_size">125dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="title_tutorial_text_size">16sp</dimen>
+    <dimen name="height_name_view">100dp</dimen>
+    <dimen name="height_name_subview">50dp</dimen>
+
+    <!-- For tutorial layout -->
+    <dimen name="height_layout_tutorial">190dp</dimen>
+    <dimen name="image_tutorial">60dp</dimen>
+
+    <!-- For landscape version -->
+    <dimen name="height_layout_tutorial_landscape">200dp</dimen>
+    <dimen name="image_width_tutorial_land">90dp</dimen>
+    <dimen name="image_height_tutorial_land">75dp</dimen>
+
+    <dimen name="font_size_info">12sp</dimen>
+    <dimen name="font_size_general_text">14sp</dimen>
+    <dimen name="icon_option_size">20sp</dimen>
+    <dimen name="corner_radius_inner_background_card">20dp</dimen>
+    <dimen name="corner_radius_inner_background_button">10dp</dimen>
+    <dimen name="padding_background_card">1dp</dimen>
+</resources>
