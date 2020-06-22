@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">MyMovies</string>
     <string name="movie_image">movie image content description</string>
+
+    <!-- Movies info -->
+    <string name="movie_1_title">The Godfather</string>
+    <string name="movie_2_title">The Dark Knight</string>
+    <string name="movie_3_title">Schindler List</string>
+    <string name="movie_4_title">Inception</string>
+    <string name="movie_5_title">The Matrix</string>
+    <string name="movie_6_title">Parasite</string>
+    <string name="movie_7_title">Interstellar</string>
+    <string name="movie_8_title">The Lion King</string>
+    <string name="movie_9_title">The Pianist</string>
+    <string name="movie_10_title">Gladiator</string>
+    <string name="movie_11_title">City Lights</string>
+    <string name="movie_12_title">Intouchables</string>
+    <string name="movie_13_title">Whiplash</string>
+    <string name="movie_14_title">The Prestige</string>
+    <string name="movie_15_title">Joker</string>
+    <string name="movie_16_title">WALL·E</string>
+    <string name="movie_17_title">1917</string>
+    <string name="movie_18_title">Requiem for a Dream</string>
+    <string name="movie_19_title">Eternal Sunshine of the Spotless Mind</string>
 </resources>
