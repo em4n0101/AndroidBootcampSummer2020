@@ -1,5 +1,6 @@
 package com.em4n0101.mymovies
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -38,7 +39,11 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             moviesManager = ViewModelProvider(this).get(MoviesViewModel::class.java)
 
             // setup recycler
-            recycler_view.layoutManager = GridLayoutManager(it, 2)
+            if (it.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                recycler_view.layoutManager = GridLayoutManager(it, 2)
+            } else {
+                recycler_view.layoutManager = GridLayoutManager(it, 4)
+            }
             recycler_view.adapter = MoviesAdapter(moviesManager.getListOfMovies(), this)
         }
     }
