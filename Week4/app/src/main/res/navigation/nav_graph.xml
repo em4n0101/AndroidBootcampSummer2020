@@ -9,5 +9,17 @@
         android:id="@+id/moviesFragment"
         android:name="com.em4n0101.mymovies.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.em4n0101.mymovies.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+        <argument
+            android:name="movie_title_string"
+            app:argType="string" />
+    </fragment>
 </navigation>

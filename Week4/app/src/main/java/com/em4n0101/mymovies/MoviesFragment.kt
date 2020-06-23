@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class MoviesFragment : Fragment() {
+class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,15 @@ class MoviesFragment : Fragment() {
 
             // setup recycler
             recycler_view.layoutManager = GridLayoutManager(it, 2)
-            recycler_view.adapter = MoviesAdapter(movieList)
+            recycler_view.adapter = MoviesAdapter(movieList, this)
+        }
+    }
+
+    // MoviesAdapter.SelectItemListener interface implementation
+    override fun listItemPressed(movie: Movie) {
+        view?.let {
+            val action =  MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.title)
+            it.findNavController().navigate(action)
         }
     }
 
