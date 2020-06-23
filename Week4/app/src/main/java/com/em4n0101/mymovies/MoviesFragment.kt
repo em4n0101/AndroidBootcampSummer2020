@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mymovies.data.Movie
@@ -12,6 +13,8 @@ import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
+
+    private lateinit var moviesManager: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +35,11 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             // get model
             val movieList = Utilities.createMovies(it)
 
+            moviesManager = ViewModelProvider(this).get(MoviesViewModel::class.java)
+
             // setup recycler
             recycler_view.layoutManager = GridLayoutManager(it, 2)
-            recycler_view.adapter = MoviesAdapter(movieList, this)
+            recycler_view.adapter = MoviesAdapter(moviesManager.getListOfMovies(), this)
         }
     }
 

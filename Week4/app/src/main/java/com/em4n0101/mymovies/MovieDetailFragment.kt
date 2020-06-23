@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 class MovieDetailFragment : Fragment() {
+
+    private lateinit var moviesManager: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +33,10 @@ class MovieDetailFragment : Fragment() {
             // get the title of the movie to display
             val args = MovieDetailFragmentArgs.fromBundle(it)
 
-            detail_movie_title.text = args.movieTitleString
-            activity?.applicationContext?.let { it1 ->
-                val movie = Utilities.createMovies(it1).filter { movie -> movie.title == args.movieTitleString }[0]
-                updateUIWith(movie)
-            }
+            // get view model
+            moviesManager = ViewModelProvider(this).get(MoviesViewModel::class.java)
+            val movie = moviesManager.getListOfMovies().filter { movie -> movie.title == args.movieTitleString }[0]
+            updateUIWith(movie)
         }
     }
 
