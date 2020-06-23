@@ -13,4 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         Navigation.findNavController(this, R.id.nav_host_fragment)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        title = getString(R.string.app_name)
+    }
 }
