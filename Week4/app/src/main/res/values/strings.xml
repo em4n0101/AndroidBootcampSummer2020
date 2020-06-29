@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">MyMovies</string>
+    <string name="movie_image">movie image content description</string>
+
+    <!-- Movies info -->
+    <string name="movie_1_title">The Godfather</string>
+    <string name="movie_2_title">The Dark Knight</string>
+    <string name="movie_3_title">Schindler List</string>
+    <string name="movie_4_title">Inception</string>
+    <string name="movie_5_title">The Matrix</string>
+    <string name="movie_6_title">Parasite</string>
+    <string name="movie_7_title">Interstellar</string>
+    <string name="movie_8_title">The Lion King</string>
+    <string name="movie_9_title">The Pianist</string>
+    <string name="movie_10_title">Gladiator</string>
+    <string name="movie_11_title">City Lights</string>
+    <string name="movie_12_title">Intouchables</string>
+    <string name="movie_13_title">Whiplash</string>
+    <string name="movie_14_title">The Prestige</string>
+    <string name="movie_15_title">Joker</string>
+    <string name="movie_16_title">WALL·E</string>
+    <string name="movie_17_title">1917</string>
+    <string name="movie_18_title">Requiem for a Dream</string>
+    <string name="movie_19_title">Eternal Sunshine of the Spotless Mind</string>
+
+    <string name="movie_1_summary">The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding. Michael, Vitos youngest son and a decorated WW II Marine is also present at the wedding. Michael seems to be uninterested in being a part of the family business. Vito is a powerful man, and is kind to all those who give him respect but is ruthless against those who do not. But when a powerful and treacherous rival wants to sell drugs and needs the Dons influence for the same, Vito refuses to do it.
+    The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding. Michael, Vitos youngest son and a decorated WW II Marine is also present at the wedding. Michael seems to be uninterested in being a part of the family business. Vito is a powerful man, and is kind to all those who give him respect but is ruthless against those who do not. But when a powerful and treacherous rival wants to sell drugs and needs the Dons influence for the same, Vito refuses to do it.</string>
+    <string name="movie_2_summary">Set within a year after the events of Batman Begins (2005), Batman, Lieutenant James Gordon, and new District Attorney Harvey Dent successfully begin to round up the criminals that plague Gotham City, until a mysterious and sadistic criminal mastermind known only as The Joker appears in Gotham, creating a new wave of chaos. Batmans struggle against The Joker becomes deeply personal, forcing him to confront everything he believes and improve his technology to stop him.</string>
+    <string name="movie_3_summary">Oskar Schindler is a vain and greedy German businessman who becomes an unlikely humanitarian amid the barbaric German Nazi reign when he feels compelled to turn his factory into a refuge for Jews. Based on the true story of Oskar Schindler who managed to save about 1100 Jews from being gassed at the Auschwitz concentration camp, it is a testament to the good in all of us.</string>
+    <string name="movie_4_summary">Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobbs rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved. Now Cobb is being offered a chance at redemption. One last job could give him his life back but only if he can accomplish the impossible, inception. Instead of the perfect heist, Cobb and his team of specialists have to pull off the reverse: their task is not to steal an idea, but to plant one.</string>
+    <string name="movie_5_summary">Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a hacker known as Neo. Neo has always questioned his reality, but the truth is far beyond his imagination. Neo finds himself targeted by the police when he is contacted by Morpheus, a legendary computer hacker branded a terrorist by the government. Morpheus awakens Neo to the real world, a ravaged wasteland where most of humanity have been captured by a race of machines that live off of the humans body heat and electrochemical energy and who imprison their minds within an artificial reality known as the Matrix.</string>
+    <string name="movie_6_summary">The Kims - mother and father Chung-sook and Ki-taek, and their young adult offspring, son Ki-woo and daughter Ki-jung - are a poor family living in a shabby and cramped half basement apartment in a busy lower working class commercial district of Seoul. Without even knowing it, they, especially Mr. and Mrs. Kim, literally smell of poverty. Often as a collective, they perpetrate minor scams to get by, and even when they have jobs, they do the minimum work required. Ki-woo is the one who has dreams of getting out of poverty by one day going to university. </string>
+    <string name="movie_7_summary">Earths future has been riddled by disasters, famines, and droughts. There is only one way to ensure mankinds survival: Interstellar travel. A newly discovered wormhole in the far reaches of our solar system allows a team of astronauts to go where no man has gone before, a planet that may have the right environment to sustain human life.</string>
+    <string name="movie_8_summary">A young lion prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days. But when his past comes to haunt him, the young prince must decide his fate: Will he remain an outcast or face his demons and become what he needs to be?</string>
+    <string name="movie_9_summary">In this adaptation of the autobiography "The Pianist: The Extraordinary True Story of One Man's Survival in Warsaw, 1939–1945," Wladyslaw Szpilman, a Polish Jewish radio station pianist, sees Warsaw change gradually as World War II begins. Szpilman is forced into the Warsaw Ghetto, but is later separated from his family during Operation Reinhard. From this time until the concentration camp prisoners are released, Szpilman hides in various locations among the ruins of Warsaw. Written by Jwelch5742</string>
+    <string name="movie_10_summary">Maximus is a powerful Roman general, loved by the people and the aging Emperor, Marcus Aurelius. Before his death, the Emperor chooses Maximus to be his heir over his own son, Commodus, and a power struggle leaves Maximus and his family condemned to death. The powerful general is unable to save his family, and his loss of will allows him to get captured and put into the Gladiator games until he dies. The only desire that fuels him now is the chance to rise to the top so that he will be able to look into the eyes of the man who will feel his revenge. Written by Chris "Morphy" Terry</string>
+    <string name="movie_11_summary">A tramp falls in love with a beautiful blind girl. Her family is in financial trouble. The tramps on-and-off friendship with a wealthy man allows him to be the girls benefactor and suitor. Written by John J. Magee</string>
+    <string name="movie_12_summary">In Paris, the aristocratic and intellectual Philippe is a quadriplegic millionaire who is interviewing candidates for the position of his carer, with his red-haired secretary Magalie. Out of the blue, Driss cuts the line of candidates and brings a document from the Social Security and asks Phillipe to sign it to prove that he is seeking a job position so he can receive his unemployment benefit. Philippe challenges Driss, offering him a trial period of one month to gain experience helping him. Then Driss can decide whether he would like to stay with him or not. Driss accepts the challenge and moves to the mansion, changing the boring life of Phillipe and his employees. Written by Claudio Carvalho, Rio de Janeiro, Brazil</string>
+    <string name="movie_13_summary">A young and talented drummer attending a prestigious music academy finds himself under the wing of the most respected professor at the school; one who does not hold back on abuse towards his students. The two form an odd relationship as the student wants to achieve greatness, and the professor pushes him. Written by andrewhodkinson</string>
+    <string name="movie_14_summary">In the end of the nineteenth century, in London, Robert Angier, his beloved wife Julia McCullough, and Alfred Borden are friends and assistants of a magician. When Julia accidentally dies during a performance, Robert blames Alfred for her death, and they become enemies. Both become famous and rival magicians, sabotaging the performance of the other on the stage. When Alfred performs a successful trick, Robert becomes obsessed trying to disclose the secret of his competitor with tragic consequences. Written by Claudio Carvalho, Rio de Janeiro, Brazil</string>
+    <string name="movie_15_summary">Arthur Fleck works as a clown and is an aspiring stand-up comic. He has mental health issues, part of which involves uncontrollable laughter. Times are tough and, due to his issues and occupation, Arthur has an even worse time than most. Over time these issues bear down on him, shaping his actions, making him ultimately take on the persona he is more known as…Joker. Written by grantss</string>
+    <string name="movie_16_summary">In a distant, but not so unrealistic, future where mankind has abandoned earth because it has become covered with trash from products sold by the powerful multi-national Buy N Large corporation, WALL-E, a garbage collecting robot has been left to clean up the mess. Mesmerized with trinkets of Earths history and show tunes, WALL-E is alone on Earth except for a sprightly pet cockroach. One day, EVE, a sleek (and dangerous) reconnaissance robot, is sent to Earth to find proof that life is once again sustainable. WALL-E falls in love with EVE. WALL-E rescues EVE from a dust storm and shows her a living plant he found amongst the rubble. Consistent with her "directive", EVE takes the plant and automatically enters a deactivated state except for a blinking green beacon</string>
+    <string name="movie_17_summary">April 1917, the Western Front. Two British soldiers are sent to deliver an urgent message to an isolated regiment. If the message is not received in time the regiment will walk into a trap and be massacred. To get to the regiment they will need to cross through enemy territory. Time is of the essence and the journey will be fraught with danger. Written by grantss</string>
+    <string name="movie_18_summary">Sara Goldfarb (Ellen Burstyn) is a retired widow, living in a small apartment. She spends most of her time watching TV, especially a particular self-help show. She has delusions of rising above her current dull existence by being a guest on that show. Her son, Harry (Jared Leto) is a junkie but along with his friend Tyrone (Marlon Wayans) has visions of making it big by becoming a drug dealer. Harrys girlfriend Marion (Jennifer Connelly) could be fashion designer or artist but is swept along in Harrys drug-centric world. Meanwhile Sara has developed an addiction of her own. She desperately wants to lose weight and so goes on a crash course involving popping pills, pills which turn out to be very addictive and harmful to her mental state. Written by grantss</string>
+    <string name="movie_19_summary">A man, Joel Barish, heartbroken that his girlfriend Clementine underwent a procedure to erase him from her memory, decides to do the same. However, as he watches his memories of her fade away, he realizes that he still loves her, and may be too late to correct his mistake.</string>
+
+    <string name="movie_1_release_date">4 October 1972</string>
+    <string name="movie_2_release_date">18 July 2008</string>
+    <string name="movie_3_release_date">4 February 1994</string>
+    <string name="movie_4_release_date">16 July 2010</string>
+    <string name="movie_5_release_date">21 May 1999</string>
+    <string name="movie_6_release_date">25 December 2019</string>
+    <string name="movie_7_release_date">6 November 2014</string>
+    <string name="movie_8_release_date">7 July 1994</string>
+    <string name="movie_9_release_date">21 March 2003</string>
+    <string name="movie_10_release_date">5 May 2000</string>
+    <string name="movie_11_release_date">24 December 1931</string>
+    <string name="movie_12_release_date">24 August 2012</string>
+    <string name="movie_13_release_date">23 January 2015</string>
+    <string name="movie_14_release_date">3 November 2006</string>
+    <string name="movie_15_release_date">4 October 2019</string>
+    <string name="movie_16_release_date">4 July 2008</string>
+    <string name="movie_17_release_date">17 January 2020</string>
+    <string name="movie_18_release_date">7 September 2001</string>
+    <string name="movie_19_release_date">19 March 2004</string>
+
+    <string name="movie_1_duration">2h 55min</string>
+    <string name="movie_2_duration">2h 32min</string>
+    <string name="movie_3_duration">3h 15min</string>
+    <string name="movie_4_duration">2h 28min</string>
+    <string name="movie_5_duration">2h 16min</string>
+    <string name="movie_6_duration">2h 12min</string>
+    <string name="movie_7_duration">2h 49min</string>
+    <string name="movie_8_duration">1h 28min</string>
+    <string name="movie_9_duration">2h 30min</string>
+    <string name="movie_10_duration">2h 35min</string>
+    <string name="movie_11_duration">1h 27min</string>
+    <string name="movie_12_duration">1h 52min</string>
+    <string name="movie_13_duration">1h 46min</string>
+    <string name="movie_14_duration">2h 10min</string>
+    <string name="movie_15_duration">2h 2min</string>
+    <string name="movie_16_duration">1h 38min</string>
+    <string name="movie_17_duration">1h 59min</string>
+    <string name="movie_18_duration">1h 42min</string>
+    <string name="movie_19_duration">1h 48min</string>
+
+    <string name="movie_1_genre">Crime, Drama</string>
+    <string name="movie_2_genre">Action, Crime, Drama</string>
+    <string name="movie_3_genre">Biography, Drama, History</string>
+    <string name="movie_4_genre">Action, Adventure, Sci-Fi</string>
+    <string name="movie_5_genre">Action, Sci-Fi</string>
+    <string name="movie_6_genre">Comedy, Drama, Thriller</string>
+    <string name="movie_7_genre">Adventure, Drama, Sci-Fi</string>
+    <string name="movie_8_genre">Animation, Adventure, Drama</string>
+    <string name="movie_9_genre">Biography, Drama, Music</string>
+    <string name="movie_10_genre">Action, Adventure, Drama</string>
+    <string name="movie_11_genre">Comedy, Drama, Romance</string>
+    <string name="movie_12_genre">Biography, Comedy, Drama</string>
+    <string name="movie_13_genre">Drama, Music</string>
+    <string name="movie_14_genre">Drama, Mystery, Sci-Fi</string>
+    <string name="movie_15_genre">Crime, Drama, Thriller</string>
+    <string name="movie_16_genre">Animation, Adventure, Family</string>
+    <string name="movie_17_genre">Drama, War</string>
+    <string name="movie_18_genre">Drama</string>
+    <string name="movie_19_genre">Drama, Romance, Sci-Fi</string>
+
+    <string name="detail_content_description">detail_content_description</string>
+</resources>
