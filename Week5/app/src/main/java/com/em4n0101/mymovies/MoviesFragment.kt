@@ -2,10 +2,9 @@ package com.em4n0101.mymovies
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,9 +43,29 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             } else {
                 recycler_view.layoutManager = GridLayoutManager(it, 4)
             }
-            val movies = moviesManager.getMovies()
-            movies?.let { moviesList ->
-               recycler_view.adapter = MoviesAdapter(moviesList, this)
+            addObserver()
+        }
+    }
+
+    private fun addObserver() {
+        /**
+         * Set the fragment as the observer for changes in the list of movies, if the list is empty
+         * add the movies available to the database
+         */
+        val observer = Observer<List<Movie>> {
+            if (it != null && it.isNotEmpty()) {
+                recycler_view.adapter = MoviesAdapter(it, this)
+            } else {
+                populateDatabase()
+            }
+        }
+        moviesManager.movies.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun populateDatabase() {
+        activity?.let {
+            for (movie in Utilities.createMovies(it)) {
+                moviesManager.saveMovie(movie)
             }
         }
     }

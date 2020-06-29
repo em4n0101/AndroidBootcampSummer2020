@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="">
+    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)">
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -14,11 +22,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MovieDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MovieDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/database/MoviesDatabaseDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/database/MoviesDatabaseDao.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +48,7 @@
       <list>
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -176,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593450918697</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)">
+      <created>1593453471221</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1593453471221</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -186,17 +199,68 @@
     <MESSAGE value="(Code) Add MoviesDatabaseDao" />
     <MESSAGE value="(Code) Add MoviesDatabase class" />
     <MESSAGE value="(Code) Add MoviesRepository class" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add MoviesRepository class" />
+    <MESSAGE value="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2" timestamp="1593453295630">
+    <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593458962531">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593453295630" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593451119854">
+    <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593458962531" />
+    <state x="228" y="162" key="AndroidCreateResourceFileDialog" timestamp="1593461441220">
+      <screen x="0" y="0" width="1226" height="800" />
+    </state>
+    <state x="228" y="162" key="AndroidCreateResourceFileDialog/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593461441220" />
+    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593470186949">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459993178" />
+    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593470186949" />
+    <state width="1238" height="99" key="GridCell.Tab.0.bottom" timestamp="1593465369415">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497291" />
+    <state width="1238" height="99" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369415" />
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566993" />
+    <state width="1238" height="99" key="GridCell.Tab.0.center" timestamp="1593465369412">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497288" />
+    <state width="1238" height="99" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369412" />
+    <state width="1878" height="286" key="GridCell.Tab.0.center/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566908" />
+    <state width="1238" height="99" key="GridCell.Tab.0.left" timestamp="1593465369410">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497287" />
+    <state width="1238" height="99" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369410" />
+    <state width="1878" height="286" key="GridCell.Tab.0.left/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566892" />
+    <state width="1238" height="99" key="GridCell.Tab.0.right" timestamp="1593465369413">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497290" />
+    <state width="1238" height="99" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369413" />
+    <state width="1878" height="286" key="GridCell.Tab.0.right/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566913" />
+    <state width="1238" height="244" key="GridCell.Tab.1.bottom" timestamp="1593464716238">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="244" key="GridCell.Tab.1.bottom/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593464716238" />
+    <state width="1238" height="244" key="GridCell.Tab.1.center" timestamp="1593464716235">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="244" key="GridCell.Tab.1.center/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593464716235" />
+    <state width="1238" height="244" key="GridCell.Tab.1.left" timestamp="1593464716234">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="244" key="GridCell.Tab.1.left/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593464716234" />
+    <state width="1238" height="244" key="GridCell.Tab.1.right" timestamp="1593464716236">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="244" key="GridCell.Tab.1.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593464716236" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593470149911">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="292" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593449946161" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593451119854" />
+    <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593461295041" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593470149911" />
   </component>
 </project>
