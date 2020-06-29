@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="" />
+    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/database/MoviesDatabase.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +21,14 @@
         <projects_view />
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -129,20 +139,28 @@
       <option name="project" value="LOCAL" />
       <updated>1593450244122</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="(Code) Add MoviesDatabaseDao">
+      <created>1593450543045</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593450543045</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit, copy files from previous assignment" />
     <MESSAGE value="(Refactoring) Add dependencies for room and convert Movie class to Entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Refactoring) Add dependencies for room and convert Movie class to Entity" />
+    <MESSAGE value="(Code) Add MoviesDatabaseDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add MoviesDatabaseDao" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2" timestamp="1593450243265">
+    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2" timestamp="1593450542495">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593450243265" />
+    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593450542495" />
     <state x="292" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593449946161">
       <screen x="0" y="0" width="1226" height="800" />
     </state>
