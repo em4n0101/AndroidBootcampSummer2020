@@ -44,7 +44,10 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             } else {
                 recycler_view.layoutManager = GridLayoutManager(it, 4)
             }
-            recycler_view.adapter = MoviesAdapter(moviesManager.getListOfMovies(), this)
+            val movies = moviesManager.getMovies()
+            movies?.let { moviesList ->
+               recycler_view.adapter = MoviesAdapter(moviesList, this)
+            }
         }
     }
 

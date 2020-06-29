@@ -35,8 +35,8 @@ class MovieDetailFragment : Fragment() {
 
             // get view model
             moviesManager = ViewModelProvider(this).get(MoviesViewModel::class.java)
-            val movie = moviesManager.getListOfMovies().filter { movie -> movie.title == args.movieTitleString }[0]
-            updateUIWith(movie)
+            //val movie = moviesManager.getListOfMovies().filter { movie -> movie.title == args.movieTitleString }[0]
+            //updateUIWith(movie)
         }
     }
 

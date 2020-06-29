@@ -1,11 +1,13 @@
 package com.em4n0101.mymovies.database
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.em4n0101.mymovies.data.Movie
 
+@Dao
 interface MoviesDatabaseDao {
     @Insert
     fun insert(movie: Movie)

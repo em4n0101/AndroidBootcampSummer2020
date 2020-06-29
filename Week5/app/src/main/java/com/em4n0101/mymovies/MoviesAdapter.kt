@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.MovieViewHolder
 
-class MoviesAdapter(private val movieList: ArrayList<Movie>, val delegate: SelectItemListener): RecyclerView.Adapter<MovieViewHolder>() {
+class MoviesAdapter(private val movieList: List<Movie>, val delegate: SelectItemListener): RecyclerView.Adapter<MovieViewHolder>() {
 
     interface SelectItemListener {
         fun listItemPressed(list: Movie)
