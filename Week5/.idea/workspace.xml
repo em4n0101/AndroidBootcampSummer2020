@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/database/MoviesDatabase.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/repositories/MoviesRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593450543045</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="(Code) Add MoviesDatabase class">
+      <created>1593450617599</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593450617599</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -154,13 +162,14 @@
     <MESSAGE value="First commit, copy files from previous assignment" />
     <MESSAGE value="(Refactoring) Add dependencies for room and convert Movie class to Entity" />
     <MESSAGE value="(Code) Add MoviesDatabaseDao" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add MoviesDatabaseDao" />
+    <MESSAGE value="(Code) Add MoviesDatabase class" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add MoviesDatabase class" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2" timestamp="1593450542495">
+    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2" timestamp="1593450617227">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593450542495" />
+    <state x="0" y="23" width="909" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593450617227" />
     <state x="292" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593449946161">
       <screen x="0" y="0" width="1226" height="800" />
     </state>
