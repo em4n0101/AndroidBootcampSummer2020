@@ -18,6 +18,7 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -76,6 +77,21 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             val action =  MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.title)
             it.findNavController().navigate(action)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_go_to_profile) {
+            view?.let {
+                val action =  MoviesFragmentDirections.actionMoviesFragmentToProfileFragment()
+                it.findNavController().navigate(action)
+            }
+        }
+        return true
     }
 
     companion object {

@@ -112,4 +112,8 @@
     <string name="sign_in_button_text">Sign in</string>
     <string name="invalid_name">The provided name is invalid, it must have 2 characters or more</string>
     <string name="invalid_password">The provided password is invalid, it must have 4 characters or more</string>
+    <string name="content_description_profile_image">content description profile image</string>
+    <string name="sign_out">Sign out</string>
+    <string name="about">About</string>
+    <string name="profile">Profile</string>
 </resources>

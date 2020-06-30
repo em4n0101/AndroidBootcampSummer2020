@@ -9,4 +9,6 @@
     <dimen name="font_size_error">12sp</dimen>
     <dimen name="font_size_detail_info">14sp</dimen>
     <dimen name="font_size_detail_title">16sp</dimen>
+
+    <dimen name="view_spacer_profile">200sp</dimen>
 </resources>
