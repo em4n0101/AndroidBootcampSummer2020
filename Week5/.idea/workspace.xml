@@ -9,7 +9,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)">
+    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="(Code) Get and insert movies to the database">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MyMoviesApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/entrypoint/EntryPointActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/login/LoginActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/repositories/SharedPrefsRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_entry_point.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,9 +27,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +57,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -75,6 +85,12 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.1440787552">
+      <recent name="com.em4n0101.mymovies.login" />
+      <recent name="com.em4n0101.mymovies.entrypoint" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -189,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593453471221</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="(Code) Get and insert movies to the database">
+      <created>1593470397930</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1593470397930</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,45 +223,54 @@
     <MESSAGE value="(Code) Add MoviesDatabase class" />
     <MESSAGE value="(Code) Add MoviesRepository class" />
     <MESSAGE value="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Refactoring) Use the movies from room database to display in the MoviesFragment (currently empty list)" />
+    <MESSAGE value="(Code) Get and insert movies to the database" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Code) Get and insert movies to the database" />
   </component>
   <component name="WindowStateProjectService">
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593458962531">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593458962531" />
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593473402344">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593473402344" />
     <state x="228" y="162" key="AndroidCreateResourceFileDialog" timestamp="1593461441220">
       <screen x="0" y="0" width="1226" height="800" />
     </state>
     <state x="228" y="162" key="AndroidCreateResourceFileDialog/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593461441220" />
-    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593470186949">
+    <state x="456" y="249" key="AndroidCreateXmlResourceDialog" timestamp="1593477589095">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="456" y="249" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477589095" />
+    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593477078543">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459993178" />
-    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593470186949" />
-    <state width="1238" height="99" key="GridCell.Tab.0.bottom" timestamp="1593465369415">
+    <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477078543" />
+    <state width="1238" height="128" key="GridCell.Tab.0.bottom" timestamp="1593477340350">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497291" />
-    <state width="1238" height="99" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369415" />
+    <state width="1238" height="128" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340350" />
     <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566993" />
-    <state width="1238" height="99" key="GridCell.Tab.0.center" timestamp="1593465369412">
+    <state width="1238" height="128" key="GridCell.Tab.0.center" timestamp="1593477340348">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1878" height="286" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497288" />
-    <state width="1238" height="99" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369412" />
+    <state width="1238" height="128" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340348" />
     <state width="1878" height="286" key="GridCell.Tab.0.center/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566908" />
-    <state width="1238" height="99" key="GridCell.Tab.0.left" timestamp="1593465369410">
+    <state width="1238" height="128" key="GridCell.Tab.0.left" timestamp="1593477340346">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1878" height="286" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497287" />
-    <state width="1238" height="99" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369410" />
+    <state width="1238" height="128" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340346" />
     <state width="1878" height="286" key="GridCell.Tab.0.left/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566892" />
-    <state width="1238" height="99" key="GridCell.Tab.0.right" timestamp="1593465369413">
+    <state width="1238" height="128" key="GridCell.Tab.0.right" timestamp="1593477340349">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1878" height="286" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459497290" />
-    <state width="1238" height="99" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593465369413" />
+    <state width="1238" height="128" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340349" />
     <state width="1878" height="286" key="GridCell.Tab.0.right/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566913" />
     <state width="1238" height="244" key="GridCell.Tab.1.bottom" timestamp="1593464716238">
       <screen x="0" y="0" width="1280" height="800" />
@@ -256,11 +288,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="244" key="GridCell.Tab.1.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593464716236" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593470149911">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1593477345669">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="292" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593449946161" />
     <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593461295041" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593470149911" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477345669" />
   </component>
 </project>

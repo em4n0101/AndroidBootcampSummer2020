@@ -25,4 +25,19 @@
         <item name="android:textSize">@dimen/font_size_detail_info</item>
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
+
+    <style name="textFields">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/font_size_detail_info</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="errors">
+        <item name="fontFamily">@font/montserrat_light</item>
+        <item name="android:textSize">@dimen/font_size_error</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/errorTextColor</item>
+    </style>
 </resources>
