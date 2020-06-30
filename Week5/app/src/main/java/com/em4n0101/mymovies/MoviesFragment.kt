@@ -12,21 +12,13 @@ import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
+class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
-    private lateinit var moviesManager: MoviesViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movies, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,13 +28,13 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
             // get model
             val movieList = Utilities.createMovies(it)
 
-            moviesManager = ViewModelProvider(this).get(MoviesViewModel::class.java)
+            moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
 
             // setup recycler
             if (it.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                recycler_view.layoutManager = GridLayoutManager(it, 2)
+                recyclerViewMovies.layoutManager = GridLayoutManager(it, 2)
             } else {
-                recycler_view.layoutManager = GridLayoutManager(it, 4)
+                recyclerViewMovies.layoutManager = GridLayoutManager(it, 4)
             }
             addObserver()
         }
@@ -55,24 +47,25 @@ class MoviesFragment : Fragment(), MoviesAdapter.SelectItemListener {
          */
         val observer = Observer<List<Movie>> {
             if (it != null && it.isNotEmpty()) {
-                recycler_view.adapter = MoviesAdapter(it, this)
+                val adapter = MoviesAdapter(::listItemPressed)
+                adapter.setData(it)
+                recyclerViewMovies.adapter = adapter
             } else {
                 populateDatabase()
             }
         }
-        moviesManager.movies.observe(viewLifecycleOwner, observer)
+        moviesViewModel.movies.observe(viewLifecycleOwner, observer)
     }
 
     private fun populateDatabase() {
         activity?.let {
             for (movie in Utilities.createMovies(it)) {
-                moviesManager.saveMovie(movie)
+                moviesViewModel.saveMovie(movie)
             }
         }
     }
 
-    // MoviesAdapter.SelectItemListener interface implementation
-    override fun listItemPressed(movie: Movie) {
+    private fun listItemPressed(movie: Movie) {
         view?.let {
             val action =  MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.title)
             it.findNavController().navigate(action)

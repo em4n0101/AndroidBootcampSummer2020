@@ -6,25 +6,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.MovieViewHolder
 
-class MoviesAdapter(private val movieList: List<Movie>, val delegate: SelectItemListener): RecyclerView.Adapter<MovieViewHolder>() {
+class MoviesAdapter(private val onMovieClicked: (Movie) -> Unit): RecyclerView.Adapter<MovieViewHolder>() {
 
-    interface SelectItemListener {
-        fun listItemPressed(list: Movie)
+    private val movieList: MutableList<Movie> = mutableListOf()
+
+    fun setData(movies: List<Movie>) {
+        movieList.clear()
+        movieList.addAll(movies)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val holder = LayoutInflater.from(parent.context)
+        val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_view_holder, parent, false)
-        return MovieViewHolder(holder)
+        return MovieViewHolder(itemView)
     }
 
     override fun getItemCount() = movieList.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.title.text = movieList[position].title
-        holder.poster.setImageResource(movieList[position].posterResource)
-        holder.itemView.setOnClickListener {
-            delegate.listItemPressed(movieList[position])
-        }
+        holder.bind(movieList[position], onMovieClicked)
     }
 }

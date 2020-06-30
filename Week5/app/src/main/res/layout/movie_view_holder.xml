@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/movie_poster"
+            android:id="@+id/moviePoster"
             android:layout_width="match_parent"
             android:layout_height="@dimen/holder_movie_image_height"
             android:adjustViewBounds="true"
@@ -27,7 +27,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/movie_title"
+            android:id="@+id/movieTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primaryDarkColor"

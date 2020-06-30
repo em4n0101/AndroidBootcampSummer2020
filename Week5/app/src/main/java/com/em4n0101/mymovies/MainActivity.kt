@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Navigation.findNavController(this, R.id.nav_host_fragment)
+        Navigation.findNavController(this, R.id.navHostFragment)
     }
 
     override fun onBackPressed() {
