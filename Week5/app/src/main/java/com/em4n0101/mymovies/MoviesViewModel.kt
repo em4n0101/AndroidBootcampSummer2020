@@ -10,4 +10,6 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     val movies = repository.getMovies()
 
     fun saveMovie(movie: Movie) = repository.insert(movie)
+
+    fun getMovieBy(title: String) = repository.getMovieBy(title)
 }

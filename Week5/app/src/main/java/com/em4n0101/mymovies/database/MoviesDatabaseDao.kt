@@ -16,7 +16,7 @@ interface MoviesDatabaseDao {
     fun update(movie: Movie)
 
     @Query("SELECT * FROM movies WHERE title = :title")
-    fun get(title: String): Movie?
+    fun get(title: String): LiveData<Movie>
 
     @Query("SELECT * FROM movies")
     fun getAllMovies(): LiveData<List<Movie>>

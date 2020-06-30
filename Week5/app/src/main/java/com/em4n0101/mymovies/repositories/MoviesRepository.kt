@@ -17,6 +17,10 @@ class MoviesRepository(application: Application) {
     fun getMovies(): LiveData<List<Movie>> {
         return moviesDao.getAllMovies()
     }
+
+    fun getMovieBy(title: String): LiveData<Movie> {
+        return moviesDao.get(title)
+    }
 }
 
 private class InsertAsyncTask(private val moviesDao: MoviesDatabaseDao):
