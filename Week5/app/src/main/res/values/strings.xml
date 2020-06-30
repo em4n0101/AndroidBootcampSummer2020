@@ -116,9 +116,11 @@
     <string name="sign_out">Sign out</string>
     <string name="about">About</string>
     <string name="profile">Profile</string>
+    <string name="changeProfileImage">Change profile image</string>
     <string name="about_title">MyMovies</string>
     <string name="about_message">Develop by Emmanuel Cruz (em4n0101@gmail.com)</string>
     <string name="sign_out_title">You\'re leaving… are you sure?</string>
     <string name="sign_out_button_ok">Yes</string>
     <string name="sign_out_button_cancel">Cancel</string>
+    <string name="select_picture">Select Picture</string>
 </resources>

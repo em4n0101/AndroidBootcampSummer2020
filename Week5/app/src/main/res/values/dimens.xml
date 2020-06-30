@@ -11,4 +11,5 @@
     <dimen name="font_size_detail_title">16sp</dimen>
 
     <dimen name="view_spacer_profile">200sp</dimen>
+    <dimen name="profile_image_size">150dp</dimen>
 </resources>

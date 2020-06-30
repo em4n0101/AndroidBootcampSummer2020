@@ -10,7 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="">
+    <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="(Refactoring) Add confirmation dialog for sign out">
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,8 +23,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/repositories/SharedPrefsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/repositories/SharedPrefsRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593491753710</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="(Refactoring) Add confirmation dialog for sign out">
+      <created>1593492503932</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1593492503932</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -248,54 +260,56 @@
     <MESSAGE value="(Refactor) Get the details of the movie by request the database" />
     <MESSAGE value="(Code) Add a Profile fragment, inside this the user can sign out the app" />
     <MESSAGE value="(Code) Add About info" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add About info" />
+    <MESSAGE value="(Refactoring) Add confirmation dialog for sign out" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Refactoring) Add confirmation dialog for sign out" />
   </component>
   <component name="WindowStateProjectService">
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593458962531">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593458962531" />
-    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593473402344">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="285" y="-872" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593493921177">
+      <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
+    <state x="285" y="-872" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593493921177" />
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593473402344" />
-    <state x="75" y="-861" key="AndroidCreateResourceFileDialog" timestamp="1593489126421">
+    <state x="75" y="-861" key="AndroidCreateResourceFileDialog" timestamp="1593493811244">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
     <state x="228" y="162" key="AndroidCreateResourceFileDialog/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593461441220" />
-    <state x="75" y="-861" key="AndroidCreateResourceFileDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593489126421" />
-    <state x="402" y="-744" key="AndroidCreateXmlResourceDialog" timestamp="1593490151272">
+    <state x="75" y="-861" key="AndroidCreateResourceFileDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593493811244" />
+    <state x="402" y="-744" key="AndroidCreateXmlResourceDialog" timestamp="1593498435885">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state x="402" y="-744" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593490151272" />
+    <state x="402" y="-744" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593498435885" />
     <state x="456" y="249" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477589095" />
-    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593491752757">
+    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593498411413">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491752757" />
+    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593498411413" />
     <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593480400287" />
-    <state width="1878" height="397" key="GridCell.Tab.0.bottom" timestamp="1593489751811">
+    <state width="1878" height="260" key="GridCell.Tab.0.bottom" timestamp="1593497782634">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state width="1878" height="397" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593489751811" />
+    <state width="1878" height="260" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593497782634" />
     <state width="1238" height="128" key="GridCell.Tab.0.bottom/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340350" />
     <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566993" />
-    <state width="1878" height="397" key="GridCell.Tab.0.center" timestamp="1593489751808">
+    <state width="1878" height="260" key="GridCell.Tab.0.center" timestamp="1593497782631">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state width="1878" height="397" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593489751808" />
+    <state width="1878" height="260" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593497782631" />
     <state width="1238" height="128" key="GridCell.Tab.0.center/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340348" />
     <state width="1878" height="286" key="GridCell.Tab.0.center/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566908" />
-    <state width="1878" height="397" key="GridCell.Tab.0.left" timestamp="1593489751806">
+    <state width="1878" height="260" key="GridCell.Tab.0.left" timestamp="1593497782629">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state width="1878" height="397" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593489751806" />
+    <state width="1878" height="260" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593497782629" />
     <state width="1238" height="128" key="GridCell.Tab.0.left/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340346" />
     <state width="1878" height="286" key="GridCell.Tab.0.left/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566892" />
-    <state width="1878" height="397" key="GridCell.Tab.0.right" timestamp="1593489751809">
+    <state width="1878" height="260" key="GridCell.Tab.0.right" timestamp="1593497782633">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state width="1878" height="397" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593489751809" />
+    <state width="1878" height="260" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593497782633" />
     <state width="1238" height="128" key="GridCell.Tab.0.right/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477340349" />
     <state width="1878" height="286" key="GridCell.Tab.0.right/0.23.1226.777/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593459566913" />
     <state width="1238" height="244" key="GridCell.Tab.1.bottom" timestamp="1593464716238">
@@ -318,11 +332,11 @@
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
     <state x="456" y="-621" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593488656978" />
-    <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup" timestamp="1593491012248">
+    <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup" timestamp="1593497045361">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
     <state x="292" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1226.800/-282.-1057.1920.1057@0.0.1226.800" timestamp="1593449946161" />
-    <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491012248" />
+    <state x="176" y="-913" width="1005" height="913" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593497045361" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593480599878" />
   </component>
 </project>

@@ -15,12 +15,17 @@
         android:padding="@dimen/padding_normal"
         android:orientation="vertical">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageViewProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:strokeColor="@color/primaryDarkColor"
+            app:strokeWidth="1dp"
+            android:layout_width="@dimen/profile_image_size"
+            android:layout_height="@dimen/profile_image_size"
+            android:src="@drawable/icon_movie"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/content_description_profile_image"
-            tools:src="@tools:sample/avatars" />
+            />
 
         <TextView
             android:id="@+id/textViewUsername"
@@ -32,10 +37,15 @@
             android:textSize="@dimen/font_size_detail_title"
             tools:text="User name"/>
         <Button
-            android:id="@+id/buttonAbout"
+            android:id="@+id/buttonChangeProfileImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal"
+            android:text="@string/changeProfileImage" />
+        <Button
+            android:id="@+id/buttonAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/about" />
         <Button
             android:id="@+id/buttonSignOut"

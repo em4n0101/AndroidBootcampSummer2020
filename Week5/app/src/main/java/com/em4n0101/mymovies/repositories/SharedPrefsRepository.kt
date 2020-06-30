@@ -7,6 +7,7 @@ object SharedPrefsRepository {
     private const val SHARED_PREFS_REPOSITORY = "SHARED_PREFS_REPOSITORY"
     private const val SHARED_PREFS_KEY_LOGIN = "SHARED_PREFS_KEY_LOGIN"
     private const val SHARED_PREFS_KEY_USERNAME = "SHARED_PREFS_KEY_USERNAME"
+    private const val SHARED_PREFS_KEY_PROFILE_IMAGE = "SHARED_PREFS_KEY_PROFILE_IMAGE"
     private fun sharedPrefs() = MyMoviesApplication.getAppContext().getSharedPreferences(SHARED_PREFS_REPOSITORY, Context.MODE_PRIVATE)
 
     // When the user sign in we save the name for displayed inside the app
@@ -21,4 +22,8 @@ object SharedPrefsRepository {
 
     // When the user sign out we need to remove the data saved
     fun clearSharedPrefs() = sharedPrefs().edit().clear().apply()
+
+    fun saveProfileImage(imageUrl: String) = sharedPrefs().edit().putString(
+        SHARED_PREFS_KEY_PROFILE_IMAGE, imageUrl).apply()
+    fun getProfileImage() = sharedPrefs().getString(SHARED_PREFS_KEY_PROFILE_IMAGE, "")
 }

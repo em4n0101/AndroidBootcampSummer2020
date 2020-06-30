@@ -1,6 +1,7 @@
 package com.em4n0101.mymovies.profile
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
-      override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
@@ -35,7 +36,26 @@ class ProfileFragment : Fragment() {
         buttonAbout.setOnClickListener {
             showAbout()
         }
+        buttonChangeProfileImage.setOnClickListener {
+            chooseProfileImage()
+        }
+
         activity?.title = getString(R.string.profile)
+
+        // Get profile image
+        val profileImage = SharedPrefsRepository.getProfileImage()
+        if (profileImage != null && profileImage.isNotEmpty()) {
+            imageViewProfile.setImageURI(Uri.parse(profileImage))
+        }
+    }
+
+    private fun chooseProfileImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_OPEN_DOCUMENT
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.select_picture)), REQUEST_PROFILE_IMAGE)
     }
 
     private fun showAbout() {
@@ -44,6 +64,15 @@ class ProfileFragment : Fragment() {
                 .setTitle(resources.getString(R.string.about_title))
                 .setMessage(resources.getString(R.string.about_message))
                 .show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_PROFILE_IMAGE) {
+            imageViewProfile.setImageURI(data?.data)
+            SharedPrefsRepository.saveProfileImage(data?.data.toString())
         }
     }
 
@@ -66,6 +95,8 @@ class ProfileFragment : Fragment() {
     }
 
     companion object {
+        private const val REQUEST_PROFILE_IMAGE = 1233
+
         fun newInstance(): ProfileFragment {
             return ProfileFragment()
         }

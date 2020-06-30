@@ -40,4 +40,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/errorTextColor</item>
     </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
