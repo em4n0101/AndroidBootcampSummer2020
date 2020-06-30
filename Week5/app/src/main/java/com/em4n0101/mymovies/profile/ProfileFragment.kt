@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.em4n0101.mymovies.R
 import com.em4n0101.mymovies.login.LoginActivity
 import com.em4n0101.mymovies.repositories.SharedPrefsRepository
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -31,7 +32,19 @@ class ProfileFragment : Fragment() {
         buttonSignOut.setOnClickListener {
             navigateToSignIn()
         }
+        buttonAbout.setOnClickListener {
+            showAbout()
+        }
         activity?.title = getString(R.string.profile)
+    }
+
+    private fun showAbout() {
+        activity?.let {
+            MaterialAlertDialogBuilder(it)
+                .setTitle(resources.getString(R.string.about_title))
+                .setMessage(resources.getString(R.string.about_message))
+                .show()
+        }
     }
 
     private fun navigateToSignIn() {

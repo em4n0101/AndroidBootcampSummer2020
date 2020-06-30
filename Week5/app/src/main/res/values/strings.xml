@@ -116,4 +116,6 @@
     <string name="sign_out">Sign out</string>
     <string name="about">About</string>
     <string name="profile">Profile</string>
+    <string name="about_title">MyMovies</string>
+    <string name="about_message">Develop by Emmanuel Cruz (em4n0101@gmail.com)</string>
 </resources>

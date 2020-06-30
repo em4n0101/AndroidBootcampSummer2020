@@ -11,10 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2abd0f85-f427-4275-8e2b-7cc6ba074762" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,13 +19,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/MoviesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593488739172</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="(Code) Add a Profile fragment, inside this the user can sign out the app">
+      <created>1593491144908</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1593491144908</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,7 +237,8 @@
     <MESSAGE value="(Code) Get and insert movies to the database" />
     <MESSAGE value="(Code) Add login feature. When you are successfully logged-in, store a boolean value into shared prefs that the user is logged-in." />
     <MESSAGE value="(Refactor) Get the details of the movie by request the database" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Refactor) Get the details of the movie by request the database" />
+    <MESSAGE value="(Code) Add a Profile fragment, inside this the user can sign out the app" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add a Profile fragment, inside this the user can sign out the app" />
   </component>
   <component name="WindowStateProjectService">
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593458962531">
@@ -259,10 +259,10 @@
     </state>
     <state x="402" y="-744" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593490151272" />
     <state x="456" y="249" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477589095" />
-    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593491057559">
+    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593491144083">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491057559" />
+    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491144083" />
     <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593480400287" />
     <state width="1878" height="397" key="GridCell.Tab.0.bottom" timestamp="1593489751811">
       <screen x="-282" y="-1080" width="1920" height="1080" />
