@@ -48,11 +48,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun navigateToSignIn() {
-        SharedPrefsRepository.clearSharedPrefs()
+        activity?.let {
+            MaterialAlertDialogBuilder(it)
+                .setTitle(resources.getString(R.string.sign_out_title))
+                .setNegativeButton(resources.getString(R.string.sign_out_button_cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(resources.getString(R.string.sign_out_button_ok)) { _, _ ->
+                    SharedPrefsRepository.clearSharedPrefs()
 
-        val intent = Intent(activity, LoginActivity::class.java)
-        startActivity(intent)
-        activity?.finish()
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                }
+                .show()
+        }
     }
 
     companion object {

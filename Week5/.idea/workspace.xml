@@ -19,7 +19,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/em4n0101/mymovies/profile/ProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
@@ -223,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593491144908</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="(Code) Add About info">
+      <created>1593491753710</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593491753710</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,7 +247,8 @@
     <MESSAGE value="(Code) Add login feature. When you are successfully logged-in, store a boolean value into shared prefs that the user is logged-in." />
     <MESSAGE value="(Refactor) Get the details of the movie by request the database" />
     <MESSAGE value="(Code) Add a Profile fragment, inside this the user can sign out the app" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add a Profile fragment, inside this the user can sign out the app" />
+    <MESSAGE value="(Code) Add About info" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Code) Add About info" />
   </component>
   <component name="WindowStateProjectService">
     <state x="319" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593458962531">
@@ -259,10 +269,10 @@
     </state>
     <state x="402" y="-744" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593490151272" />
     <state x="456" y="249" key="AndroidCreateXmlResourceDialog/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593477589095" />
-    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593491144083">
+    <state x="-282" y="-1049" width="1147" height="777" key="CommitChangelistDialog2" timestamp="1593491752757">
       <screen x="-282" y="-1080" width="1920" height="1080" />
     </state>
-    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491144083" />
+    <state x="-282" y="-1049" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@-282.-1080.1920.1080" timestamp="1593491752757" />
     <state x="0" y="23" width="1147" height="777" key="CommitChangelistDialog2/0.0.1280.800/-282.-1080.1920.1080@0.0.1280.800" timestamp="1593480400287" />
     <state width="1878" height="397" key="GridCell.Tab.0.bottom" timestamp="1593489751811">
       <screen x="-282" y="-1080" width="1920" height="1080" />
