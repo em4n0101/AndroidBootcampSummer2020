@@ -3,10 +3,12 @@ package com.em4n0101.mymovies
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.em4n0101.mymovies.data.Movie
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
@@ -21,17 +23,19 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
             // get view model
             moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
-            addObserver(args.movieTitleString)
+
+            getMovieByTitle(args.movieTitleString)
         }
     }
 
-    private fun addObserver(forMovieTitle: String) {
-        val observer = Observer<Movie> {
-            if (it != null) {
-                updateUIWith(it)
+    private fun getMovieByTitle(movieTitle: String) {
+        lifecycleScope.launch {
+            moviesViewModel.getMovieByTitleFlow(movieTitle).collect { movie ->
+                if (movie != null) {
+                    updateUIWith(movie)
+                }
             }
         }
-        moviesViewModel.getMovieBy(forMovieTitle).observe(viewLifecycleOwner, observer)
     }
 
     private fun updateUIWith(movie: Movie) {

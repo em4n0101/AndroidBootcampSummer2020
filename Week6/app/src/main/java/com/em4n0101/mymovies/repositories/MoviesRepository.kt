@@ -1,8 +1,6 @@
 package com.em4n0101.mymovies.repositories
 
 import android.app.Application
-import android.os.AsyncTask
-import androidx.lifecycle.LiveData
 import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.database.MoviesDatabase
 import com.em4n0101.mymovies.database.MoviesDatabaseDao
@@ -15,7 +13,5 @@ class MoviesRepository(application: Application) {
 
     fun getMovies(): Flow<List<Movie>> = moviesDao.getAllMovies()
 
-    fun getMovieBy(title: String): LiveData<Movie> {
-        return moviesDao.get(title)
-    }
+    fun getMovieBy(title: String): Flow<Movie?> = moviesDao.getMovieBy(title)
 }

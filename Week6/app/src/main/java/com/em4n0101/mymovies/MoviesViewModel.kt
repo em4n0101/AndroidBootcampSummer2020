@@ -17,5 +17,5 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getMoviesFlow() = repository.getMovies()
 
-    fun getMovieBy(title: String) = repository.getMovieBy(title)
+    fun getMovieByTitleFlow(title: String) = repository.getMovieBy(title)
 }
