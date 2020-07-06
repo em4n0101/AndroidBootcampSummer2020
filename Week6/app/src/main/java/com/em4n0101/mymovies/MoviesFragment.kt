@@ -2,15 +2,20 @@ package com.em4n0101.mymovies
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mymovies.data.Movie
 import com.em4n0101.mymovies.utils.Utilities
 import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
@@ -36,25 +41,27 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
             } else {
                 recyclerViewMovies.layoutManager = GridLayoutManager(it, 4)
             }
-            addObserver()
+
+            getListOfMovies()
         }
     }
 
-    private fun addObserver() {
-        /**
-         * Set the fragment as the observer for changes in the list of movies, if the list is empty
-         * add the movies available to the database
-         */
-        val observer = Observer<List<Movie>> {
-            if (it != null && it.isNotEmpty()) {
-                val adapter = MoviesAdapter(::listItemPressed)
-                adapter.setData(it)
-                recyclerViewMovies.adapter = adapter
-            } else {
-                populateDatabase()
+    private fun getListOfMovies() {
+        lifecycleScope.launch {
+            moviesViewModel.getMoviesFlow().collect { listOfMovies ->
+                if (listOfMovies.isNotEmpty()) {
+                    updateUiWithMovieList(listOfMovies)
+                } else {
+                    populateDatabase()
+                }
             }
         }
-        moviesViewModel.movies.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun updateUiWithMovieList(listOfMovies: List<Movie>) {
+        val adapter = MoviesAdapter(::listItemPressed)
+        adapter.setData(listOfMovies)
+        recyclerViewMovies.adapter = adapter
     }
 
     private fun populateDatabase() {

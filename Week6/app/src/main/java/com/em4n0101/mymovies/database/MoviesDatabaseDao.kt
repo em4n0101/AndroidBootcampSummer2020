@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.em4n0101.mymovies.data.Movie
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MoviesDatabaseDao {
@@ -19,7 +20,7 @@ interface MoviesDatabaseDao {
     fun get(title: String): LiveData<Movie>
 
     @Query("SELECT * FROM movies")
-    fun getAllMovies(): LiveData<List<Movie>>
+    fun getAllMovies(): Flow<List<Movie>>
 
     @Query("DELETE FROM movies")
     fun clean()

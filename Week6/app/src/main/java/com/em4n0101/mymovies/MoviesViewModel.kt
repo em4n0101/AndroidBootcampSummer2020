@@ -10,11 +10,12 @@ import kotlinx.coroutines.launch
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = MoviesRepository(application)
-    val movies = repository.getMovies()
 
     fun saveMovies(movies: List<Movie>) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertMovies(movies)
     }
+
+    fun getMoviesFlow() = repository.getMovies()
 
     fun getMovieBy(title: String) = repository.getMovieBy(title)
 }
