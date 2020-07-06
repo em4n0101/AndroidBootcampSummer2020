@@ -59,9 +59,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
     private fun populateDatabase() {
         activity?.let {
-            for (movie in Utilities.createMovies(it)) {
-                moviesViewModel.saveMovie(movie)
-            }
+            moviesViewModel.saveMovies(Utilities.createMovies(it))
         }
     }
 

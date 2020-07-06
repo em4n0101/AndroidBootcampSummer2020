@@ -10,7 +10,7 @@ import com.em4n0101.mymovies.data.Movie
 @Dao
 interface MoviesDatabaseDao {
     @Insert
-    fun insert(movie: Movie)
+    suspend fun insertMovies(movies: List<Movie>)
 
     @Update
     fun update(movie: Movie)
