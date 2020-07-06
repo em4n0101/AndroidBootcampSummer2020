@@ -1,5 +1,6 @@
 package com.em4n0101.mymovies.profile
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -57,7 +58,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_PROFILE_IMAGE) {
+        if (requestCode == REQUEST_PROFILE_IMAGE && resultCode == Activity.RESULT_OK) {
             imageViewProfile.setImageURI(data?.data)
             SharedPrefsRepository.saveProfileImage(data?.data.toString())
         }
@@ -71,14 +72,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     dialog.dismiss()
                 }
                 .setPositiveButton(resources.getString(R.string.sign_out_button_ok)) { _, _ ->
-                    SharedPrefsRepository.clearSharedPrefs()
-
-                    val intent = Intent(activity, LoginActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
+                    performSignOutSession()
                 }
                 .show()
         }
+    }
+
+    private fun performSignOutSession() {
+        SharedPrefsRepository.clearSharedPrefs()
+
+        val intent = Intent(activity, LoginActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
     }
 
     companion object {

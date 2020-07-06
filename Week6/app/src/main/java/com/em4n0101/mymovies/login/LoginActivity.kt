@@ -15,12 +15,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         buttonSignIn.setOnClickListener {
-            if (validateFields())
+            if (credentialsAreValid())
                 navigateToMain()
         }
     }
 
-    private fun validateFields(): Boolean {
+    private fun credentialsAreValid(): Boolean {
         var isNameValid = false
         var isPasswordValid = false
 
