@@ -123,4 +123,6 @@
     <string name="sign_out_button_ok">Yes</string>
     <string name="sign_out_button_cancel">Cancel</string>
     <string name="select_picture">Select Picture</string>
+    <string name="favorite_movie_image_view">favorite movie image view</string>
+    <string name="favorite_action">Favorite</string>
 </resources>

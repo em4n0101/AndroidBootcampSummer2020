@@ -1,8 +1,11 @@
 package com.em4n0101.mymovies
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.CheckBox
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.em4n0101.mymovies.data.Movie
@@ -13,6 +16,13 @@ import kotlinx.coroutines.launch
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private lateinit var moviesViewModel: MoviesViewModel
+    private var checkBoxFavorite: CheckBox? = null
+    private var currentMovie: Movie? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,11 +38,24 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_details_movie, menu)
+
+        val starMenuItem = menu.findItem(R.id.actionFavoriteMovie)
+        checkBoxFavorite = starMenuItem.actionView as CheckBox
+        checkBoxFavorite?.let {
+            setupFavoriteToggle(it, currentMovie)
+        }
+    }
+
     private fun getMovieByTitle(movieTitle: String) {
         lifecycleScope.launch {
-            moviesViewModel.getMovieByTitleFlow(movieTitle).collect { movie ->
-                if (movie != null) {
-                    updateUIWith(movie)
+            moviesViewModel.getMovieByTitleFlow(movieTitle).collect { movieFound ->
+                if (movieFound != null) {
+                    currentMovie = movieFound
+                    updateUIWith(movieFound)
+                    setupFavoriteToggle(checkBoxFavorite, movieFound)
                 }
             }
         }
@@ -47,6 +70,16 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             detailMovieDuration.text = movie.duration
             detailMovieSummary.text = movie.summary
             it.title = movie.title
+        }
+    }
+
+    private fun setupFavoriteToggle(checkBox: CheckBox?, movie: Movie?){
+        if (checkBox != null && movie != null) {
+            checkBox.setOnCheckedChangeListener { _, isChecked ->
+                movie.isFavorite = isChecked
+                moviesViewModel.updateMovie(movie)
+            }
+            movie.isFavorite?.let { checkBox.isChecked = it }
         }
     }
 

@@ -59,9 +59,11 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
     }
 
     private fun updateUiWithMovieList(listOfMovies: List<Movie>) {
-        val adapter = MoviesAdapter(::listItemPressed)
-        adapter.setData(listOfMovies)
-        recyclerViewMovies.adapter = adapter
+        if (recyclerViewMovies != null) {
+            val adapter = MoviesAdapter(::listItemPressed)
+            adapter.setData(listOfMovies)
+            recyclerViewMovies.adapter = adapter
+        }
     }
 
     private fun populateDatabase() {
@@ -79,7 +81,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.menu_movies, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,9 +1,6 @@
 package com.em4n0101.mymovies.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.em4n0101.mymovies.data.Movie
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -11,11 +8,11 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Dao
 interface MoviesDatabaseDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(movies: List<Movie>)
 
     @Update
-    fun update(movie: Movie)
+    suspend fun updateMovie(movie: Movie)
 
     @Query("SELECT * FROM movies WHERE title = :title")
     fun getMovieBy(title: String): Flow<Movie?>
@@ -28,5 +25,5 @@ interface MoviesDatabaseDao {
     fun getAllMovies(): Flow<List<Movie>>
 
     @Query("DELETE FROM movies")
-    fun clean()
+    suspend fun clean()
 }

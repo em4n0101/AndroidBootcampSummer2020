@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StarCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/ic_favorite_selector</item>
+        <item name="android:buttonTint">@color/white</item>
+    </style>
+</resources>

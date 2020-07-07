@@ -14,4 +14,8 @@ class MoviesRepository(application: Application) {
     fun getMovies(): Flow<List<Movie>> = moviesDao.getAllMovies()
 
     fun getMovieBy(title: String): Flow<Movie?> = moviesDao.getMovieBy(title)
+
+    suspend fun updateMovie(movie: Movie) = moviesDao.updateMovie(movie)
+    
+    suspend fun deleteMovies() = moviesDao.clean()
 }

@@ -18,4 +18,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun getMoviesFlow() = repository.getMovies()
 
     fun getMovieByTitleFlow(title: String) = repository.getMovieBy(title)
+
+    fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updateMovie(movie)
+    }
+
+    fun deleteMovies() = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteMovies()
+    }
 }

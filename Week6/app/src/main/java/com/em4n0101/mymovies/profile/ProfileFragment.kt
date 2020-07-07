@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
+import com.em4n0101.mymovies.MoviesViewModel
 import com.em4n0101.mymovies.R
 import com.em4n0101.mymovies.login.LoginActivity
 import com.em4n0101.mymovies.repositories.SharedPrefsRepository
@@ -13,6 +15,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
+    private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +38,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         if (profileImage != null && profileImage.isNotEmpty()) {
             imageViewProfile.setImageURI(Uri.parse(profileImage))
         }
+
+        moviesViewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
     }
 
     private fun chooseProfileImage() {
@@ -80,6 +85,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun performSignOutSession() {
         SharedPrefsRepository.clearSharedPrefs()
+        moviesViewModel.deleteMovies()
 
         val intent = Intent(activity, LoginActivity::class.java)
         startActivity(intent)
