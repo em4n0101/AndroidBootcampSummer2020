@@ -3,12 +3,15 @@ package com.em4n0101.mymovies
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.CheckBox
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.em4n0101.mymovies.data.Movie
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -59,6 +62,34 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.actionDeleteMovie) {
+            currentMovie?.let {
+                confirmDeleteMovie(it.title)
+            }
+        }
+        return true
+    }
+
+    private fun confirmDeleteMovie(withTitle: String) {
+        activity?.let {
+            MaterialAlertDialogBuilder(it)
+                .setTitle(resources.getString(R.string.delete_dialog_message))
+                .setNegativeButton(resources.getString(R.string.delete_dialog_button_cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton(resources.getString(R.string.delete_dialog_button_ok)) { _, _ ->
+                    performDeleteMovie(withTitle)
+                }
+                .show()
+        }
+    }
+
+    private fun performDeleteMovie(withTitle: String) {
+        moviesViewModel.deleteMovieByTitle(withTitle)
+        view?.findNavController()?.navigateUp()
     }
 
     private fun updateUIWith(movie: Movie) {

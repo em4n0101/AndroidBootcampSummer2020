@@ -7,4 +7,9 @@
         android:icon="@drawable/ic_favorite_selector"
         app:actionLayout="@layout/layout_start_check_box"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/actionDeleteMovie"
+        android:title="@string/favorite_action"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="ifRoom" />
 </menu>

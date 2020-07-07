@@ -18,4 +18,6 @@ class MoviesRepository(application: Application) {
     suspend fun updateMovie(movie: Movie) = moviesDao.updateMovie(movie)
     
     suspend fun deleteMovies() = moviesDao.clean()
+
+    suspend fun deleteMovieByTitle(title: String) = moviesDao.deleteMovieBy(title)
 }

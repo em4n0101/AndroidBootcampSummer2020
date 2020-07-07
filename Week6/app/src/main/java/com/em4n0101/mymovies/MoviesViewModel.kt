@@ -26,4 +26,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun deleteMovies() = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteMovies()
     }
+
+    fun deleteMovieByTitle(title: String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteMovieByTitle(title)
+    }
 }

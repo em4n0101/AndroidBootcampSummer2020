@@ -26,4 +26,7 @@ interface MoviesDatabaseDao {
 
     @Query("DELETE FROM movies")
     suspend fun clean()
+
+    @Query("DELETE FROM movies WHERE title = :title")
+    suspend fun deleteMovieBy(title: String)
 }

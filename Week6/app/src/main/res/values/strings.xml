@@ -125,4 +125,7 @@
     <string name="select_picture">Select Picture</string>
     <string name="favorite_movie_image_view">favorite movie image view</string>
     <string name="favorite_action">Favorite</string>
+    <string name="delete_dialog_message">Are you sure you want to permanently delete this movie?</string>
+    <string name="delete_dialog_button_ok">Yes</string>
+    <string name="delete_dialog_button_cancel">Cancel</string>
 </resources>

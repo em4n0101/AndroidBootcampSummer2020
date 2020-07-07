@@ -24,6 +24,9 @@
         <argument
             android:name="movie_title_string"
             app:argType="string" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_moviesFragment"
+            app:destination="@id/moviesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
