@@ -1,0 +1,52 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="detail_movie_info">
+        <item name="fontFamily">@font/montserrat_light</item>
+        <item name="android:textSize">@dimen/font_size_detail_info</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="detail_movie_title">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/font_size_detail_title</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="detail_movie_summary">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/font_size_detail_info</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="textFields">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/font_size_detail_info</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="errors">
+        <item name="fontFamily">@font/montserrat_light</item>
+        <item name="android:textSize">@dimen/font_size_error</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/errorTextColor</item>
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="StarCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/ic_favorite_selector</item>
+    </style>
+</resources>
