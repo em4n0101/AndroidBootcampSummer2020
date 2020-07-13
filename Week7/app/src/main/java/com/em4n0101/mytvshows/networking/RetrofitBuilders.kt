@@ -17,7 +17,6 @@ private fun buildClient(): OkHttpClient =
         })
         .build()
 
-@OptIn(UnstableDefault::class)
 private fun buildRetrofit(): Retrofit {
     val contentType = "application/json".toMediaType()
 

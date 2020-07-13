@@ -3,12 +3,18 @@ package com.em4n0101.mytvshows.ui.searchshow
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.em4n0101.mytvshows.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
+import com.em4n0101.mytvshows.model.Failure
+import com.em4n0101.mytvshows.model.Success
+import kotlinx.coroutines.launch
 
 class SearchShowFragment : Fragment() {
+
+    private val remoteApi = MyTvShowsApplication.remoteApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +39,37 @@ class SearchShowFragment : Fragment() {
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
+                   query?.let {
+                        if (it.isNotBlank()) searchFor(it)
+                    }
                     return true
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
+                    val minCharactersToSearch = 3
                     newText?.let {
-                        Toast.makeText(activity!!, newText, Toast.LENGTH_SHORT).show()
+                        if (it.length >= minCharactersToSearch) searchFor(it)
                     }
                     return true
                 }
             })
         }
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun searchFor(inputToSearch: String) {
+        lifecycleScope.launch {
+            val searchShowsResult = remoteApi.searchForAShow(inputToSearch)
+
+            if (searchShowsResult is Success) {
+                searchShowsResult.data.forEach {
+                    println(it.show.name.toString())
+                }
+            } else {
+                val failure = searchShowsResult as Failure
+                println("Error: ${failure.error}")
+            }
+        }
     }
 
     companion object {
