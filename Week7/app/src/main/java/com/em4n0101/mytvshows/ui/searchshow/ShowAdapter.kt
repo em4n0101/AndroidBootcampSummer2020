@@ -18,7 +18,7 @@ class ShowAdapter (private val onShowClicked: (Show) -> Unit): RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.show_view_holder, parent, false)
+            .inflate(R.layout.generic_item_big_view_holder, parent, false)
         return ShowViewHolder(itemView)
     }
 

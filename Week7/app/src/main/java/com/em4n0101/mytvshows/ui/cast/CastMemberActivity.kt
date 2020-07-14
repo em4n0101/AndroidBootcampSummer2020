@@ -13,7 +13,7 @@ import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import com.em4n0101.mytvshows.viewModels.PersonsViewModel
 import kotlinx.android.synthetic.main.activity_cast.*
 
-class CastActivity : AppCompatActivity() {
+class CastMemberActivity : AppCompatActivity() {
     private var checkBoxFavorite: CheckBox? = null
     private lateinit var personsViewModel: PersonsViewModel
     private var currentPerson: Person? = null

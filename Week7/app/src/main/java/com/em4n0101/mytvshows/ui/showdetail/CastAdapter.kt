@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
 
-class CastAdapter(private val onSeasonClicked: (CastForShowResponse) -> Unit): RecyclerView.Adapter<CastViewHolder>() {
+class CastAdapter(private val onCastClicked: (CastForShowResponse) -> Unit): RecyclerView.Adapter<CastViewHolder>() {
 
     private val castList: MutableList<CastForShowResponse> = mutableListOf()
 
@@ -25,6 +25,6 @@ class CastAdapter(private val onSeasonClicked: (CastForShowResponse) -> Unit): R
     override fun getItemCount() = castList.size
 
     override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
-        holder.bind(castList[position], onSeasonClicked)
+        holder.bind(castList[position], onCastClicked)
     }
 }

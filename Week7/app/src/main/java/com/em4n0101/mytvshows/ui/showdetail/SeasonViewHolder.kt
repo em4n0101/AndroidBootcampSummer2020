@@ -8,8 +8,8 @@ import kotlinx.android.synthetic.main.generic_item_view_holder.view.*
 
 class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(season: SeasonsForShowResponse, onSeasonClick: (SeasonsForShowResponse) -> Unit) {
-        itemView.seasonNumber.text = season.number.toString()
+        itemView.itemTitle.text = season.number.toString()
         itemView.setOnClickListener { onSeasonClick(season) }
-        setupImageForViewHolder(season.image, itemView.seasonPoster, itemView.loaderAnimationView)
+        setupImageForViewHolder(season.image, itemView.itemPoster, itemView.loaderAnimationView)
     }
 }

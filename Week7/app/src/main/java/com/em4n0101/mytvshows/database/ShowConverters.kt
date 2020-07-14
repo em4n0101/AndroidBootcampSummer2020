@@ -34,13 +34,23 @@ class ShowConverters {
         @TypeConverter
         @JvmStatic
         fun fromImage(value: InnerImages): String {
-            return value.medium
+            return value.medium + "," + value.original
         }
+
+        private const val emptyImageUrl =
+            "https://lh3.googleusercontent.com/proxy/NsdqXQzwKh_V4kvqtVw9DDoG8pbOOJoGAPv8UQUS-rJD0a-0tB6ypPgy3hoat3G4aMNp9mcC6uQZLoFu6-dcHhQlZBGaepWBGis_gRzJMmzg7PDrYHN8OGmP-xVdSucc"
 
         @TypeConverter
         @JvmStatic
         fun toImage(value: String): InnerImages {
-            return InnerImages(value, value)
+            val images = value.split(",")
+            var mediumImage = emptyImageUrl
+            var originalImage = emptyImageUrl
+            if (images.size == 2) {
+                mediumImage = images[0]
+                originalImage = images[1]
+            }
+            return InnerImages(mediumImage, originalImage)
         }
     }
 }

@@ -18,7 +18,7 @@ import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
-import com.em4n0101.mytvshows.ui.cast.CastActivity
+import com.em4n0101.mytvshows.ui.cast.CastMemberActivity
 import com.em4n0101.mytvshows.ui.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.utils.formatShowPremiere
 import com.em4n0101.mytvshows.utils.formatShowRatting
@@ -125,7 +125,7 @@ class ShowDetailActivity : AppCompatActivity() {
     }
 
     private fun listCastItemPressed(cast: CastForShowResponse) {
-        val intent = Intent(this, CastActivity::class.java)
+        val intent = Intent(this, CastMemberActivity::class.java)
         intent.putExtra(EXTRA_PERSON, cast.person)
         startActivity(intent)
     }
