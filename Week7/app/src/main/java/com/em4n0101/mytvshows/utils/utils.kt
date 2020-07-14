@@ -7,7 +7,9 @@ import android.widget.ImageView
 import androidx.core.text.HtmlCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.em4n0101.mytvshows.R
+import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.model.response.InnerImages
+import com.em4n0101.mytvshows.model.response.Rating
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,6 +22,22 @@ fun formatTimeToReadableText(date: String): String {
     val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val formatter = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
     return formatter.format(parser.parse(date)!!)
+}
+
+fun formatShowRatting(show: Show): String {
+    return if (show.rating?.average != null) {
+        "Rating: ${show.rating.average}"
+    } else {
+        ""
+    }
+}
+
+fun formatShowPremiere(show: Show): String {
+    return if (show.premiered != null) {
+        "Release Date: ${formatTimeToReadableText(show.premiered)}"
+    } else {
+        ""
+    }
 }
 
 fun setupImageForViewHolder(images: InnerImages?, intoImageView: ImageView, withLoaderView: LottieAnimationView) {

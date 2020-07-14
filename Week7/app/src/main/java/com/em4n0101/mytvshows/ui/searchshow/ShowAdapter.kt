@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.model.response.Show
+import com.em4n0101.mytvshows.model.Show
 
 class ShowAdapter (private val onShowClicked: (Show) -> Unit): RecyclerView.Adapter<ShowViewHolder>() {
 

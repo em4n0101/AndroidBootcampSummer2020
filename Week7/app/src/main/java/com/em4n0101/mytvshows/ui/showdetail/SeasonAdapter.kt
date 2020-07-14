@@ -18,7 +18,7 @@ class SeasonAdapter(private val onSeasonClicked: (SeasonsForShowResponse) -> Uni
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeasonViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.season_view_holder, parent, false)
+            .inflate(R.layout.generic_item_view_holder, parent, false)
         return SeasonViewHolder(itemView)
     }
 

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,7 +14,7 @@ import com.em4n0101.mytvshows.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Success
-import com.em4n0101.mytvshows.model.response.Show
+import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.ui.showdetail.ShowDetailActivity
 import kotlinx.android.synthetic.main.fragment_search_show.*

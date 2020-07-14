@@ -1,5 +1,7 @@
 package com.em4n0101.mytvshows.networking
 
+import com.em4n0101.mytvshows.R
+import com.em4n0101.mytvshows.model.CompleteInfoForShow
 import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Result
 import com.em4n0101.mytvshows.model.Success
@@ -18,6 +20,19 @@ class RemoteApi(private val remoteApiService: RemoteApiService) {
     suspend fun getSeasonsForShow(showId: String): Result<List<SeasonsForShowResponse>> = try {
         val data = remoteApiService.getSeasonsOfShow(showId)
         Success(data)
+    } catch (error: Throwable) {
+        Failure(error)
+    }
+
+    suspend fun getCompleteInfoForShow(showId: String): Result<CompleteInfoForShow> = try {
+        val seasonsForShow = getSeasonsForShow(showId)
+
+        if (seasonsForShow is Success) {
+            val castForShow = remoteApiService.getCastOfShow(showId)
+            Success(CompleteInfoForShow(seasonsForShow.data, castForShow))
+        } else {
+            Failure(NullPointerException("Not info for show"))
+        }
     } catch (error: Throwable) {
         Failure(error)
     }
