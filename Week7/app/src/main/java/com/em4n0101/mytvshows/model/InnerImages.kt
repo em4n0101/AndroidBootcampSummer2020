@@ -1,4 +1,4 @@
-package com.em4n0101.mytvshows.model.response
+package com.em4n0101.mytvshows.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

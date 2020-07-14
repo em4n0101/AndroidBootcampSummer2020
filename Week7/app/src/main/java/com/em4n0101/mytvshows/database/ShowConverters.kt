@@ -1,8 +1,8 @@
 package com.em4n0101.mytvshows.database
 
 import androidx.room.TypeConverter
-import com.em4n0101.mytvshows.model.response.InnerImages
-import com.em4n0101.mytvshows.model.response.Rating
+import com.em4n0101.mytvshows.model.InnerImages
+import com.em4n0101.mytvshows.model.Rating
 
 class ShowConverters {
     companion object {
@@ -50,7 +50,10 @@ class ShowConverters {
                 mediumImage = images[0]
                 originalImage = images[1]
             }
-            return InnerImages(mediumImage, originalImage)
+            return InnerImages(
+                mediumImage,
+                originalImage
+            )
         }
     }
 }

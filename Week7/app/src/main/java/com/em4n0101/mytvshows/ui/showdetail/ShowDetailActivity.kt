@@ -19,6 +19,7 @@ import com.em4n0101.mytvshows.model.response.CastForShowResponse
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.ui.cast.CastMemberActivity
+import com.em4n0101.mytvshows.ui.episodes.EpisodesActivity
 import com.em4n0101.mytvshows.ui.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.utils.formatShowPremiere
 import com.em4n0101.mytvshows.utils.formatShowRatting
@@ -33,6 +34,7 @@ class ShowDetailActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_PERSON = "EXTRA_PERSON"
+        const val EXTRA_SEASON = "EXTRA_SEASON"
     }
 
     private val remoteApi = MyTvShowsApplication.remoteApi
@@ -121,7 +123,9 @@ class ShowDetailActivity : AppCompatActivity() {
     }
 
     private fun listSeasonItemPressed(season: SeasonsForShowResponse) {
-        println("Season pressed ${season.number}")
+        val intent = Intent(this, EpisodesActivity::class.java)
+        intent.putExtra(EXTRA_SEASON, season)
+        startActivity(intent)
     }
 
     private fun listCastItemPressed(cast: CastForShowResponse) {

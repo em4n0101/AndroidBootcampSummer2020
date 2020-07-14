@@ -15,4 +15,7 @@
 
     <dimen name="font_size_detail_info">14sp</dimen>
     <dimen name="font_size_detail_title">16sp</dimen>
+
+    <dimen name="episode_poster_width">140dp</dimen>
+    <dimen name="episode_poster_height">100dp</dimen>
 </resources>
