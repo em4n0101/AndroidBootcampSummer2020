@@ -3,6 +3,16 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
     <dimen name="card_elevation">20dp</dimen>
     <dimen name="holder_show_image_height">300dp</dimen>
+    <dimen name="detail_poster_width">100dp</dimen>
+    <dimen name="detail_poster_height">150dp</dimen>
+
+    <dimen name="loader_size">150dp</dimen>
+    <dimen name="season_holder_poster_width">100dp</dimen>
+    <dimen name="season_holder_poster_height">150dp</dimen>
+
+    <dimen name="font_size_detail_info">14sp</dimen>
+    <dimen name="font_size_detail_title">16sp</dimen>
 </resources>

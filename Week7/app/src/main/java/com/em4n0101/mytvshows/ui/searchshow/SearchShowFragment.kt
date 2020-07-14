@@ -1,10 +1,13 @@
 package com.em4n0101.mytvshows.ui.searchshow
 
+import android.content.Intent
 import android.content.res.Configuration
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,12 +16,17 @@ import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.response.Show
+import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
+import com.em4n0101.mytvshows.ui.showdetail.ShowDetailActivity
 import kotlinx.android.synthetic.main.fragment_search_show.*
 import kotlinx.coroutines.launch
 
 class SearchShowFragment : Fragment() {
 
     private val remoteApi = MyTvShowsApplication.remoteApi
+    private val networkStatusChecker by lazy {
+        NetworkingStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,20 +89,22 @@ class SearchShowFragment : Fragment() {
     }
 
     private fun searchFor(inputToSearch: String) {
-        loaderAnimationView.visibility = View.VISIBLE
-        lifecycleScope.launch {
-            val searchShowsResult = remoteApi.searchForAShow(inputToSearch)
-            loaderAnimationView.visibility = View.GONE
+        networkStatusChecker.performIfConnectedTooInternet {
+            loaderAnimationView.visibility = View.VISIBLE
+            lifecycleScope.launch {
+                val searchShowsResult = remoteApi.searchForAShow(inputToSearch)
+                loaderAnimationView.visibility = View.GONE
 
-            if (searchShowsResult is Success) {
-                val shows = mutableListOf<Show>()
-                searchShowsResult.data.forEach {
-                    shows.add(it.show)
+                if (searchShowsResult is Success) {
+                    val shows = mutableListOf<Show>()
+                    searchShowsResult.data.forEach {
+                        shows.add(it.show)
+                    }
+                    updateUiWithShowList(shows.toList())
+                } else {
+                    val failure = searchShowsResult as Failure
+                    println("Error: ${failure.error}")
                 }
-                updateUiWithShowList(shows.toList())
-            } else {
-                val failure = searchShowsResult as Failure
-                println("Error: ${failure.error}")
             }
         }
     }
@@ -109,11 +119,15 @@ class SearchShowFragment : Fragment() {
 
     private fun listItemPressed(show: Show) {
         view?.let {
-            println("Show selected: ${show.name}")
+            val intent = Intent(context, ShowDetailActivity::class.java)
+            intent.putExtra(EXTRA_SHOW, show)
+            startActivity(intent)
         }
     }
 
     companion object {
+        const val EXTRA_SHOW = "EXTRA_SHOW"
+
         fun newInstance(param1: String, param2: String): SearchShowFragment {
             return SearchShowFragment()
         }

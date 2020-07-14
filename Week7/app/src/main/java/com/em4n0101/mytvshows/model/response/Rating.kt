@@ -6,7 +6,4 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 @Serializable
-data class InnerImages(
-    val medium: String,
-    val original: String
-): Parcelable
+data class Rating(val average: Double?): Parcelable

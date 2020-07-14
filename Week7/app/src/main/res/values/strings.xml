@@ -5,4 +5,7 @@
     <string name="searchShow">search_show</string>
     <string name="hintSearchShow">Search show</string>
     <string name="show_image">show image resource</string>
+    <string name="season_holder_image_description">season holder image description</string>
+    <string name="content_description_show_image">content description show image</string>
+    <string name="seasons_title">Seasons</string>
 </resources>
