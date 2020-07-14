@@ -2,6 +2,7 @@ package com.em4n0101.mytvshows.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.repositories.ShowsRepository
@@ -15,7 +16,7 @@ class ShowsViewModel(application: Application) : AndroidViewModel(application) {
         repository.insertShow(show)
     }
 
-    fun getShowsFlow() = repository.getShows()
+    fun getShows() = repository.getShows().asLiveData()
 
     fun getShowByNameFlow(name: String) = repository.getShowBy(name)
 }

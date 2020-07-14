@@ -29,4 +29,9 @@
         <item name="android:layout_marginStart">@dimen/margin_normal</item>
         <item name="android:layout_marginEnd">@dimen/margin_normal</item>
     </style>
+
+    <style name="StarCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/ic_favorite_selector</item>
+        <item name="android:buttonTint">@color/white</item>
+    </style>
 </resources>
