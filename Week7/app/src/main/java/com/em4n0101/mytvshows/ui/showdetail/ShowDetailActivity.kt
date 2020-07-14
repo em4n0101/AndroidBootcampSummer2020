@@ -62,7 +62,7 @@ class ShowDetailActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.show_detail_menu, menu)
 
-        val starMenuItem = menu?.findItem(R.id.actionFavoriteShow)
+        val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
         checkBoxFavorite = starMenuItem?.actionView as CheckBox
         checkBoxFavorite?.let {
             setupFavoriteToggle(it, currentShow)

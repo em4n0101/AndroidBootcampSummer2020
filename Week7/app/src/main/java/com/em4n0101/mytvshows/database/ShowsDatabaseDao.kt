@@ -1,6 +1,7 @@
 package com.em4n0101.mytvshows.database
 
 import androidx.room.*
+import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.model.Show
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +22,17 @@ interface ShowsDatabaseDao {
 
     @Query("SELECT * FROM shows")
     fun getAllShows(): Flow<List<Show>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPerson(person: Person)
+
+    @Query("SELECT * FROM persons WHERE name = :name")
+    fun getPersonBy(name: String): Flow<Person?>
+
+    @ExperimentalCoroutinesApi
+    fun getPersonByNameDistinctUntilChanged(name: String) =
+        getPersonBy(name).distinctUntilChanged()
+
+    @Query("SELECT * FROM persons")
+    fun getAllPersons(): Flow<List<Person>>
 }

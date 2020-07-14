@@ -9,6 +9,6 @@
     <string name="content_description_show_image">content description show image</string>
     <string name="seasons_title">Seasons</string>
     <string name="cast_title">Cast</string>
-    <string name="favorite_action">favorite show</string>
+    <string name="favorite_action">favorite item</string>
     <string name="content_description_cast_image">content description cast image</string>
 </resources>
