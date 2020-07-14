@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.core.text.HtmlCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.em4n0101.mytvshows.R
+import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.model.response.InnerImages
 import com.em4n0101.mytvshows.model.response.Rating
@@ -40,10 +41,26 @@ fun formatShowPremiere(show: Show): String {
     }
 }
 
-fun setupImageForViewHolder(images: InnerImages?, intoImageView: ImageView, withLoaderView: LottieAnimationView) {
+fun formatPersonBirthday(person: Person): String {
+    return if (person.birthday != null) {
+        "Birthday: ${formatTimeToReadableText(person.birthday)}"
+    } else {
+        ""
+    }
+}
+
+fun setupImageForViewHolder(
+    images: InnerImages?,
+    intoImageView: ImageView,
+    withLoaderView: LottieAnimationView,
+    useOriginalImage: Boolean = false
+) {
     if (images != null) {
         Picasso.get()
-            .load(images.medium.convertUrlStringFromHttpToHttps())
+            .load(
+                if (useOriginalImage) images.original.convertUrlStringFromHttpToHttps()
+                else images.medium.convertUrlStringFromHttpToHttps()
+            )
             .error(R.drawable.no_image_available)
             .into(intoImageView)
     } else {

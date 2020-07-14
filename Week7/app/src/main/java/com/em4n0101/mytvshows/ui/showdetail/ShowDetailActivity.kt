@@ -1,5 +1,6 @@
 package com.em4n0101.mytvshows.ui.showdetail
 
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
@@ -17,6 +18,7 @@ import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
+import com.em4n0101.mytvshows.ui.cast.CastActivity
 import com.em4n0101.mytvshows.ui.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.utils.formatShowPremiere
 import com.em4n0101.mytvshows.utils.formatShowRatting
@@ -28,6 +30,10 @@ import kotlinx.coroutines.launch
 
 
 class ShowDetailActivity : AppCompatActivity() {
+
+    companion object {
+        const val EXTRA_PERSON = "EXTRA_PERSON"
+    }
 
     private val remoteApi = MyTvShowsApplication.remoteApi
     private val networkStatusChecker by lazy {
@@ -44,6 +50,7 @@ class ShowDetailActivity : AppCompatActivity() {
         // get view model
         showsViewModel = ViewModelProvider(this).get(ShowsViewModel::class.java)
 
+        // Get show pass from previous activity
         val show: Show? = intent.getParcelableExtra(SearchShowFragment.EXTRA_SHOW)
         show?.let {
             currentShow = it
@@ -118,7 +125,9 @@ class ShowDetailActivity : AppCompatActivity() {
     }
 
     private fun listCastItemPressed(cast: CastForShowResponse) {
-        println("Cast pressed ${cast.person.name}")
+        val intent = Intent(this, CastActivity::class.java)
+        intent.putExtra(EXTRA_PERSON, cast.person)
+        startActivity(intent)
     }
 
     private fun getCompleteInfoForShow(show: Show) {
