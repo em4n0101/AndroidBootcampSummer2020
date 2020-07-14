@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searchShow">search_show</string>
     <string name="hintSearchShow">Search show</string>
+    <string name="show_image">show image resource</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="card_elevation">20dp</dimen>
+    <dimen name="holder_show_image_height">300dp</dimen>
+</resources>

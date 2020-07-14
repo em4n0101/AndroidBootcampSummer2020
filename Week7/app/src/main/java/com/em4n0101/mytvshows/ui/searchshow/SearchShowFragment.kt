@@ -1,15 +1,19 @@
 package com.em4n0101.mytvshows.ui.searchshow
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Success
+import com.em4n0101.mytvshows.model.response.Show
+import kotlinx.android.synthetic.main.fragment_search_show.*
 import kotlinx.coroutines.launch
 
 class SearchShowFragment : Fragment() {
@@ -27,6 +31,20 @@ class SearchShowFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_show, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            // setup recycler
+            if (context?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                showsRecyclerView.layoutManager = GridLayoutManager(context, 2)
+            } else {
+                showsRecyclerView.layoutManager = GridLayoutManager(context, 4)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -48,7 +66,12 @@ class SearchShowFragment : Fragment() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     val minCharactersToSearch = 3
                     newText?.let {
-                        if (it.length >= minCharactersToSearch) searchFor(it)
+                        if (it.length >= minCharactersToSearch) {
+                            searchFor(it)
+                        }
+                        else {
+                            updateUiWithShowList(emptyList())
+                        }
                     }
                     return true
                 }
@@ -58,17 +81,35 @@ class SearchShowFragment : Fragment() {
     }
 
     private fun searchFor(inputToSearch: String) {
+        loaderAnimationView.visibility = View.VISIBLE
         lifecycleScope.launch {
             val searchShowsResult = remoteApi.searchForAShow(inputToSearch)
+            loaderAnimationView.visibility = View.GONE
 
             if (searchShowsResult is Success) {
+                val shows = mutableListOf<Show>()
                 searchShowsResult.data.forEach {
-                    println(it.show.name.toString())
+                    shows.add(it.show)
                 }
+                updateUiWithShowList(shows.toList())
             } else {
                 val failure = searchShowsResult as Failure
                 println("Error: ${failure.error}")
             }
+        }
+    }
+
+    private fun updateUiWithShowList(listOfShows: List<Show>) {
+        if (showsRecyclerView != null) {
+            val adapter = ShowAdapter(::listItemPressed)
+            adapter.setData(listOfShows)
+            showsRecyclerView.adapter = adapter
+        }
+    }
+
+    private fun listItemPressed(show: Show) {
+        view?.let {
+            println("Show selected: ${show.name}")
         }
     }
 
