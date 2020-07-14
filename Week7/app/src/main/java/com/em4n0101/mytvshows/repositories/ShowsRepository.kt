@@ -14,4 +14,6 @@ class ShowsRepository(application: Application) {
     fun getShows(): Flow<List<Show>> = showsDao.getAllShows()
 
     fun getShowBy(name: String): Flow<Show?> = showsDao.getShowBy(name)
+
+    suspend fun deleteShowBy(name: String) = showsDao.deleteShowBy(name)
 }

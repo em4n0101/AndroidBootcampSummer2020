@@ -23,6 +23,9 @@ interface ShowsDatabaseDao {
     @Query("SELECT * FROM shows")
     fun getAllShows(): Flow<List<Show>>
 
+    @Query("DELETE FROM shows WHERE name = :name")
+    suspend fun deleteShowBy(name: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPerson(person: Person)
 
@@ -35,4 +38,8 @@ interface ShowsDatabaseDao {
 
     @Query("SELECT * FROM persons")
     fun getAllPersons(): Flow<List<Person>>
+
+    @Query("DELETE FROM persons WHERE name = :name")
+    suspend fun deletePersonBy(name: String)
+
 }

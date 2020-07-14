@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,10 +74,21 @@ class ShowDetailActivity : AppCompatActivity() {
         return true
     }
 
+    private fun addSearchShowInDBObservable(show: Show) {
+        val observer = Observer<Show?> {
+            if (it != null) checkBoxFavorite?.isChecked = true
+        }
+        showsViewModel.getShowByName(show.name).observe(this, observer)
+    }
+
     private fun setupFavoriteToggle(checkBox: CheckBox?, show: Show?){
         if (checkBox != null && show != null) {
             checkBox.setOnCheckedChangeListener { _, isChecked ->
-                showsViewModel.saveShow(show)
+                if (isChecked) {
+                    showsViewModel.saveShow(show)
+                } else {
+                    showsViewModel.deleteShowByName(show.name)
+                }
             }
         }
     }
@@ -100,6 +112,8 @@ class ShowDetailActivity : AppCompatActivity() {
         val showRattingFormatted = formatShowRatting(show)
         showDetailRatingTextView.text = showRattingFormatted
         showDetailSummaryTextView.text = show.summary?.removeHtmlTags()
+
+        addSearchShowInDBObservable(show)
     }
 
     private fun updateUiWithSeasons(seasons: List<SeasonsForShowResponse>) {

@@ -14,4 +14,6 @@ class PersonsRepository(application: Application) {
     fun getPersons(): Flow<List<Person>> = databaseDao.getAllPersons()
 
     fun getPersonByName(name: String): Flow<Person?> = databaseDao.getPersonBy(name)
+
+    suspend fun deletePersonBy(name: String) = databaseDao.deletePersonBy(name)
 }

@@ -18,5 +18,9 @@ class PersonsViewModel(application: Application) : AndroidViewModel(application)
 
     fun getPersons() = repository.getPersons().asLiveData()
 
-    fun getPersonByNameFlow(name: String) = repository.getPersonByName(name)
+    fun getPersonByName(name: String) = repository.getPersonByName(name).asLiveData()
+
+    fun deletePersonByName(name: String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deletePersonBy(name)
+    }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.CheckBox
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.Person
@@ -40,16 +41,30 @@ class CastMemberActivity : AppCompatActivity() {
         val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
         checkBoxFavorite = starMenuItem?.actionView as CheckBox
         checkBoxFavorite?.let {
-            setupFavoriteToggle(it, currentPerson)
+            if (currentPerson != null) {
+                setupFavoriteToggle(it, currentPerson)
+                addSearchPersonInDBObservable(currentPerson!!)
+            }
         }
 
         return true
     }
 
+    private fun addSearchPersonInDBObservable(person: Person) {
+        val observer = Observer<Person?> {
+            if (it != null) checkBoxFavorite?.isChecked = true
+        }
+        personsViewModel.getPersonByName(person.name).observe(this, observer)
+    }
+
     private fun setupFavoriteToggle(checkBox: CheckBox?, person: Person?){
         if (checkBox != null && person != null) {
-            checkBox.setOnCheckedChangeListener { _, _ ->
-                personsViewModel.savePerson(person)
+            checkBox.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    personsViewModel.savePerson(person)
+                } else {
+                    personsViewModel.deletePersonByName(person.name)
+                }
             }
         }
     }
