@@ -13,7 +13,6 @@ import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
-import com.em4n0101.mytvshows.model.response.Rating
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.ui.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.utils.*
