@@ -49,7 +49,7 @@ class UserFavoriteShowsFragment : Fragment() {
 
     private fun addGetShowsObservable() {
         val observer = Observer<List<Show>> {
-            if (it != null && it.isNotEmpty()) {
+            if (it != null) {
                 updateUiWithShowList(it)
             }
         }
@@ -57,6 +57,7 @@ class UserFavoriteShowsFragment : Fragment() {
     }
 
     private fun updateUiWithShowList(listOfShows: List<Show>) {
+        emptyShowsTextView.visibility = if (listOfShows.isEmpty()) View.VISIBLE else View.GONE
         if (favoriteShowsRecyclerView != null) {
             val adapter = ShowAdapter(::listItemPressed)
             adapter.setData(listOfShows)

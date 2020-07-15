@@ -36,8 +36,12 @@ class EpisodesActivity : AppCompatActivity() {
         }
     }
 
+    private fun displayNotNetworkAvailableMessage() {
+        this.toast(getString(R.string.error_message_not_network_available_more_data))
+    }
+
     private fun getEpisodesForSeason(season: SeasonsForShowResponse) {
-        networkStatusChecker.performIfConnectedTooInternet {
+        networkStatusChecker.performIfConnectedToInternet(::displayNotNetworkAvailableMessage) {
             loaderAnimationView.visibility = View.VISIBLE
             lifecycleScope.launch {
                 val getEpisodesForSeasonResponse = remoteApi.getEpisodesForSeason(season.id.toString())
@@ -47,8 +51,7 @@ class EpisodesActivity : AppCompatActivity() {
                     updateUiWithSeasonDetails(season, getEpisodesForSeasonResponse.data)
                 } else {
                     updateUiWithSeasonDetails(season, null)
-                    val failure = getEpisodesForSeasonResponse as Failure
-                    println("Error: ${failure.error}")
+                    toast(getString(R.string.error_network_download_data))
                 }
             }
         }

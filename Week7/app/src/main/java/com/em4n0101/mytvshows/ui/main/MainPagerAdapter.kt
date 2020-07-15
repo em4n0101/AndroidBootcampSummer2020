@@ -21,7 +21,7 @@ class MainPagerAdapter(fragmentManager: FragmentManager) :
     private val titles = listOf(
         "Search a tv show!",
         "Favorite shows",
-        "Favorite cast members"
+        "Favorite actors"
     )
 
     override fun getCount(): Int = fragments.size

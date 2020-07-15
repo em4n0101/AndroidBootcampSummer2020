@@ -1,6 +1,5 @@
 package com.em4n0101.mytvshows.networking
 
-import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.CompleteInfoForShow
 import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Result
@@ -18,7 +17,7 @@ class RemoteApi(private val remoteApiService: RemoteApiService) {
         Failure(error)
     }
 
-    suspend fun getSeasonsForShow(showId: String): Result<List<SeasonsForShowResponse>> = try {
+    private suspend fun getSeasonsForShow(showId: String): Result<List<SeasonsForShowResponse>> = try {
         val data = remoteApiService.getSeasonsOfShow(showId)
         Success(data)
     } catch (error: Throwable) {

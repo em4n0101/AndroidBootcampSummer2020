@@ -57,6 +57,9 @@ class CastMemberActivity : AppCompatActivity() {
         personsViewModel.getPersonByName(person.name).observe(this, observer)
     }
 
+    /**
+     * Depending on the state of the checkbox save or delete person
+     */
     private fun setupFavoriteToggle(checkBox: CheckBox?, person: Person?){
         if (checkBox != null && person != null) {
             checkBox.setOnCheckedChangeListener { _, isChecked ->
@@ -70,7 +73,11 @@ class CastMemberActivity : AppCompatActivity() {
     }
 
     private fun updateUiWithPerson(person: Person) {
-        setupImageForViewHolder(person.image, castImageView, loaderAnimationShowPosterView, useOriginalImage = true)
+        setupImageForViewHolder(
+            person.image, castImageView,
+            loaderAnimationShowPosterView,
+            useOriginalImage = true
+        )
         castNameTextView.text = person.name
         castBirthdayTextView.text = formatPersonBirthday(person)
         castCountryTextView.text = person.country?.name ?: ""

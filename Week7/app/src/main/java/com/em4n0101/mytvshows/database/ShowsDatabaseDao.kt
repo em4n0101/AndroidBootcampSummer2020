@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Dao
 interface ShowsDatabaseDao {
+    /**
+     * Operations for shows
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertShow(show: Show)
 
@@ -26,6 +29,9 @@ interface ShowsDatabaseDao {
     @Query("DELETE FROM shows WHERE name = :name")
     suspend fun deleteShowBy(name: String)
 
+    /**
+     * Operations for persons
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPerson(person: Person)
 

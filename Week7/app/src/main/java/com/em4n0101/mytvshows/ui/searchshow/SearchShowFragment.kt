@@ -12,11 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.ui.showdetail.ShowDetailActivity
+import com.em4n0101.mytvshows.utils.toast
 import kotlinx.android.synthetic.main.fragment_search_show.*
 import kotlinx.coroutines.launch
 
@@ -87,9 +87,15 @@ class SearchShowFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    private fun displayNotNetworkAvailableMessage() {
+        activity?.toast(getString(R.string.error_message_not_network_available_search))
+    }
+
     private fun searchFor(inputToSearch: String) {
-        networkStatusChecker.performIfConnectedTooInternet {
+        networkStatusChecker.performIfConnectedToInternet(::displayNotNetworkAvailableMessage) {
             loaderAnimationView.visibility = View.VISIBLE
+            emptyShowsTextView.visibility = View.GONE
+
             lifecycleScope.launch {
                 val searchShowsResult = remoteApi.searchForAShow(inputToSearch)
                 loaderAnimationView.visibility = View.GONE
@@ -101,14 +107,14 @@ class SearchShowFragment : Fragment() {
                     }
                     updateUiWithShowList(shows.toList())
                 } else {
-                    val failure = searchShowsResult as Failure
-                    println("Error: ${failure.error}")
+                    activity?.toast(getString(R.string.error_network_download_data))
                 }
             }
         }
     }
 
     private fun updateUiWithShowList(listOfShows: List<Show>) {
+        emptyShowsTextView.visibility = if (listOfShows.isEmpty()) View.VISIBLE else View.GONE
         if (showsRecyclerView != null) {
             val adapter = ShowAdapter(::listItemPressed)
             adapter.setData(listOfShows)

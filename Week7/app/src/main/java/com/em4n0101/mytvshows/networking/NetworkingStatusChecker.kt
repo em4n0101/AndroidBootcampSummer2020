@@ -4,9 +4,11 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
 class NetworkingStatusChecker(private val connectivityManager: ConnectivityManager?) {
-    inline fun performIfConnectedTooInternet(action: () -> Unit) {
+    inline fun performIfConnectedToInternet(actionNotNetworkAvailable: () -> Unit, action: () -> Unit) {
         if (hasInternetConnection()) {
             action()
+        } else {
+            actionNotNetworkAvailable()
         }
     }
 

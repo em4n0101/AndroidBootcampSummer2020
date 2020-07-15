@@ -56,7 +56,7 @@ class UserFavoriteCastMemberFragment : Fragment() {
 
     private fun addGetFavoriteCastMembersObservable() {
         val observer = Observer<List<Person>> {
-            if (it != null && it.isNotEmpty()) {
+            if (it != null) {
                 updateUiWithCastMembersList(it)
             }
         }
@@ -64,6 +64,7 @@ class UserFavoriteCastMemberFragment : Fragment() {
     }
 
     private fun updateUiWithCastMembersList(listOfCastMembers: List<Person>) {
+        emptyActorsTextView.visibility = if (listOfCastMembers.isEmpty()) View.VISIBLE else View.GONE
         if (favoriteCastMembersRecyclerView != null) {
             val adapter = CastMemberAdapter(::listItemPressed)
             adapter.setData(listOfCastMembers)
