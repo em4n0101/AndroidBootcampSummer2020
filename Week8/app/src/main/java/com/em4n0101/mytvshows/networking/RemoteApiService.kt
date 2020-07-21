@@ -1,9 +1,6 @@
 package com.em4n0101.mytvshows.networking
 
-import com.em4n0101.mytvshows.model.response.CastForShowResponse
-import com.em4n0101.mytvshows.model.response.EpisodesForSeasonResponse
-import com.em4n0101.mytvshows.model.response.SearchShowsResponse
-import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
+import com.em4n0101.mytvshows.model.response.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -20,4 +17,7 @@ interface RemoteApiService {
 
     @GET("/seasons/{seasonId}/episodes")
     suspend fun getEpisodesForSeason(@Path("seasonId") seasonId: String): List<EpisodesForSeasonResponse>
+
+    @GET("/schedule")
+    suspend fun getCurrentSchedule(): List<ScheduleResponse>
 }

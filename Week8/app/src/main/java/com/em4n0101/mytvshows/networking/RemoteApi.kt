@@ -5,6 +5,7 @@ import com.em4n0101.mytvshows.model.Failure
 import com.em4n0101.mytvshows.model.Result
 import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.model.response.EpisodesForSeasonResponse
+import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import com.em4n0101.mytvshows.model.response.SearchShowsResponse
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 
@@ -39,6 +40,13 @@ class RemoteApi(private val remoteApiService: RemoteApiService) {
 
     suspend fun getEpisodesForSeason(seasonId: String): Result<List<EpisodesForSeasonResponse>> = try {
         val data = remoteApiService.getEpisodesForSeason(seasonId)
+        Success(data)
+    } catch (error: Throwable) {
+        Failure(error)
+    }
+
+    suspend fun getCurrentSchedule(): Result<List<ScheduleResponse>> = try {
+        val data = remoteApiService.getCurrentSchedule()
         Success(data)
     } catch (error: Throwable) {
         Failure(error)
