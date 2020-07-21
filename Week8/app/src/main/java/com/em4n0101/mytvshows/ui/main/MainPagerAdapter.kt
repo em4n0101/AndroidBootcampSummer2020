@@ -3,6 +3,7 @@ package com.em4n0101.mytvshows.ui.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.em4n0101.mytvshows.ui.schedule.ScheduleFragment
 import com.em4n0101.mytvshows.ui.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.ui.usercastmembers.UserFavoriteCastMemberFragment
 import com.em4n0101.mytvshows.ui.usershows.UserFavoriteShowsFragment
@@ -14,11 +15,13 @@ class MainPagerAdapter(fragmentManager: FragmentManager) :
     FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragments = listOf(
+        ScheduleFragment(),
         SearchShowFragment(),
         UserFavoriteShowsFragment(), 
         UserFavoriteCastMemberFragment()
     )
     private val titles = listOf(
+        "Schedule",
         "Search a tv show!",
         "Favorite shows",
         "Favorite actors"
