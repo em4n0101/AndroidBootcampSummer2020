@@ -28,6 +28,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -68,4 +72,7 @@ dependencies {
     // Custom views dependencies
     implementation "com.squareup.picasso:picasso:2.71828"
     implementation "com.airbnb.android:lottie:3.4.0"
+
+    // Worker dependencies
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
 }
