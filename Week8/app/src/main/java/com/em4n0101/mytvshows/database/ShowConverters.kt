@@ -2,6 +2,7 @@ package com.em4n0101.mytvshows.database
 
 import androidx.room.TypeConverter
 import com.em4n0101.mytvshows.model.InnerImages
+import com.em4n0101.mytvshows.model.Network
 import com.em4n0101.mytvshows.model.Rating
 
 class ShowConverters {
@@ -54,6 +55,18 @@ class ShowConverters {
                 mediumImage,
                 originalImage
             )
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun fromNetwork(value: Network): String {
+            return value.name ?: ""
+        }
+
+        @TypeConverter
+        @JvmStatic
+        fun toNetwork(value: String): Network {
+            return Network(value)
         }
     }
 }

@@ -17,5 +17,6 @@ data class Show(
     val summary: String?,
     val premiered: String?,
     val rating: Rating?,
-    val image: InnerImages?
+    val image: InnerImages?,
+    val network: Network?
 ) : Parcelable

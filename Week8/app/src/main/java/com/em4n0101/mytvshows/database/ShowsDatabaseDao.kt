@@ -3,6 +3,7 @@ package com.em4n0101.mytvshows.database
 import androidx.room.*
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.model.Show
+import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -28,6 +29,18 @@ interface ShowsDatabaseDao {
 
     @Query("DELETE FROM shows WHERE name = :name")
     suspend fun deleteShowBy(name: String)
+
+    /**
+     * Operations for schedule
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSchedule(schedule: List<ScheduleResponse>)
+
+    @Query("SELECT * FROM schedule")
+    fun getSchedule(): Flow<List<ScheduleResponse>>
+
+    @Query("DELETE FROM schedule")
+    suspend fun deleteSchedule()
 
     /**
      * Operations for persons

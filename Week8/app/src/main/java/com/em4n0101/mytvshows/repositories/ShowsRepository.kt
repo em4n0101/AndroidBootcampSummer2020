@@ -4,6 +4,7 @@ import android.app.Application
 import com.em4n0101.mytvshows.database.ShowsDatabase
 import com.em4n0101.mytvshows.database.ShowsDatabaseDao
 import com.em4n0101.mytvshows.model.Show
+import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import kotlinx.coroutines.flow.Flow
 
 class ShowsRepository(application: Application) {
@@ -16,4 +17,6 @@ class ShowsRepository(application: Application) {
     fun getShowBy(name: String): Flow<Show?> = showsDao.getShowBy(name)
 
     suspend fun deleteShowBy(name: String) = showsDao.deleteShowBy(name)
+
+    fun getSchedule(): Flow<List<ScheduleResponse>> = showsDao.getSchedule()
 }

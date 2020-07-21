@@ -18,6 +18,8 @@ class ShowsViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getShows() = repository.getShows().asLiveData()
 
+    fun getSchedule() = repository.getSchedule().asLiveData()
+
     fun getShowByName(name: String) = repository.getShowBy(name).asLiveData()
 
     fun deleteShowByName(name: String) = viewModelScope.launch(Dispatchers.IO) {
