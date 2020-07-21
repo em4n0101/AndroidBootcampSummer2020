@@ -63,28 +63,32 @@ class SearchShowFragment : Fragment() {
             editText.hint = getString(R.string.hintSearchShow)
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                   query?.let {
-                        if (it.isNotBlank()) searchFor(it)
-                    }
-                    return true
-                }
+                override fun onQueryTextSubmit(query: String?): Boolean = handlerOnQueryTextSubmit(query)
 
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    val minCharactersToSearch = 3
-                    newText?.let {
-                        if (it.length >= minCharactersToSearch) {
-                            searchFor(it)
-                        }
-                        else {
-                            updateUiWithShowList(emptyList())
-                        }
-                    }
-                    return true
-                }
+                override fun onQueryTextChange(newText: String?): Boolean = handlerOnQueryTextChange(newText)
             })
         }
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun handlerOnQueryTextSubmit(query: String?): Boolean {
+        query?.let {
+            if (it.isNotBlank()) searchFor(it)
+        }
+        return true
+    }
+
+    private fun handlerOnQueryTextChange(newText: String?): Boolean {
+        val minCharactersToSearch = 3
+        newText?.let {
+            if (it.length >= minCharactersToSearch) {
+                searchFor(it)
+            }
+            else {
+                updateUiWithShowList(emptyList())
+            }
+        }
+        return true
     }
 
     private fun displayNotNetworkAvailableMessage() {
@@ -133,7 +137,7 @@ class SearchShowFragment : Fragment() {
     companion object {
         const val EXTRA_SHOW = "EXTRA_SHOW"
 
-        fun newInstance(param1: String, param2: String): SearchShowFragment {
+        fun newInstance(): SearchShowFragment {
             return SearchShowFragment()
         }
     }

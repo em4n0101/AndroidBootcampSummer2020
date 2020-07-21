@@ -9,15 +9,15 @@ import kotlinx.android.synthetic.main.generic_item_big_view_holder.view.*
 import kotlinx.android.synthetic.main.generic_item_view_holder.view.*
 
 class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(cast: CastForShowResponse, onCastClick: (CastForShowResponse) -> Unit) {
-        itemView.itemTitle.text = cast.person.name
-        itemView.setOnClickListener { onCastClick(cast) }
-        setupImageForViewHolder(cast.person.image, itemView.itemPoster, itemView.loaderAnimationView)
+    fun bind(cast: CastForShowResponse, onCastClick: (CastForShowResponse) -> Unit) = with(itemView) {
+        itemTitle.text = cast.person.name
+        setOnClickListener { onCastClick(cast) }
+        setupImageForViewHolder(cast.person.image, itemPoster, loaderAnimationView)
     }
 
-    fun bind(castMember: Person, onCastMemberClick: (Person) -> Unit) {
-        itemView.itemBigTitle.text = castMember.name
-        itemView.setOnClickListener { onCastMemberClick(castMember) }
-        setupImageForViewHolder(castMember.image, itemView.itemBigPoster, itemView.loaderBigAnimationView)
+    fun bind(castMember: Person, onCastMemberClick: (Person) -> Unit) = with(itemView) {
+        itemBigTitle.text = castMember.name
+        setOnClickListener { onCastMemberClick(castMember) }
+        setupImageForViewHolder(castMember.image, itemBigPoster, loaderBigAnimationView)
     }
 }
