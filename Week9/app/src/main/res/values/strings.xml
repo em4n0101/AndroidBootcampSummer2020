@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My TV Shows</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="searchShow">search_show</string>
+    <string name="hintSearchShow">Search show</string>
+    <string name="show_image">show image resource</string>
+    <string name="season_holder_image_description">season holder image description</string>
+    <string name="content_description_show_image">content description show image</string>
+    <string name="seasons_title">Seasons</string>
+    <string name="cast_title">Cast</string>
+    <string name="episodes_title">Episodes</string>
+    <string name="favorite_action">favorite item</string>
+    <string name="content_description_cast_image">content description cast image</string>
+    <string name="content_description_season_image">season content description</string>
+    <string name="season_number">Season %1$d</string>
+    <string name="error_network_download_data">Something gone wrong, please try again</string>
+    <string name="error_message_not_network_available_more_data">Please turn on your mobile data or use Wi-fi for more information</string>
+    <string name="error_message_not_network_available_search">Please turn on your mobile data or use Wi-fi to search for shows</string>
+    <string name="click_on_the_search_icon_to_start">Click on the search icon to start</string>
+    <string name="empty_user_shows">Add some shows to your list</string>
+    <string name="empty_user_actors">Add some actors to your list</string>
+</resources>
