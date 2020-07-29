@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
 
+const val EMPTY_STRING = ""
+
 fun String.convertUrlStringFromHttpToHttps() = replace("http://", "https://")
 
 fun String.removeHtmlTags() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -30,7 +32,7 @@ fun formatShowRatting(show: Show): String {
     return if (show.rating?.average != null) {
         "Rating: ${show.rating.average}"
     } else {
-        ""
+        EMPTY_STRING
     }
 }
 
@@ -38,7 +40,7 @@ fun formatShowPremiere(show: Show): String {
     return if (show.premiered != null && show.premiered.isNotBlank()) {
         "Release Date: ${formatTimeToReadableText(show.premiered)}"
     } else {
-        ""
+        EMPTY_STRING
     }
 }
 
@@ -46,7 +48,7 @@ fun formatPersonBirthday(person: Person): String {
     return if (person.birthday != null  && person.birthday.isNotBlank()) {
         "Birthday: ${formatTimeToReadableText(person.birthday)}"
     } else {
-        ""
+        EMPTY_STRING
     }
 }
 
@@ -54,7 +56,7 @@ fun formatSeasonAirDate(season: SeasonsForShowResponse): String {
     return if (season.premiereDate != null && season.premiereDate.isNotBlank()) {
         "Premiere Date: ${formatTimeToReadableText(season.premiereDate)}"
     } else {
-        ""
+        EMPTY_STRING
     }
 }
 
@@ -62,7 +64,7 @@ fun formatEpisodeAirDate(episode: EpisodesForSeasonResponse): String {
     return if (episode.airdate != null && episode.airdate.isNotBlank()) {
         "Air Date: ${formatTimeToReadableText(episode.airdate)}"
     } else {
-        ""
+        EMPTY_STRING
     }
 }
 

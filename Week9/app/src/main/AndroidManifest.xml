@@ -11,11 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.episodes.EpisodesActivity"></activity>
-        <activity android:name=".ui.cast.CastMemberActivity" />
-        <activity android:name=".ui.showdetail.ShowDetailActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        android:theme="@style/AppTheme"
+        android:name=".app.MyTvShowsApplication">
+        <activity android:name="com.em4n0101.mytvshows.view.episodes.EpisodesActivity" />
+        <activity android:name="com.em4n0101.mytvshows.view.cast.CastMemberActivity" />
+        <activity android:name="com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity" />
+        <activity android:name="com.em4n0101.mytvshows.view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

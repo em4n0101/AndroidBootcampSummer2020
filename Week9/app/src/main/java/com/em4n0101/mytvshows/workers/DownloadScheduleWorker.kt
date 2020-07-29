@@ -7,9 +7,9 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.em4n0101.mytvshows.MyTvShowsApplication
+import com.em4n0101.mytvshows.app.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.database.ShowsDatabase
+import com.em4n0101.mytvshows.model.database.ShowsDatabase
 import com.em4n0101.mytvshows.model.Success
 import com.em4n0101.mytvshows.utils.toast
 
@@ -19,7 +19,7 @@ const val NOTIFICATION_CHANNEL_ID = "Synchronize ID"
 class DownloadScheduleWorker(context: Context, workerParameters: WorkerParameters):
     CoroutineWorker(context, workerParameters) {
 
-    private val databaseDao by lazy { ShowsDatabase.getInstance(context).showsDatabaseDao }
+    private val databaseDao by lazy { MyTvShowsApplication.database.showsDatabaseDao }
     private val remoteApi by lazy { MyTvShowsApplication.remoteApi }
 
     override suspend fun doWork(): Result {
