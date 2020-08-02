@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.showdetail.ShowDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loaderAnimationShowPosterView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/showDetailImageView"
+            app:layout_constraintEnd_toEndOf="@+id/showDetailImageView"
+            app:layout_constraintStart_toStartOf="@+id/showDetailImageView"
+            app:layout_constraintTop_toTopOf="@+id/showDetailImageView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loader_animation" />
+
+        <ImageView
+            android:id="@+id/showDetailImageView"
+            android:layout_width="@dimen/detail_poster_width"
+            android:layout_height="@dimen/detail_poster_height"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/content_description_show_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/showDetailTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/show_detail_title"
+            tools:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
+            app:layout_constraintTop_toTopOf="@+id/showDetailImageView" />
+
+        <TextView
+            android:id="@+id/showDetailGenreTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/show_detail_info"
+            android:layout_marginTop="16dp"
+            tools:text="Genre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailTitleTextView" />
+
+        <TextView
+            android:id="@+id/showDetailPremiereDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/show_detail_info"
+            tools:text="Premiere"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailGenreTextView" />
+
+        <TextView
+            android:id="@+id/showDetailRatingTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/show_detail_info"
+            tools:text="Rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailPremiereDateTextView" />
+
+        <TextView
+            android:id="@+id/showDetailSummaryTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/show_detail_summary"
+            tools:text="Summary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailImageView" />
+
+        <TextView
+            android:id="@+id/showDetailSeasonsTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            tools:text="Seasons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailSummaryTextView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/showDetailSeasonsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/showDetailSeasonsTextView" />
+
+
+        <TextView
+            android:id="@+id/showDetailCastTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            tools:text="Cast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showDetailSeasonsRecyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/showDetailCastRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/showDetailCastTextView" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loaderAnimationView"
+            android:layout_width="@dimen/loader_size"
+            android:layout_height="@dimen/loader_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="gone"
+            app:lottie_rawRes="@raw/loader_animation" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
