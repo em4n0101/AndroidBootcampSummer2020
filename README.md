@@ -4,7 +4,7 @@ Assigments for the android bootcamp
 
 ## Profile
 
-* **Name**: Emmanuel Cruz
+* **Name**: Emmanuel Barranco Cruz
 * **Discord Username**: TK Emmanuel Cruz
 * **Location**: Mexico
 
