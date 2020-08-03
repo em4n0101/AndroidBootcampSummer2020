@@ -7,6 +7,9 @@ import com.em4n0101.mytvshows.model.database.ShowsDatabase
 import com.em4n0101.mytvshows.networking.RemoteApi
 import com.em4n0101.mytvshows.networking.buildApiServices
 import com.em4n0101.mytvshows.model.repositories.ShowsRepository
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class MyTvShowsApplication: Application() {
     companion object {
@@ -38,5 +41,11 @@ class MyTvShowsApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        startKoin {
+            androidLogger()
+            androidContext(this@MyTvShowsApplication)
+            modules(listOf(networkModule))
+        }
     }
 }
