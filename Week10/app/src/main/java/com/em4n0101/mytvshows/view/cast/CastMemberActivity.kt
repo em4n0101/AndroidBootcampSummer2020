@@ -5,32 +5,27 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.CheckBox
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.MyTvShowsApplication
+import com.em4n0101.mytvshows.app.SCOPE_CAST_MEMBERS
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.utils.formatPersonBirthday
 import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import com.em4n0101.mytvshows.viewmodel.cast.CastMemberViewModel
-import com.em4n0101.mytvshows.viewmodel.cast.CastMemberViewModelFactory
 import kotlinx.android.synthetic.main.activity_cast.*
+import org.koin.android.ext.android.getKoin
+import org.koin.android.viewmodel.scope.viewModel
+import org.koin.core.qualifier.named
 
 class CastMemberActivity : AppCompatActivity() {
+    private var scopeCastMember = getKoin().getOrCreateScope("scopeCastId", named(SCOPE_CAST_MEMBERS))
+    private val viewModel: CastMemberViewModel by scopeCastMember.viewModel(this)
     private var checkBoxFavorite: CheckBox? = null
-    private lateinit var viewModel: CastMemberViewModel
     private var currentPerson: Person? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cast)
-
-        // get view model
-        viewModel = ViewModelProvider(
-            this,
-            CastMemberViewModelFactory(MyTvShowsApplication.showsRepository)
-        )
-            .get(CastMemberViewModel::class.java)
 
         // Get show pass from previous activity
         val person: Person? = intent.getParcelableExtra(ShowDetailActivity.EXTRA_PERSON)
@@ -38,6 +33,11 @@ class CastMemberActivity : AppCompatActivity() {
             currentPerson = it
             updateUiWithPerson(it)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scopeCastMember.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

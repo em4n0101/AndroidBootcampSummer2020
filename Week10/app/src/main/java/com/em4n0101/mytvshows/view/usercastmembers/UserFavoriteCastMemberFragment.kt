@@ -8,19 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.MyTvShowsApplication
+import com.em4n0101.mytvshows.app.SCOPE__FAVORITE_CAST_MEMBERS
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.view.cast.CastMemberActivity
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.usercastmember.UserFavoriteCastMemberViewModel
-import com.em4n0101.mytvshows.viewmodel.usercastmember.UserFavoriteCastMemberViewModelFactory
 import kotlinx.android.synthetic.main.fragment_user_favorite_cast_member.*
+import org.koin.android.ext.android.getKoin
+import org.koin.android.viewmodel.scope.viewModel
+import org.koin.core.qualifier.named
 
 class UserFavoriteCastMemberFragment : Fragment() {
-    private lateinit var viewModel: UserFavoriteCastMemberViewModel
+    private var scopeFavoriteCast = getKoin().getOrCreateScope("scopeFavoriteCastId", named(SCOPE__FAVORITE_CAST_MEMBERS))
+    private val viewModel: UserFavoriteCastMemberViewModel by scopeFavoriteCast.viewModel(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,17 +35,15 @@ class UserFavoriteCastMemberFragment : Fragment() {
             false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        scopeFavoriteCast.close()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            // get view model
-            viewModel = ViewModelProvider(
-                this,
-                UserFavoriteCastMemberViewModelFactory(MyTvShowsApplication.showsRepository)
-            )
-                .get(UserFavoriteCastMemberViewModel::class.java)
             // setup recycler
             if (it.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 favoriteCastMembersRecyclerView.layoutManager = GridLayoutManager(it, 2)

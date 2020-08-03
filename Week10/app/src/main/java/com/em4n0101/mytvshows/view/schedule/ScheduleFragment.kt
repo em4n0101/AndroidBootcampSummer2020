@@ -7,19 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.MyTvShowsApplication
+import com.em4n0101.mytvshows.app.SCOPE_SCHEDULE
 import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import com.em4n0101.mytvshows.view.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.schedule.ScheduleViewModel
-import com.em4n0101.mytvshows.viewmodel.schedule.ScheduleViewModelFactory
 import kotlinx.android.synthetic.main.fragment_schedule.*
+import org.koin.android.ext.android.getKoin
+import org.koin.android.viewmodel.scope.viewModel
+import org.koin.core.qualifier.named
 
 class ScheduleFragment : Fragment() {
-    private lateinit var viewModel: ScheduleViewModel
+    private var scopeSchedule = getKoin().getOrCreateScope("scopeScheduleId", named(SCOPE_SCHEDULE))
+    private val viewModel: ScheduleViewModel by scopeSchedule.viewModel(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +31,15 @@ class ScheduleFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        scopeSchedule.close()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            viewModel = ViewModelProvider(
-                this,
-                ScheduleViewModelFactory(MyTvShowsApplication.showsRepository)
-            )
-                .get(ScheduleViewModel::class.java)
             scheduleRecyclerView.layoutManager = LinearLayoutManager(context)
             addGetScheduleObservable()
         }

@@ -9,18 +9,21 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.em4n0101.mytvshows.app.MyTvShowsApplication
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.model.database.ShowsDatabase
 import com.em4n0101.mytvshows.model.Success
+import com.em4n0101.mytvshows.model.database.ShowsDatabaseDao
+import com.em4n0101.mytvshows.networking.RemoteApi
 import com.em4n0101.mytvshows.utils.toast
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 const val NOTIFICATION_CHANNEL_NAME = "Synchronize service channel"
 const val NOTIFICATION_CHANNEL_ID = "Synchronize ID"
 
 class DownloadScheduleWorker(context: Context, workerParameters: WorkerParameters):
-    CoroutineWorker(context, workerParameters) {
+    CoroutineWorker(context, workerParameters), KoinComponent {
 
-    private val databaseDao by lazy { MyTvShowsApplication.database.showsDatabaseDao }
-    private val remoteApi by lazy { MyTvShowsApplication.remoteApi }
+    private val databaseDao: ShowsDatabaseDao by inject()
+    private val remoteApi: RemoteApi by inject()
 
     override suspend fun doWork(): Result {
         showNotification("Synchronization Service", "Downloading schedule...")

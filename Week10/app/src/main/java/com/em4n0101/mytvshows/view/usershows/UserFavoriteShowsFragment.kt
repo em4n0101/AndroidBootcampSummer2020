@@ -8,20 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.MyTvShowsApplication
+import com.em4n0101.mytvshows.app.SCOPE_FAVORITE_SHOWS
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.view.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.view.searchshow.ShowAdapter
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.usershows.UserFavoriteShowsViewModel
-import com.em4n0101.mytvshows.viewmodel.usershows.UserFavoriteShowsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_user_favorite_shows.*
+import org.koin.android.ext.android.getKoin
+import org.koin.android.viewmodel.scope.viewModel
+import org.koin.core.qualifier.named
 
 class UserFavoriteShowsFragment : Fragment() {
-    private lateinit var viewModel: UserFavoriteShowsViewModel
+    private var scopeFavoriteShows = getKoin().getOrCreateScope("scopeFavoriteShowsId", named(SCOPE_FAVORITE_SHOWS))
+    private val viewModel: UserFavoriteShowsViewModel by scopeFavoriteShows.viewModel(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +33,15 @@ class UserFavoriteShowsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_user_favorite_shows, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        scopeFavoriteShows.close()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            // get view model
-            viewModel = ViewModelProvider(
-                this,
-                UserFavoriteShowsViewModelFactory(MyTvShowsApplication.showsRepository)
-            )
-                    .get(UserFavoriteShowsViewModel::class.java)
-
             // setup recycler
             if (it.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 favoriteShowsRecyclerView.layoutManager = GridLayoutManager(it, 2)

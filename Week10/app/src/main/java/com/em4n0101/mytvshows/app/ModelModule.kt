@@ -14,5 +14,4 @@ val modelModule = module {
     single { RemoteApi(get()) }
 
     single { ShowsRepository(get(), get()) }
-
 }

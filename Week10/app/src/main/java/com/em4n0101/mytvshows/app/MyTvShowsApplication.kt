@@ -19,7 +19,7 @@ class MyTvShowsApplication: Application() {
         startKoin {
             androidLogger()
             androidContext(this@MyTvShowsApplication)
-            modules(listOf(networkModule, modelModule))
+            modules(listOf(networkModule, modelModule, viewModelsModule))
         }
     }
 }
