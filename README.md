@@ -1,5 +1,5 @@
 # Android Bootcamp Summer2020
-Assigments for Ray Wenderlich Android Bootcamp 
+Assignments for the RayWenderlich Android Bootcamp 
 https://www.raywenderlich.com/10408731-rw-bootcamp
 
 
