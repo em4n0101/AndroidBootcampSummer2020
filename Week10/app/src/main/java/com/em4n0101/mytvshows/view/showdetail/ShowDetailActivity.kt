@@ -1,6 +1,7 @@
 package com.em4n0101.mytvshows.view.showdetail
 
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -37,7 +38,9 @@ class ShowDetailActivity : AppCompatActivity() {
 
     private var scopeShowDetails = getKoin().getOrCreateScope("scopeShowDetailsId", named(SCOPE_SHOW_DETAILS))
     private val viewModel: ShowDetailsViewModel by scopeShowDetails.viewModel(this)
-    private val networkStatusChecker: NetworkingStatusChecker by inject()
+    private val networkStatusChecker by lazy {
+        NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
+    }
     private var checkBoxFavorite: CheckBox? = null
     private var currentShow: Show? = null
 

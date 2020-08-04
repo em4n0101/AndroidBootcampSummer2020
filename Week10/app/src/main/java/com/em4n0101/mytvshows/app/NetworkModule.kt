@@ -13,9 +13,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val networkModule = module {
-    single { NetworkingStatusChecker(MyTvShowsApplication.getAppContext().getSystemService(
-        ConnectivityManager::class.java)) }
-
     single(named("BASE_URL")) { "https://api.tvmaze.com" }
 
     single {

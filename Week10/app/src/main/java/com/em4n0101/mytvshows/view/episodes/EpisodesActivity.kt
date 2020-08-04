@@ -1,5 +1,6 @@
 package com.em4n0101.mytvshows.view.episodes
 
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,7 +23,9 @@ import org.koin.core.qualifier.named
 class EpisodesActivity : AppCompatActivity() {
     private var scopeEpisodes = getKoin().getOrCreateScope("scopeEpisodesId", named(SCOPE_EPISODES))
     private val viewModel: EpisodesViewModel by scopeEpisodes.viewModel(this)
-    private val networkStatusChecker: NetworkingStatusChecker by inject()
+    private val networkStatusChecker by lazy {
+        NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
