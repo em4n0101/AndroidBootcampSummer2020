@@ -1,7 +1,5 @@
 package com.em4n0101.mytvshows.app
 
-import android.net.ConnectivityManager
-import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.networking.RemoteApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
