@@ -10,19 +10,15 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE__FAVORITE_CAST_MEMBERS
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.view.cast.CastMemberActivity
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.usercastmember.UserFavoriteCastMemberViewModel
 import kotlinx.android.synthetic.main.fragment_user_favorite_cast_member.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class UserFavoriteCastMemberFragment : Fragment() {
-    private var scopeFavoriteCast = getKoin().getOrCreateScope("scopeFavoriteCastId", named(SCOPE__FAVORITE_CAST_MEMBERS))
-    private val viewModel: UserFavoriteCastMemberViewModel by scopeFavoriteCast.viewModel(this)
+    private val viewModel: UserFavoriteCastMemberViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,11 +29,6 @@ class UserFavoriteCastMemberFragment : Fragment() {
             R.layout.fragment_user_favorite_cast_member,
             container,
             false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeFavoriteCast.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

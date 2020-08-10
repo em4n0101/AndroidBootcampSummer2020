@@ -9,19 +9,15 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_SCHEDULE
 import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import com.em4n0101.mytvshows.view.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.schedule.ScheduleViewModel
 import kotlinx.android.synthetic.main.fragment_schedule.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class ScheduleFragment : Fragment() {
-    private var scopeSchedule = getKoin().getOrCreateScope("scopeScheduleId", named(SCOPE_SCHEDULE))
-    private val viewModel: ScheduleViewModel by scopeSchedule.viewModel(this)
+    private val viewModel: ScheduleViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +25,6 @@ class ScheduleFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule, container, false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeSchedule.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

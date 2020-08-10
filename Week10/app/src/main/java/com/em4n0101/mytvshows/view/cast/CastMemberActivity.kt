@@ -6,20 +6,16 @@ import android.view.Menu
 import android.widget.CheckBox
 import androidx.lifecycle.Observer
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_CAST_MEMBERS
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.utils.formatPersonBirthday
 import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import com.em4n0101.mytvshows.viewmodel.cast.CastMemberViewModel
 import kotlinx.android.synthetic.main.activity_cast.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class CastMemberActivity : AppCompatActivity() {
-    private var scopeCastMember = getKoin().getOrCreateScope("scopeCastId", named(SCOPE_CAST_MEMBERS))
-    private val viewModel: CastMemberViewModel by scopeCastMember.viewModel(this)
+    private val viewModel: CastMemberViewModel by inject()
     private var checkBoxFavorite: CheckBox? = null
     private var currentPerson: Person? = null
 
@@ -33,11 +29,6 @@ class CastMemberActivity : AppCompatActivity() {
             currentPerson = it
             updateUiWithPerson(it)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeCastMember.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

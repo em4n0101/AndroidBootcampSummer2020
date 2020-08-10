@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_SHOW_DETAILS
 import com.em4n0101.mytvshows.model.CompleteInfoForShow
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
@@ -23,11 +22,7 @@ import com.em4n0101.mytvshows.utils.*
 import com.em4n0101.mytvshows.viewmodel.showdetails.ShowDetailsViewModel
 import kotlinx.android.synthetic.main.activity_show_detail.*
 import kotlinx.android.synthetic.main.activity_show_detail.loaderAnimationView
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
-
 
 class ShowDetailActivity : AppCompatActivity() {
 
@@ -36,8 +31,7 @@ class ShowDetailActivity : AppCompatActivity() {
         const val EXTRA_SEASON = "EXTRA_SEASON"
     }
 
-    private var scopeShowDetails = getKoin().getOrCreateScope("scopeShowDetailsId", named(SCOPE_SHOW_DETAILS))
-    private val viewModel: ShowDetailsViewModel by scopeShowDetails.viewModel(this)
+    private val viewModel: ShowDetailsViewModel by inject()
     private val networkStatusChecker by lazy {
         NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
     }
@@ -56,11 +50,6 @@ class ShowDetailActivity : AppCompatActivity() {
             setupObservables(it)
             getCompleteInfoForShow(it)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeShowDetails.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
