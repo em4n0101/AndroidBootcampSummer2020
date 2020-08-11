@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
@@ -42,9 +43,14 @@ class ShowDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_detail)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Get show pass from previous activity
         val show: Show? = intent.getParcelableExtra(SearchShowFragment.EXTRA_SHOW)
         show?.let {
+            collapsingToolbar.title = it.name
+            collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
             currentShow = it
             updateUiWithShowDetails(it)
             setupObservables(it)
@@ -110,6 +116,12 @@ class ShowDetailActivity : AppCompatActivity() {
 
     private fun updateUiWithShowDetails(show: Show) {
         setupImageForViewHolder(show.image, showDetailImageView, loaderAnimationShowPosterView)
+        setupImageForViewHolder(
+            show.image,
+            imageShowHeader,
+            loaderAnimationShowHeaderPosterView,
+            true
+        )
         showDetailTitleTextView.text = show.name
         showDetailGenreTextView.text = show.genres?.joinToString(separator = ", ")
         val showPremiereFormatted = formatShowPremiere(show)

@@ -19,4 +19,6 @@
     <string name="click_on_the_search_icon_to_start">Click on the search icon to start</string>
     <string name="empty_user_shows">Add some shows to your list</string>
     <string name="empty_user_actors">Add some actors to your list</string>
+    <string name="genericImageHolderTransaction">genericImageHolderTransaction</string>
+    <string name="genericTitleHolderTransaction">genericTitleHolderTransaction</string>
 </resources>
