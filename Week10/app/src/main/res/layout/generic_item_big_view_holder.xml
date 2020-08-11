@@ -38,6 +38,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/show_image"
             android:scaleType="centerCrop"
+            android:transitionName="genericImageHolderTransaction"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
@@ -49,6 +50,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:padding="@dimen/padding_small"
             android:textColor="@color/white"
+            android:transitionName="genericTitleHolderTransaction"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

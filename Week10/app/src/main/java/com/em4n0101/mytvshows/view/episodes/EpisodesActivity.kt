@@ -3,6 +3,7 @@ package com.em4n0101.mytvshows.view.episodes
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -40,6 +41,14 @@ class EpisodesActivity : AppCompatActivity() {
             getEpisodesForSeason(it)
             setupObservables()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finishAfterTransition();
+            return true;
+        }
+        return false;
     }
 
     private fun displayNotNetworkAvailableMessage() {

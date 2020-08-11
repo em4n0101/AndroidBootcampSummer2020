@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -127,11 +129,19 @@ class SearchShowFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(show: Show) {
+    private fun listItemPressed(show: Show, posterImage: View, titleView: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(EXTRA_SHOW, show)
-            startActivity(intent)
+            val imagePair = Pair.create(posterImage, "posterImageTransactionName")
+            val titlePair = Pair.create(titleView, "nameShowTransaction")
+
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 

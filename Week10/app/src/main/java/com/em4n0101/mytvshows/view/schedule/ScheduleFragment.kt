@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
@@ -53,11 +55,19 @@ class ScheduleFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(schedule: ScheduleResponse) {
+    private fun listItemPressed(schedule: ScheduleResponse, viewPoster: View, viewTitle: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(SearchShowFragment.EXTRA_SHOW, schedule.show)
-            startActivity(intent)
+
+            val imagePair = Pair.create(viewPoster, "posterImageTransactionName")
+            val titlePair = Pair.create(viewTitle, "nameShowTransaction")
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 }

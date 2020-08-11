@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowBackground">@color/primaryColor</item>
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:textColor">@color/white</item>
     </style>

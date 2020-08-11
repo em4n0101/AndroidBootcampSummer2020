@@ -101,6 +101,7 @@
                 android:layout_height="@dimen/detail_poster_height"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:transitionName="posterImageTransactionName"
                 android:contentDescription="@string/content_description_show_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -122,6 +123,7 @@
                 style="@style/show_detail_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:transitionName="nameShowTransaction"
                 app:layout_constraintEnd_toStartOf="@+id/favoriteAnimationView"
                 app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
                 app:layout_constraintTop_toTopOf="@+id/showDetailImageView"

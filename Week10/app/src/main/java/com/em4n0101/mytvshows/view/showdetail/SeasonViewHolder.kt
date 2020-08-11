@@ -7,10 +7,10 @@ import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import kotlinx.android.synthetic.main.generic_item_view_holder.view.*
 
 class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(season: SeasonsForShowResponse, onSeasonClick: (SeasonsForShowResponse) -> Unit)
+    fun bind(season: SeasonsForShowResponse, onSeasonClick: (SeasonsForShowResponse, View) -> Unit)
             = with(itemView) {
         itemTitle.text = season.number.toString()
-        setOnClickListener { onSeasonClick(season) }
+        setOnClickListener { onSeasonClick(season, itemPoster) }
         setupImageForViewHolder(season.image, itemPoster, loaderAnimationView)
     }
 }

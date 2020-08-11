@@ -4,10 +4,13 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
@@ -66,6 +69,14 @@ class ShowDetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finishAfterTransition();
+            return true;
+        }
+        return false;
+    }
+
     private fun setupObservables(forShow: Show) {
         viewModel.loadingLiveData.observe(this, Observer { value: Boolean ->
             loaderAnimationView.visibility = if (value) View.VISIBLE else View.GONE
@@ -122,8 +133,6 @@ class ShowDetailActivity : AppCompatActivity() {
         val showRattingFormatted = formatShowRatting(show)
         showDetailRatingTextView.text = showRattingFormatted
         showDetailSummaryTextView.text = show.summary?.removeHtmlTags()
-
-//        addSearchShowInDBObservable(show)
     }
 
     private fun updateUiWithSeasons(seasons: List<SeasonsForShowResponse>) {
@@ -149,19 +158,32 @@ class ShowDetailActivity : AppCompatActivity() {
     /**
      * Go to the episodes activity
      */
-    private fun listSeasonItemPressed(season: SeasonsForShowResponse) {
+    private fun listSeasonItemPressed(season: SeasonsForShowResponse, imageView: View) {
         val intent = Intent(this, EpisodesActivity::class.java)
         intent.putExtra(EXTRA_SEASON, season)
-        startActivity(intent)
+
+        val imagePair = Pair.create(imageView, "posterImageTransaction")
+        val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@ShowDetailActivity,
+            imagePair
+        )
+        startActivity(intent, activityOptions.toBundle())
     }
 
     /**
      * Go to the cast member activity
      */
-    private fun listCastItemPressed(cast: CastForShowResponse) {
+    private fun listCastItemPressed(cast: CastForShowResponse, imageView: View, titleView: View) {
         val intent = Intent(this, CastMemberActivity::class.java)
         intent.putExtra(EXTRA_PERSON, cast.person)
-        startActivity(intent)
+        val imagePair = Pair.create(imageView, "genericImageHolderTransaction")
+        val titlePair = Pair.create(titleView, "genericTitleHolderTransaction")
+        val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@ShowDetailActivity,
+            imagePair,
+            titlePair
+        )
+        startActivity(intent, activityOptions.toBundle())
     }
 
     private fun displayNotNetworkAvailableMessage() {

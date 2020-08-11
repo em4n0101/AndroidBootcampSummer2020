@@ -1,12 +1,13 @@
 package com.em4n0101.mytvshows.view.schedule
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.response.ScheduleResponse
 
-class ScheduleAdapter(private val onScheduleClicked: (ScheduleResponse) -> Unit): RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter(private val onScheduleClicked: (ScheduleResponse, View, View) -> Unit): RecyclerView.Adapter<ScheduleViewHolder>() {
 
     private val schedule: MutableList<ScheduleResponse> = mutableListOf()
 

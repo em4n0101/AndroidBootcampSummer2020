@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
@@ -62,11 +64,19 @@ class UserFavoriteShowsFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(show: Show) {
+    private fun listItemPressed(show: Show, posterImage: View, titleView: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(SearchShowFragment.EXTRA_SHOW, show)
-            startActivity(intent)
+
+            val imagePair = Pair.create(posterImage, "posterImageTransactionName")
+            val titlePair = Pair.create(titleView, "nameShowTransaction")
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 
