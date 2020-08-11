@@ -36,8 +36,8 @@ class ShowDetailActivity : AppCompatActivity() {
     private val networkStatusChecker by lazy {
         NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
     }
-    private var checkBoxFavorite: CheckBox? = null
     private var currentShow: Show? = null
+    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,22 +56,14 @@ class ShowDetailActivity : AppCompatActivity() {
             setupObservables(it)
             getCompleteInfoForShow(it)
         }
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.show_detail_menu, menu)
-
-        val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
-        checkBoxFavorite = starMenuItem?.actionView as CheckBox
-        checkBoxFavorite?.let {
-            if (currentShow != null) {
-                setupFavoriteToggle(it, currentShow)
-                setupObservables(currentShow!!)
+        favoriteAnimationView.setOnClickListener {
+            currentShow?.let {
+                isFavorite = !isFavorite
+                if (isFavorite) viewModel.saveShow(it) else viewModel.deleteShowByName(it.name)
+                animateFavoriteView()
             }
         }
-
-        return true
     }
 
     private fun setupObservables(forShow: Show) {
@@ -85,20 +77,21 @@ class ShowDetailActivity : AppCompatActivity() {
             updateUIWithShowInfo(currentShow, additionalInfo.seasons, additionalInfo.cast)
         })
         viewModel.getShowByName(forShow.name).observe(this, Observer {
-            if (it != null) checkBoxFavorite?.isChecked = true
+            if (it != null) {
+                isFavorite = true
+                animateFavoriteView()
+            }
         })
     }
 
-    /**
-     * Depending on the state of the checkbox save or delete person
-     */
-    private fun setupFavoriteToggle(checkBox: CheckBox?, show: Show?){
-        if (checkBox != null && show != null) {
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    viewModel.saveShow(show)
+    private fun animateFavoriteView() {
+        currentShow?.let {
+            favoriteAnimationView.apply {
+                if (isFavorite) {
+                    playAnimation()
                 } else {
-                    viewModel.deleteShowByName(show.name)
+                    cancelAnimation()
+                    progress = 0.0f
                 }
             }
         }

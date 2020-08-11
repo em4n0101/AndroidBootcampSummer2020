@@ -21,4 +21,5 @@
     <dimen name="dimen_spinner_header_show">120dp</dimen>
     <dimen name="height_shape_gradient">130dp</dimen>
     <dimen name="height_collapsing_toolbar">260dp</dimen>
+    <dimen name="margin_cast_info">60dp</dimen>
 </resources>

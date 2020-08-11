@@ -16,8 +16,8 @@ import org.koin.android.ext.android.inject
 
 class CastMemberActivity : AppCompatActivity() {
     private val viewModel: CastMemberViewModel by inject()
-    private var checkBoxFavorite: CheckBox? = null
     private var currentPerson: Person? = null
+    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,42 +27,37 @@ class CastMemberActivity : AppCompatActivity() {
         val person: Person? = intent.getParcelableExtra(ShowDetailActivity.EXTRA_PERSON)
         person?.let {
             currentPerson = it
+            addSearchPersonInDBObservable(it)
             updateUiWithPerson(it)
         }
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.show_detail_menu, menu)
-
-        val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
-        checkBoxFavorite = starMenuItem?.actionView as CheckBox
-        checkBoxFavorite?.let {
-            if (currentPerson != null) {
-                setupFavoriteToggle(it, currentPerson)
-                addSearchPersonInDBObservable(currentPerson!!)
+        favoriteAnimationView.setOnClickListener {
+            currentPerson?.let {
+                isFavorite = !isFavorite
+                if (isFavorite) viewModel.savePerson(it) else viewModel.deletePersonByName(it.name)
+                animateFavoriteView()
             }
         }
-        return true
     }
 
     private fun addSearchPersonInDBObservable(person: Person) {
         val observer = Observer<Person?> {
-            if (it != null) checkBoxFavorite?.isChecked = true
+            if (it != null) {
+                isFavorite = true
+                animateFavoriteView()
+            }
         }
         viewModel.getPersonByName(person.name).observe(this, observer)
     }
 
-    /**
-     * Depending on the state of the checkbox save or delete person
-     */
-    private fun setupFavoriteToggle(checkBox: CheckBox?, person: Person?){
-        if (checkBox != null && person != null) {
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    viewModel.savePerson(person)
+    private fun animateFavoriteView() {
+        currentPerson?.let {
+            favoriteAnimationView.apply {
+                if (isFavorite) {
+                    playAnimation()
                 } else {
-                    viewModel.deletePersonByName(person.name)
+                    cancelAnimation()
+                    progress = 0.0f
                 }
             }
         }

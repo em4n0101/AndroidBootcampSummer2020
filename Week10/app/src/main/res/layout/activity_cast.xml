@@ -48,6 +48,7 @@
             android:id="@+id/castNameTextView"
             style="@style/show_detail_title"
             android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/margin_cast_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +60,7 @@
             android:id="@+id/castCountryTextView"
             style="@style/show_detail_summary"
             android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/margin_cast_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,12 +72,24 @@
             android:id="@+id/castBirthdayTextView"
             style="@style/show_detail_summary"
             android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/margin_cast_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/showDetailImageView"
             app:layout_constraintTop_toTopOf="@+id/showDetailImageView"
             tools:text="United States" />
-
     </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favoriteAnimationView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/castImageView"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/favorite_animation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
