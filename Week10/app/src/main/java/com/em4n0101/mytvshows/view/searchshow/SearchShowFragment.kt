@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -60,6 +61,8 @@ class SearchShowFragment : Fragment() {
         if (searchItem != null) {
             val searchView = searchItem.actionView as SearchView
             val editText = searchView.findViewById<EditText>(R.id.search_src_text)
+            editText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            editText.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.white))
             editText.hint = getString(R.string.hintSearchShow)
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
