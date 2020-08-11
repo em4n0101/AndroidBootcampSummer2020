@@ -4,6 +4,7 @@ import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
@@ -26,9 +27,15 @@ class EpisodesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_episodes)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Get season pass from previous activity
         val season: SeasonsForShowResponse? = intent.getParcelableExtra(ShowDetailActivity.EXTRA_SEASON)
         season?.let {
+            collapsingToolbar.title = getString(R.string.season_number, season.number)
+            collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+
             updateUiWithSeasonDetails(it)
             getEpisodesForSeason(it)
             setupObservables()
@@ -63,7 +70,14 @@ class EpisodesActivity : AppCompatActivity() {
         setupImageForViewHolder(
             season.image,
             seasonDetailImageView,
-            loaderAnimationSeasonPosterView)
+            loaderAnimationSeasonPosterView
+        )
+        setupImageForViewHolder(
+            season.image,
+            imageEpisodesHeader,
+            loaderAnimationEpisodesHeaderPosterView,
+            true
+        )
         seasonDetailNumberTextView.text = getString(R.string.season_number, season.number)
         seasonDetailPremiereDateTextView.text = formatSeasonAirDate(season)
         seasonDetailSummaryTextView.text = season.summary?.removeHtmlTags()
