@@ -2,7 +2,7 @@
 Assignments for the RayWenderlich Android Bootcamp 
 https://www.raywenderlich.com/10408731-rw-bootcamp
 
-[Emmanuel's Profile Image](images/photo_profile.jpg)
+![alt text](images/photo_profile.jpeg)
 
 ## Profile
 
