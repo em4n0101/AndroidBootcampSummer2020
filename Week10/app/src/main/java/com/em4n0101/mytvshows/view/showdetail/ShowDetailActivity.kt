@@ -4,13 +4,16 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_SHOW_DETAILS
 import com.em4n0101.mytvshows.model.CompleteInfoForShow
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
@@ -23,11 +26,7 @@ import com.em4n0101.mytvshows.utils.*
 import com.em4n0101.mytvshows.viewmodel.showdetails.ShowDetailsViewModel
 import kotlinx.android.synthetic.main.activity_show_detail.*
 import kotlinx.android.synthetic.main.activity_show_detail.loaderAnimationView
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
-
 
 class ShowDetailActivity : AppCompatActivity() {
 
@@ -36,47 +35,46 @@ class ShowDetailActivity : AppCompatActivity() {
         const val EXTRA_SEASON = "EXTRA_SEASON"
     }
 
-    private var scopeShowDetails = getKoin().getOrCreateScope("scopeShowDetailsId", named(SCOPE_SHOW_DETAILS))
-    private val viewModel: ShowDetailsViewModel by scopeShowDetails.viewModel(this)
+    private val viewModel: ShowDetailsViewModel by inject()
     private val networkStatusChecker by lazy {
         NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
     }
-    private var checkBoxFavorite: CheckBox? = null
     private var currentShow: Show? = null
+    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_detail)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Get show pass from previous activity
         val show: Show? = intent.getParcelableExtra(SearchShowFragment.EXTRA_SHOW)
         show?.let {
+            collapsingToolbar.title = it.name
+            collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
             currentShow = it
             updateUiWithShowDetails(it)
             setupObservables(it)
             getCompleteInfoForShow(it)
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeShowDetails.close()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.show_detail_menu, menu)
-
-        val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
-        checkBoxFavorite = starMenuItem?.actionView as CheckBox
-        checkBoxFavorite?.let {
-            if (currentShow != null) {
-                setupFavoriteToggle(it, currentShow)
-                setupObservables(currentShow!!)
+        favoriteAnimationView.setOnClickListener {
+            currentShow?.let {
+                isFavorite = !isFavorite
+                if (isFavorite) viewModel.saveShow(it) else viewModel.deleteShowByName(it.name)
+                animateFavoriteView()
             }
         }
+    }
 
-        return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finishAfterTransition();
+            return true;
+        }
+        return false;
     }
 
     private fun setupObservables(forShow: Show) {
@@ -90,20 +88,21 @@ class ShowDetailActivity : AppCompatActivity() {
             updateUIWithShowInfo(currentShow, additionalInfo.seasons, additionalInfo.cast)
         })
         viewModel.getShowByName(forShow.name).observe(this, Observer {
-            if (it != null) checkBoxFavorite?.isChecked = true
+            if (it != null) {
+                isFavorite = true
+                animateFavoriteView()
+            }
         })
     }
 
-    /**
-     * Depending on the state of the checkbox save or delete person
-     */
-    private fun setupFavoriteToggle(checkBox: CheckBox?, show: Show?){
-        if (checkBox != null && show != null) {
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    viewModel.saveShow(show)
+    private fun animateFavoriteView() {
+        currentShow?.let {
+            favoriteAnimationView.apply {
+                if (isFavorite) {
+                    playAnimation()
                 } else {
-                    viewModel.deleteShowByName(show.name)
+                    cancelAnimation()
+                    progress = 0.0f
                 }
             }
         }
@@ -121,6 +120,12 @@ class ShowDetailActivity : AppCompatActivity() {
 
     private fun updateUiWithShowDetails(show: Show) {
         setupImageForViewHolder(show.image, showDetailImageView, loaderAnimationShowPosterView)
+        setupImageForViewHolder(
+            show.image,
+            imageShowHeader,
+            loaderAnimationShowHeaderPosterView,
+            true
+        )
         showDetailTitleTextView.text = show.name
         showDetailGenreTextView.text = show.genres?.joinToString(separator = ", ")
         val showPremiereFormatted = formatShowPremiere(show)
@@ -128,8 +133,6 @@ class ShowDetailActivity : AppCompatActivity() {
         val showRattingFormatted = formatShowRatting(show)
         showDetailRatingTextView.text = showRattingFormatted
         showDetailSummaryTextView.text = show.summary?.removeHtmlTags()
-
-//        addSearchShowInDBObservable(show)
     }
 
     private fun updateUiWithSeasons(seasons: List<SeasonsForShowResponse>) {
@@ -155,19 +158,32 @@ class ShowDetailActivity : AppCompatActivity() {
     /**
      * Go to the episodes activity
      */
-    private fun listSeasonItemPressed(season: SeasonsForShowResponse) {
+    private fun listSeasonItemPressed(season: SeasonsForShowResponse, imageView: View) {
         val intent = Intent(this, EpisodesActivity::class.java)
         intent.putExtra(EXTRA_SEASON, season)
-        startActivity(intent)
+
+        val imagePair = Pair.create(imageView, "posterImageTransaction")
+        val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@ShowDetailActivity,
+            imagePair
+        )
+        startActivity(intent, activityOptions.toBundle())
     }
 
     /**
      * Go to the cast member activity
      */
-    private fun listCastItemPressed(cast: CastForShowResponse) {
+    private fun listCastItemPressed(cast: CastForShowResponse, imageView: View, titleView: View) {
         val intent = Intent(this, CastMemberActivity::class.java)
         intent.putExtra(EXTRA_PERSON, cast.person)
-        startActivity(intent)
+        val imagePair = Pair.create(imageView, "genericImageHolderTransaction")
+        val titlePair = Pair.create(titleView, "genericTitleHolderTransaction")
+        val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@ShowDetailActivity,
+            imagePair,
+            titlePair
+        )
+        startActivity(intent, activityOptions.toBundle())
     }
 
     private fun displayNotNetworkAvailableMessage() {

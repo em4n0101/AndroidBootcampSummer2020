@@ -6,22 +6,18 @@ import android.view.Menu
 import android.widget.CheckBox
 import androidx.lifecycle.Observer
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_CAST_MEMBERS
 import com.em4n0101.mytvshows.model.Person
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.utils.formatPersonBirthday
 import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import com.em4n0101.mytvshows.viewmodel.cast.CastMemberViewModel
 import kotlinx.android.synthetic.main.activity_cast.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class CastMemberActivity : AppCompatActivity() {
-    private var scopeCastMember = getKoin().getOrCreateScope("scopeCastId", named(SCOPE_CAST_MEMBERS))
-    private val viewModel: CastMemberViewModel by scopeCastMember.viewModel(this)
-    private var checkBoxFavorite: CheckBox? = null
+    private val viewModel: CastMemberViewModel by inject()
     private var currentPerson: Person? = null
+    private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,47 +27,37 @@ class CastMemberActivity : AppCompatActivity() {
         val person: Person? = intent.getParcelableExtra(ShowDetailActivity.EXTRA_PERSON)
         person?.let {
             currentPerson = it
+            addSearchPersonInDBObservable(it)
             updateUiWithPerson(it)
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeCastMember.close()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.show_detail_menu, menu)
-
-        val starMenuItem = menu?.findItem(R.id.actionFavoriteItem)
-        checkBoxFavorite = starMenuItem?.actionView as CheckBox
-        checkBoxFavorite?.let {
-            if (currentPerson != null) {
-                setupFavoriteToggle(it, currentPerson)
-                addSearchPersonInDBObservable(currentPerson!!)
+        favoriteAnimationView.setOnClickListener {
+            currentPerson?.let {
+                isFavorite = !isFavorite
+                if (isFavorite) viewModel.savePerson(it) else viewModel.deletePersonByName(it.name)
+                animateFavoriteView()
             }
         }
-        return true
     }
 
     private fun addSearchPersonInDBObservable(person: Person) {
         val observer = Observer<Person?> {
-            if (it != null) checkBoxFavorite?.isChecked = true
+            if (it != null) {
+                isFavorite = true
+                animateFavoriteView()
+            }
         }
         viewModel.getPersonByName(person.name).observe(this, observer)
     }
 
-    /**
-     * Depending on the state of the checkbox save or delete person
-     */
-    private fun setupFavoriteToggle(checkBox: CheckBox?, person: Person?){
-        if (checkBox != null && person != null) {
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    viewModel.savePerson(person)
+    private fun animateFavoriteView() {
+        currentPerson?.let {
+            favoriteAnimationView.apply {
+                if (isFavorite) {
+                    playAnimation()
                 } else {
-                    viewModel.deletePersonByName(person.name)
+                    cancelAnimation()
+                    progress = 0.0f
                 }
             }
         }

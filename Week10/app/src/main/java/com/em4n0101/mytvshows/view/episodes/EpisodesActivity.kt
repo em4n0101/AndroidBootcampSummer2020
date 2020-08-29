@@ -3,11 +3,12 @@ package com.em4n0101.mytvshows.view.episodes
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_EPISODES
 import com.em4n0101.mytvshows.model.response.EpisodesForSeasonResponse
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
@@ -15,14 +16,10 @@ import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.utils.*
 import com.em4n0101.mytvshows.viewmodel.episodes.EpisodesViewModel
 import kotlinx.android.synthetic.main.activity_episodes.*
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
 
 class EpisodesActivity : AppCompatActivity() {
-    private var scopeEpisodes = getKoin().getOrCreateScope("scopeEpisodesId", named(SCOPE_EPISODES))
-    private val viewModel: EpisodesViewModel by scopeEpisodes.viewModel(this)
+    private val viewModel: EpisodesViewModel by inject()
     private val networkStatusChecker by lazy {
         NetworkingStatusChecker(getSystemService(ConnectivityManager::class.java))
     }
@@ -31,18 +28,27 @@ class EpisodesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_episodes)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Get season pass from previous activity
         val season: SeasonsForShowResponse? = intent.getParcelableExtra(ShowDetailActivity.EXTRA_SEASON)
         season?.let {
+            collapsingToolbar.title = getString(R.string.season_number, season.number)
+            collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+
             updateUiWithSeasonDetails(it)
             getEpisodesForSeason(it)
             setupObservables()
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeEpisodes.close()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finishAfterTransition();
+            return true;
+        }
+        return false;
     }
 
     private fun displayNotNetworkAvailableMessage() {
@@ -73,7 +79,14 @@ class EpisodesActivity : AppCompatActivity() {
         setupImageForViewHolder(
             season.image,
             seasonDetailImageView,
-            loaderAnimationSeasonPosterView)
+            loaderAnimationSeasonPosterView
+        )
+        setupImageForViewHolder(
+            season.image,
+            imageEpisodesHeader,
+            loaderAnimationEpisodesHeaderPosterView,
+            true
+        )
         seasonDetailNumberTextView.text = getString(R.string.season_number, season.number)
         seasonDetailPremiereDateTextView.text = formatSeasonAirDate(season)
         seasonDetailSummaryTextView.text = season.summary?.removeHtmlTags()

@@ -1,12 +1,13 @@
 package com.em4n0101.mytvshows.view.showdetail
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.response.CastForShowResponse
 
-class CastAdapter(private val onCastClicked: (CastForShowResponse) -> Unit): RecyclerView.Adapter<CastViewHolder>() {
+class CastAdapter(private val onCastClicked: (CastForShowResponse, View, View) -> Unit): RecyclerView.Adapter<CastViewHolder>() {
 
     private val castList: MutableList<CastForShowResponse> = mutableListOf()
 

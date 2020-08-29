@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.work.*
 import com.em4n0101.mytvshows.R
+import com.em4n0101.mytvshows.utils.DepthPageTransformer
 import com.em4n0101.mytvshows.workers.DownloadScheduleWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
@@ -14,12 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
         initUi()
     }
 
     private fun initUi() {
         tabs.setupWithViewPager(fragmentPager)
         fragmentPager.adapter = pagerAdapter
+        fragmentPager.setPageTransformer(true, DepthPageTransformer())
 
         synchronizedSchedule()
     }

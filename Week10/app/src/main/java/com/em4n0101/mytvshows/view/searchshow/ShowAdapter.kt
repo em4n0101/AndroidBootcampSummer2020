@@ -1,12 +1,13 @@
 package com.em4n0101.mytvshows.view.searchshow
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.Show
 
-class ShowAdapter (private val onShowClicked: (Show) -> Unit): RecyclerView.Adapter<ShowViewHolder>() {
+class ShowAdapter (private val onShowClicked: (Show, View, View) -> Unit): RecyclerView.Adapter<ShowViewHolder>() {
 
     private val showList: MutableList<Show> = mutableListOf()
 

@@ -6,22 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_SCHEDULE
 import com.em4n0101.mytvshows.model.response.ScheduleResponse
 import com.em4n0101.mytvshows.view.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.schedule.ScheduleViewModel
 import kotlinx.android.synthetic.main.fragment_schedule.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class ScheduleFragment : Fragment() {
-    private var scopeSchedule = getKoin().getOrCreateScope("scopeScheduleId", named(SCOPE_SCHEDULE))
-    private val viewModel: ScheduleViewModel by scopeSchedule.viewModel(this)
+    private val viewModel: ScheduleViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +27,6 @@ class ScheduleFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule, container, false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeSchedule.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,11 +55,19 @@ class ScheduleFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(schedule: ScheduleResponse) {
+    private fun listItemPressed(schedule: ScheduleResponse, viewPoster: View, viewTitle: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(SearchShowFragment.EXTRA_SHOW, schedule.show)
-            startActivity(intent)
+
+            val imagePair = Pair.create(viewPoster, "posterImageTransactionName")
+            val titlePair = Pair.create(viewTitle, "nameShowTransaction")
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 }

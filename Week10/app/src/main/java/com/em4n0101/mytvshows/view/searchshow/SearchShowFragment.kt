@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_SEARCH_SHOW
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.networking.NetworkingStatusChecker
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
@@ -20,13 +22,10 @@ import com.em4n0101.mytvshows.utils.toast
 import com.em4n0101.mytvshows.viewmodel.searchshow.SearchShowViewModel
 import kotlinx.android.synthetic.main.fragment_search_show.*
 import kotlinx.android.synthetic.main.fragment_search_show.loaderAnimationView
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class SearchShowFragment : Fragment() {
-    private var scopeSearchShow = getKoin().getOrCreateScope("searchShowId", named(SCOPE_SEARCH_SHOW))
-    private val viewModel: SearchShowViewModel by scopeSearchShow.viewModel(this)
+    private val viewModel: SearchShowViewModel by inject()
     private val networkStatusChecker by lazy {
         NetworkingStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
     }
@@ -42,11 +41,6 @@ class SearchShowFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_show, container, false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeSearchShow.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +63,8 @@ class SearchShowFragment : Fragment() {
         if (searchItem != null) {
             val searchView = searchItem.actionView as SearchView
             val editText = searchView.findViewById<EditText>(R.id.search_src_text)
+            editText.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            editText.setHintTextColor(ContextCompat.getColor(requireContext(), R.color.white))
             editText.hint = getString(R.string.hintSearchShow)
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -133,11 +129,19 @@ class SearchShowFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(show: Show) {
+    private fun listItemPressed(show: Show, posterImage: View, titleView: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(EXTRA_SHOW, show)
-            startActivity(intent)
+            val imagePair = Pair.create(posterImage, "posterImageTransactionName")
+            val titlePair = Pair.create(titleView, "nameShowTransaction")
+
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 

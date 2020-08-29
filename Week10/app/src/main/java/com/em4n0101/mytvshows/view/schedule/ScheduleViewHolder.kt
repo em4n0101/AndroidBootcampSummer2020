@@ -7,12 +7,12 @@ import com.em4n0101.mytvshows.utils.setupImageForViewHolder
 import kotlinx.android.synthetic.main.schedule_view_holder.view.*
 
 class ScheduleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    fun bind(schedule: ScheduleResponse, onScheduleClick: (ScheduleResponse) -> Unit) = with(itemView) {
+    fun bind(schedule: ScheduleResponse, onScheduleClick: (ScheduleResponse, View, View) -> Unit) = with(itemView) {
         scheduleTimeAndNetworkTextView.text =
             schedule.airtime.toString() + " \n " + schedule.show?.network?.name
         scheduleShowNameTextView.text = schedule.show?.name
         scheduleEpisodeNameTextView.text = schedule.name
-        setOnClickListener { onScheduleClick(schedule) }
+        setOnClickListener { onScheduleClick(schedule, schedulePoster, scheduleShowNameTextView) }
         setupImageForViewHolder(schedule.show?.image, schedulePoster, loaderScheduleShowAnimationView)
     }
 }

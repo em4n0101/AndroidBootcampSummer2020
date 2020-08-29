@@ -1,12 +1,13 @@
 package com.em4n0101.mytvshows.view.showdetail
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.em4n0101.mytvshows.R
 import com.em4n0101.mytvshows.model.response.SeasonsForShowResponse
 
-class SeasonAdapter(private val onSeasonClicked: (SeasonsForShowResponse) -> Unit): RecyclerView.Adapter<SeasonViewHolder>() {
+class SeasonAdapter(private val onSeasonClicked: (SeasonsForShowResponse, View) -> Unit): RecyclerView.Adapter<SeasonViewHolder>() {
 
     private val seasonsList: MutableList<SeasonsForShowResponse> = mutableListOf()
 

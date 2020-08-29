@@ -7,23 +7,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.em4n0101.mytvshows.R
-import com.em4n0101.mytvshows.app.SCOPE_FAVORITE_SHOWS
 import com.em4n0101.mytvshows.model.Show
 import com.em4n0101.mytvshows.view.searchshow.SearchShowFragment
 import com.em4n0101.mytvshows.view.searchshow.ShowAdapter
 import com.em4n0101.mytvshows.view.showdetail.ShowDetailActivity
 import com.em4n0101.mytvshows.viewmodel.usershows.UserFavoriteShowsViewModel
 import kotlinx.android.synthetic.main.fragment_user_favorite_shows.*
-import org.koin.android.ext.android.getKoin
-import org.koin.android.viewmodel.scope.viewModel
-import org.koin.core.qualifier.named
+import org.koin.android.ext.android.inject
 
 class UserFavoriteShowsFragment : Fragment() {
-    private var scopeFavoriteShows = getKoin().getOrCreateScope("scopeFavoriteShowsId", named(SCOPE_FAVORITE_SHOWS))
-    private val viewModel: UserFavoriteShowsViewModel by scopeFavoriteShows.viewModel(this)
+    private val viewModel: UserFavoriteShowsViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +29,6 @@ class UserFavoriteShowsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_favorite_shows, container, false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scopeFavoriteShows.close()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,11 +64,19 @@ class UserFavoriteShowsFragment : Fragment() {
         }
     }
 
-    private fun listItemPressed(show: Show) {
+    private fun listItemPressed(show: Show, posterImage: View, titleView: View) {
         view?.let {
             val intent = Intent(context, ShowDetailActivity::class.java)
             intent.putExtra(SearchShowFragment.EXTRA_SHOW, show)
-            startActivity(intent)
+
+            val imagePair = Pair.create(posterImage, "posterImageTransactionName")
+            val titlePair = Pair.create(titleView, "nameShowTransaction")
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                imagePair,
+                titlePair
+            )
+            startActivity(intent, activityOptions.toBundle())
         }
     }
 
